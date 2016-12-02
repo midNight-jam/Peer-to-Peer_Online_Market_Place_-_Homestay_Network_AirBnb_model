@@ -1,7 +1,5 @@
-# --AirBnb--
-This repo shall hold code base for CMPE-273 Team Project Airbnb.
+# --AirBnb-- model
 
-Waffle Board Link: https://waffle.io/Jayam-Malviya/--AirBnb--
 
 ------**Project Structure**-------------
 
