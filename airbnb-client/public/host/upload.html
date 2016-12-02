@@ -1,0 +1,48 @@
+<div class="wrapper" data-loading="" ><div class="loading-spiner"></div></div>
+
+
+
+<div class="host-step-img-content ">
+<div class="host-step">
+ 
+	<div class="host-step-header">
+			<h2>Show travelers what your space looks like</h2>
+	</div>
+	
+	<!-- <div class="show-img-preview" ng-repeat="files in up.file">
+	   <img class="img-preview" ng-show="up.file"  src="" ngf-src="files|| './images/thumbnail.jpg' "/>
+	 </div> -->
+	  
+
+	 <div class="host-img-upload" >
+
+		<form name="uploadList" novalidate>
+			<div class="show-img-preview" ng-repeat="files in up.file">
+				<img class="img-preview" ng-show="up.file"  src="" ngf-src="files|| './images/thumbnail.jpg' "/>
+			</div>
+		<div class="input-type text-center" >
+
+			<button   type="file" ngf-select ng-model="up.file" name="file"
+					  accept="image/*" ngf-max-size="2MB" required
+					  ngf-model-invalid="errorFile" ngf-multiple="true"   ngf-pattern="'.jpg,.png,.jpeg'"  class="btn  airbnb-color   btn-large" style="  color:white;height:60px;border-style:solid; border-width: 2px;;"  ><strong style="word-break: break-all;"><strong ng-hide="up.file">Upload a file from your<br> computer</strong></strong><strong ng-show="up.file">Remove and select other from computer</strong></button>
+
+			<i class=" upload-required" ng-show="uploadList.file.$error.required">*required</i><br>
+			<i class=" upload-error" ng-show="uploadList.file.$error.pattern">File should be of the format *.jpg *.png *.jpeg</i><br>
+			<i class=" upload-error" ng-show="uploadList.file.$error.maxSize">File too large
+				{{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+			<p>{{progress}}</p>
+
+		  </div>
+		  <div class="input-type text-center">
+		  	<button  ng-show ="up.file" type="submit"   class="btn btn-size airbnb-color" ng-click="uploadImage(up.file)">Upload Now </button>
+		  </div>         
+		</form>
+
+
+	  </div>
+	 <!-- <div class="step-button text-center">
+		<button type="submit"  ng-show="up.file" class="btn btn-size airbnb-color" ng-click="uploadImage()">Upload Now </button> 
+		</div> -->
+	</div>	
+	</div>
+</div>	

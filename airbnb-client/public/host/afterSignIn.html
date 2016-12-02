@@ -1,0 +1,59 @@
+
+<section  class="wrapper" >
+ <div class="auth-card welcome-card" ng-hide="addProfilePic" >
+
+
+
+        <div class="welcome-content">
+            <div class="welcome-signup-space">
+                <img class="signup-airbnb-logo" src="../images/Airbnb.png" alt="">
+            </div>
+            <div class="welcome-signup-space">
+                <h3>Welcome to Airbnb</h3>
+            </div>
+            <div class="welcome-signup-space">
+                <h5>Hosts and guests on Airbnb are real people with real homes. That’s why you’ll have to confirm a few, quick details to activate your account.</h5>
+            </div>
+            <div class="welcome-started-button">
+
+                <button class="airbnb-color btn btn-size" ng-click="addProfilePic=1">Get Started</button>
+            </div>
+
+    </div><!-- auth-card-content -->
+</div><!-- auth-card-->
+
+    <div class="auth-card " ng-show="addProfilePic" >
+
+        <div class="wrapper-loader"  data-loading ><div class="loading-spiner"></div></div>
+
+        <div class=" profile-card text-center">
+
+            <div class="welcome-signup-space">
+                <h3>Add your profile photo</h3>
+            </div>
+            <div class="welcome-signup-space">
+                <h5>Put a face to your name! We’ll add this to your profile, and share it with future hosts and guests.</h5>
+
+            </div>
+            <form name="profilePicUpload">
+            <div class="welcome-signup-space">
+                <img class="signup-profile-logo" ngf-src=" up.file ||'../images/profile-avatar.png'" alt="">
+            </div>
+            <div class="welcome-started-button welcome-signup-space">
+
+                <button class="airbnb-color btn btn-size" ngf-model-invalid="errorFile"   ngf-pattern="'.jpg,.png,.jpeg'"  ng-hide="up.file" ngf-select ng-model="up.file" name="file" accept="image/*"  ngf-max-size="2MB"><i class="fa fa-cloud-upload" aria-hidden="true"></i>Upload photo</button>
+                <br>
+                <button class="airbnb-color btn btn-size welcome-signup-space" ng-show="up.file" ngf-select ng-model="up.file" name="file" ngf-pattern="'.jpg,.png,.jpeg'" accept="image/*"  ngf-max-size="2MB"><i class="fa fa-cloud-upload" aria-hidden="true"></i>Change Photo</button>
+            </div>
+            <i ng-show="profilePicUpload.file.$error.required">*required</i>
+                <i class=" upload-error" ng-show="profilePicUpload.file.$error.pattern">File should be of the format *.jpg *.png *.jpeg</i>
+
+            <i ng-show="profilePicUpload.file.$error.maxSize">File too large
+                {{up.file.size / 1000000|number:1}}MB: max 2Mb</i>
+                <br>
+                <button class="airbnb-color btn btn-size" ng-show="up.file" ng-click="uploadImage(up.file)">Upload Now</button>
+
+            </form>
+        </div><!-- auth-card-content -->
+    </div><!-- auth-card-->
+</section>

@@ -1,0 +1,291 @@
+
+.jumbo-height {
+	height: 402px;
+}
+
+.jumboBgImage{
+	/* background-image:url("picRoom.png"); */
+	background-repeat:  no-repeat;
+	background-position: center;
+	/* overflow: scroll; */
+	background-size: cover;
+	border: none;
+    width: 100%;
+}
+
+/* COROUSEL */
+.carousel-inner>.item>img, .carousel-inner>.item>a>img {
+	width: 80%;
+	margin: auto;
+}
+
+/*********************/
+.bgWhite{
+	background: white;
+}
+
+.jumbo-margin {
+	margin-bottom: 0px;
+	margin-top: -20px;
+}
+
+.bgStyle {
+	min-height: 700px;
+	height: auto;
+}
+
+.margin-top-25 {
+	margin-top: 25px;
+	margin-top: 15px;
+	/*border-bottom: */
+}
+
+/* FOR STAR RATING */
+.rating {
+    color: #a9a9a9;
+    margin: 0;
+    padding: 0;
+}
+ul.rating {
+    display: inline-block;
+}
+.rating li {
+    list-style-type: none;
+    display: inline-block;
+    padding: 1px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.font-star1{
+	font-size: 20px;
+}
+
+.font-star2{
+	font-size: 30px;
+}
+
+.rating .filled {
+    color: #008489;
+}
+/*******************/
+
+.profilePicStyle{
+	height:75px;
+	width:75px;
+	border-radius: 50%
+}
+
+.profileName{
+	display: block;
+	font-size: 15px ;
+	font-weight: 200 ;
+	letter-spacing: 0.2px ;
+	line-height: 18px ;
+}
+
+.listingHeader {
+	color: #484848 ;
+	font-family: Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 36px ;
+	font-weight: 700 ;
+	letter-spacing: -0.6px ;
+	line-height: 44px ;
+	margin: 0 ;
+	overflow-wrap: break-word ;
+	padding-bottom: 6px ;
+	padding-top: 6px ;
+}
+
+.listingLocation {
+	color: #484848 ;
+	display: inline ;
+	font-family: Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 15px ;
+	font-weight: 200 ;
+	letter-spacing: 0.2px ;
+	line-height: 18px ;
+	margin: 0 ;
+	overflow-wrap: break-word ;
+	padding-bottom: 0 ;
+	padding-top: 0 ;
+	padding-bottom: 0 ;
+	padding-top: 0 ;
+}
+
+hr {
+    border-color: #dce0e0;
+    border-image: none;
+    border-style: solid none none;
+    border-width: 1px 0 0;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.thumbStyle{
+	width: 30px;
+	height: 43px;
+	display: block;
+}
+
+.spanText{
+	color: #484848 ;
+	display: inline ;
+	font-family: Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 15px ;
+	font-weight: 200 ;
+	letter-spacing: 0.2px ;
+	line-height: 18px ;
+}
+
+.spanHeader1{
+	color: #484848 ;
+	display: inline ;
+	font-family: Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 19px ;
+	font-weight: bold ;
+	letter-spacing: 0.2px ;
+	line-height: 18px ;
+}
+
+.spanHeader2{
+	color: #484848 ;
+	display: inline ;
+	font-family: Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 28px ;
+	font-weight: normal;
+	letter-spacing: 0.2px ;
+	line-height: 18px ;
+}
+
+.spanText2{
+	color: #484848 ;
+	display: inline ;
+	font-family: Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 19px ;
+	font-weight: 100 ;
+	letter-spacing: 0.2px ;
+	line-height: 24px;
+	overflow-wrap: break-word ;
+}
+
+.spanText3{
+	color: #484848 ;
+	display: inline ;
+	font-family: Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 15px ;
+	font-weight: 100 ;
+	letter-spacing: 0.2px ;
+	line-height: 24px;
+	overflow-wrap: break-word ;
+}
+
+.textLine{
+	display: block;
+}
+
+.border-bottom-grey{
+	border-bottom: 1px solid #dce0e0;
+    padding-bottom: 15px;
+}
+
+.ratingSearchBox {
+	border-color: #dce0e0;
+	border-radius: 23px;
+	font-weight: 200;
+	height: 46px;
+	padding: 0 15px;
+}
+
+.bookPreviewRate{
+	color: #FFFFFF ;
+	display: inline ;
+	font-family: Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 24px ;
+	font-weight: normal ;
+	letter-spacing: 0.2px ;
+	line-height: 26px;
+	overflow-wrap: break-word ;
+}
+
+.bookForDay{
+	color: #FFFFFF ;
+	display: inline ;
+	font-family: Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px ;
+	font-weight: normal ;
+	letter-spacing: 0.2px ;
+	line-height: 20px;
+	overflow-wrap: break-word;
+	margin-top: 2px;
+	padding-left: 95px;
+	padding-right: 0px;
+}
+
+.bookBgGreyWithOpacity{
+	margin-top: -40px;
+	background: linear-gradient(rgba(1,0,0,0.75), rgba(1,0,0,0.5));
+    border: 0 none;
+    color: #fff;
+    height: 40px;
+    overflow-y: hidden;
+    padding: 6px 20px;
+    text-transform: capitalize;
+    width: 100%;
+    z-index: 1001;
+    padding-right: 0px;
+}
+
+.bookTripDiv{
+	min-height: 200px;
+	/*height: 300px;*/
+	width: 100%;
+	border: 1px solid #dce0e0;
+}
+
+.dateDropdownFix{
+	font-size: 12px;
+	width: 80%;
+}
+
+.noticeText{
+	color: #484848 ;
+	display: inline ;
+	font-family: Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 12px ;
+	font-weight: 100 ;
+	letter-spacing: 0.2px ;
+	line-height: 24px;
+	overflow-wrap: break-word ;
+}
+
+.modalHeader{
+	color: #FFFFFF ;
+	border-bottom: 1px solid #484848;
+}
+
+.corouselImageSize{
+	height:600px !important;
+}
+
+.headerButtonText{
+	color: #484848 ;
+	border-radius: 5px;
+	font-family: Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 16px ;
+	font-weight: bold;
+	float: left;
+	background: white;
+	margin-top: 300px;
+}
+
+.billPopUpTextStyle{
+	color: #484848 ;
+	font-family: Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px ;
+	font-weight: 800;
+	letter-spacing: 0.2px ;
+	line-height: 20px;
+	background: white;
+}

@@ -1,0 +1,157 @@
+<div class="header-include" ng-include="'host/header.html'"></div>
+
+<div class="container">
+    <div class="row" style="padding-top: 60px;">
+        <div class="col-sm-7">
+            <div class="about">
+                <p class="abouttrip">About Your Trip</p>
+                <div class="abouttripcontent">
+                    <p >{{propertyinfo}}</p>
+                </div>
+            </div>
+            <div class="yourhostimage">
+                <img class="imageicon" src="images/host.jpg">
+            </div>
+            <div class="yourhostname">
+                <span>Your host, {{hostName}}</span>
+            </div>
+            <div class="whoiscoming">
+                <p class="booktrip2fontfamily">Who’s coming?</p>
+                <div >
+                    <select ng-model="guestsSelected" class="nguest  booktrip2fontfamily">
+                        <option value="{{guests}}" ng-repeat="guests in noGuests">{{guests}}</option>
+
+                       <!-- <option>1 guest</option>
+                        <option>2 guest</option>
+                        <option>3 guest</option>
+                        <option>4 guest</option>
+                        <option>5 guest</option>
+                        <option>6 guest</option>
+                        <option>7 guest</option>
+                        <option>8 guest</option>-->
+                    </select>
+                </div>
+                <div ng-show="guesterror">
+                    <span style="color:indianred">{{msg}}</span>
+                </div>
+            </div>
+            <span style="padding-left: 50px;color: darkmagenta;">Maximum Guests Allowed: {{guestAllowed}}</span>
+            <div class="textfromuser">
+                <p class="booktrip2fontfamily">Say hello to your host and tell them why you’re coming:</p>
+            </div>
+            <div class="usertextarea">
+                <textarea  ng-model="usercomments" class="textareaguest" rows="4" placeholder="Visiting family or friends? Seeing the sights? This helps your host plan for your trip"></textarea>
+            </div>
+            <div class="housingrules">
+                <h4 style="text-align: center">{{hostName}} ,House Rules</h4>
+                <div>
+                    <p class="rulescontent booktrip2fontfamily">No Smoking <span class="tickclass glyphicon  glyphicon-ok"></span></p>
+                </div>
+                <div>
+                    <p class="rulescontent booktrip2fontfamily">No parties <span class="tickclass glyphicon  glyphicon-ok"></span></p>
+                </div>
+                <div>
+                    <p class="rulescontent booktrip2fontfamily">Check-in Time : 01:00PM <span class="tickclass glyphicon glyphicon-ok"></span></p>
+                </div>
+                <div>
+                    <p class="rulescontent booktrip2fontfamily">Checkout Time : 12:00PM <span class="tickclass glyphicon glyphicon-ok"></span></p>
+                </div>
+
+            </div>
+            <div class="custombuttontrip">
+                <button class="btn btn-large btn-primary button-next" type="button" ng-click="bookTrip(usercomments,guestsSelected)">Send Request</button>
+            </div>
+
+        </div>
+
+        <div class="col-sm-5">
+            <div class="bookingsummary">
+                <div>
+                    <img class="propertyimagetrip" src={{propertyImage}}>
+                    <div class="host2image">
+                        <img class="imageicon yourhostimage" src="images/host.jpg">
+                    </div>
+
+                </div>
+                <div class="tripsummary">
+                    <div class="housedetails">
+                        <p class="booktrip2fontfamily" style="padding-top: 30px;">Hosted by {{hostName}}</p>
+                        <p class="booktrip2fontfamily">{{bedrooms}}</p>
+                        <p >{{roomType}}</p>
+                        <p >{{completeaddress}}</p>
+                        <hr>
+                    </div>
+                    <div>
+                        <div class="row row-condensed">
+                            <div class="col-sm-5">
+                                <div class="text-muted">
+                                    <span>Check-in</span>
+                                </div>
+                                <div class="checkinout">
+                                    <span>{{checkInDate}}</span>
+                                </div>
+
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="arrowicon">
+                                    <i class="arrow"> > </i>
+                                </div>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="text-muted">
+                                    <span>Checkout</span>
+                                </div>
+                                <div class="checkinout">
+                                    <span>{{checkOutDate}}</span>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <hr>
+
+                    </div>
+                    <div class="pricing">
+                        <table class="pricing1">
+                            <tbody>
+                            <tr class="billingrow">
+                                <th class="booktrip2fontfamily billingrow">Accomodation</th>
+                                <div >
+                                    <td class="text-right" ><span>{{fixedPrice | currency}}</span></td>
+                                </div>
+                            </tr>
+
+
+                           <!-- <tr class="billingrow">
+                                <th class="booktrip2fontfamily billingrow">Service Fee</th>
+                                <div >
+                                    <td class="text-right" ><span>$846</span></td>
+                                </div>
+                            </tr>-->
+
+
+                            </tbody>
+                        </table>
+                        <hr>
+                        <div class="total">
+                            <table>
+                                <tr class="totalprice">
+                                    <th class="totalkeyword">Total</th>
+                                    <td class="totaltext-right">{{totalPrice | currency}}</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+

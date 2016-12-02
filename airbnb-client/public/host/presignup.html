@@ -1,0 +1,78 @@
+<section class="wrapper" >
+
+    <div class="auth-card" ng-show="showPresignup">
+        <i ng-click="closePopUp()" style="padding:5px" class=" airbnb-color pull-right fa fa-times" aria-hidden="true"></i>
+        <div ng-show="authError" class="auth-error">
+            <span class="auth-error-logo pull-left" ><i class="fa fa-exclamation-circle" aria-hidden="true"></i></span> <span class="error-msg">{{authErrorMessage}}</span>
+        </div>
+        <div class="auth-card-content">
+            <a href="#" class="auth-login auth-fb form-control btn btn-primary text-center"> <span class="auth-logo pull-left"><i class="fa fa-facebook" aria-hidden="true"></i></span><span class="auth-text  ">Log in with Facebook</span> </a>
+            <a href="#" class="auth-login form-control text-center "> <span class="auth-logo pull-left"><i class="fa fa-google" aria-hidden="true"></i></span><span class="auth-text ">Log in with Google</span> </a>
+            <div class="seprator">	</div>
+            <a href="#" ng-click="goSignup()" class="auth-login airbnb-color form-control text-center "> <span class="auth-logo pull-left"><i class="fa fa-envelope-o" aria-hidden="true"></i></span><span class="auth-text  ">Sign up with Email</span> </a>
+            <div class="terms-condition">
+				<span class="terms-text">By signing up, I agree to Airbnb’s Terms of Service, Nondiscrimination Policy, Payments Terms of Service, Privacy Policy, Guest Refund Policy, and Host Guarantee Terms.
+				</span>
+            </div>
+            <div class="seprator"></div>
+            <div class="already-account">
+                <div class="already-account-text pull-left">
+                    <span>Already have an Airbnb account?</span>
+                </div>
+                <button ng-click="login()" class="login-btn btn pull-right">Log in</button>
+            </div>
+        </div><!-- auth-card-content -->
+    </div><!-- auth-card-->
+
+    <div class="auth-card" ng-show="showsignup">
+        <i ng-click="closePopUp()" style="padding:5px" class=" airbnb-color pull-right fa fa-times" aria-hidden="true"></i>
+        <div ng-show="authError" class="auth-error">
+            <span class="auth-error-logo pull-left" ><i class="fa fa-exclamation-circle" aria-hidden="true"></i></span> <span class="error-msg">{{authErrorMessage}}</span>
+        </div>
+        <div class="auth-card-content">
+            <div class="signup-fields">
+                <form name="signupform" novalidate>
+                    <div class="auth-input  ">
+                        <input type="text" ng-required class=" auth-signup form-control" name="firstname" ng-model="user.firstname" placeholder="First Name">
+                        <div class="auth-inp-err" ng-show="signupform.firstname.$touched && signupform.firstname.$invalid">First name is required </div>
+                    </div>
+                    <div class="auth-input  ">
+                        <input type="text" ng-required class=" auth-signup form-control" name="lastname" ng-model="user.lastname" placeholder="Last Name">
+                        <div class="auth-inp-err" ng-show="signupform.lastname.$touched && signupform.lastname.$invalid">Last name is required</div>
+                    </div>
+                    <div class="auth-input  ">
+                        <input type="email" ng-required class=" auth-signup form-control" name="email" ng-model="user.email" placeholder="Email">
+                        <div class="auth-inp-err" ng-show="signupform.email.$touched && signupform.email.$invalid">Please enter a valid email include @ </div>
+                    </div>
+                    <div class="auth-input  ">
+                        <input type="password" class=" auth-signup form-control" ng-minLength="8" name="password" ng-model="user.password" placeholder="Password">
+                        <div class="auth-inp-err" ng-show="signupform.password.$touched && signupform.password.$invalid">Your password must be at least 8 characters. Please try again.</div>
+                    </div>
+                    <!-- <div class="auth-input  ">
+                        <input type="month" class=" auth-signup form-control" ng-minLength="8" name="password" ng-model="user.password" placeholder="Password">
+                        <div class="auth-inp-err" ng-show="signupform.password.$touched && signupform.password.$invalid">Your password must be at least 8 characters. Please try again.</div>
+                    </div> -->
+
+                    <div class="coupons  ">
+                        <label for="coupons-me"><input type="checkbox"  name = "coupons-me">  I’d like to receive coupons, promotions, surveys, and updates via email about Airbnb and its partners.</label>
+                    </div>
+                    <div class="terms-condition">
+						<span class="terms-text">By signing up, I agree to Airbnb’s Terms of Service, Nondiscrimination Policy, Payments Terms of Service, Privacy Policy, Guest Refund Policy, and Host Guarantee Terms.
+						</span>
+                    </div>
+                    <div class="auth-button">
+                        <button type ="submit" ng-click="signUp()" ng-disabled="signupform.$invalid" class="btn auth-btn form-control auth-login btn-alert">Sign Up</button>
+                    </div>
+                </form>
+            </div>
+            <div class="seprator"></div>
+            <div class="already-account">
+                <div class="already-account-text pull-left">
+                    <span>Already have an Airbnb account?</span>
+                </div>
+                <button ng-click="login()" class="login-btn btn ">Log in</button>
+            </div>
+        </div><!-- auth-card-content -->
+    </div><!-- auth-card-->
+
+</section>

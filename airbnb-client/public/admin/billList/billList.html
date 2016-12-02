@@ -1,0 +1,292 @@
+<div class="header-include" ng-include="'landingPage/header.html'"></div>
+</br>
+</br>
+</br>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+
+<div class="col-md-2 sidebar">
+    <div class="row">
+        <!-- Menu -->
+        <div class="side-menu">
+            <div class="side-menu-container">
+                <nav class="navbar navbar-default" role="navigation">
+                    <!-- Main Menu -->
+                    <ul class="nav navbar-nav">
+                        <li ><a ui-sref="adminGraphDashboard"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li><!--class="active"-->
+
+                        <!-- Dropdown-->
+                        <li id="dropdown">
+                            <a data-toggle="collapse" href="#dropdown-lvl1">
+                                <span class="glyphicon glyphicon-plane"></span> Listings <span class="caret"></span>
+                            </a>
+
+                            <!-- Dropdown level 1 -->
+                            <div id="dropdown-lvl1" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul class="nav navbar-nav">
+                                        <li><a ui-sref="pendingListings">Pending</a></li>
+                                        <li><a ui-sref="approvedListings">Approved</a></li>
+                                        <li><a ui-sref="rejectedListings">Rejected</a></li>
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- Dropdown-->
+                        <li id="dropdown">
+                            <a data-toggle="collapse" href="#dropdown-lvl2">
+                                <span class="glyphicon glyphicon-user"></span> review <span class="caret"></span>
+                            </a>
+                            <!-- Dropdown level 1 -->
+                            <div id="dropdown-lvl2" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul class="nav navbar-nav">
+                                        <li><a ui-sref="userList">Users</a></li>
+                                        <li><a ui-sref="hostList">Host</a></li>
+                                        <li><a ui-sref="billList">Bills</a></li>
+
+                                        <!-- Dropdown level 2 -->
+                                        <!-- <li class="panel panel-default" id="dropdown">
+                                             <a data-toggle="collapse" href="#dropdown-lvl2">
+                                                 <span class="glyphicon glyphicon-off"></span> Sub Level <span class="caret"></span>
+                                             </a>
+                                             <div id="dropdown-lvl2" class="panel-collapse collapse">
+                                                 <div class="panel-body">
+                                                     <ul class="nav navbar-nav">
+                                                         <li><a href="#">Link</a></li>
+                                                         <li><a href="#">Link</a></li>
+                                                         <li><a href="#">Link</a></li>
+                                                     </ul>
+                                                 </div>
+                                             </div>
+                                         </li>-->
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                    <!-- /.navbar-collapse -->
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="col-md-10 content">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Review hosts
+        </div>
+        <div class="panel-body">
+            <div class="container">
+
+                <div class="container">
+                    <div class="row">
+
+
+                        <div class="col-md-12">
+
+
+                             <h4 >Enter Bill date</h4>
+                            <div class="row ">
+                                <!--<input class="btn btn-sm" name="dateSelectedForSearch" id="dateSelectedForSearch" ng-model="dateSelectedForSearch" placeholder="Enter Bill date">-->
+                                <div class="col-xs-4 col-md-4">
+                                    <input class="form-control input-lg" type="date" ng-model="dateSelectedForSearch">
+
+                                </div>
+
+                                <button class="btn btn-success input-lg" ng-click="search()" >Search by date</button>
+                            </div>
+                            <h4>Search by Month on bill date</h4>
+                            <div class="row">
+                                <div class="col-xs-4 col-md-4">
+                                    <select name="month" class="form-control input-lg"  ng-model="SelectedMonth">
+                                        <option value="01" >Jan</option>
+                                        <option value="02"  >Feb</option>
+                                        <option value="03"  >Mar</option>
+                                        <option value="04"  >Apr</option>
+                                        <option value="05"  >May</option>
+                                        <option value="06"  >Jun</option>
+                                        <option value="07"  >Jul</option>
+                                        <option value="08"  >Aug</option>
+                                        <option value="09"  >Sep</option>
+                                        <option value="10"  >Oct</option>
+                                        <option value="11"  >Nov</option>
+                                        <option value="12" >Dec</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-xs-4 col-md-4">
+                                    <select name="year" class="form-control input-lg" ng-model="SelectedYear">
+                                        <option value="111" >2011</option>
+                                        <option value="112" >2012</option>
+                                        <option value="113" >2013</option>
+                                        <option value="114" >2014</option>
+                                        <option value="115" >2015</option>
+                                        <option value="116" >2016</option>
+
+
+                                    </select>
+                                </div>
+
+                                <button class="btn btn-success input-lg" ng-click="searchByMonth()" >Search by month </button>
+                            </div>
+
+                            </br>
+                            <button class="btn btn-danger input-lg" ng-click="reset()" >Reset grid</button>
+                            </br>
+                            <div class="table-responsive">
+
+
+                                <table id="mytable" class="table table-bordred table-striped">
+
+                                    <thead>
+
+                                    <th><input type="checkbox" id="checkall" /></th>
+                                    <th>Bill Id</th>
+                                    <th>Bill Date</th>
+                                    <!-- <th>Address</th>-->
+                                    <th>Host Name</th>
+                                    <th>Listing City</th>
+                                    <th>Payment Status</th>
+                                    <th>Trip Status</th>
+                                    <th>User Email</th>
+                                    <th>check In Date</th>
+                                    <th>check Out Date</th>
+                                    <th>View Bill</th>
+                                    </thead>
+                                    <tbody>
+
+                                    <tr ng-repeat="bill in AllBillList">
+                                        <td><input type="checkbox" class="checkthis" /></td>
+                                        <td>{{bill.billId}}</td>
+                                        <td>{{bill.billDate | date:'short'}}</td>
+                                        <td>{{bill.hostName}}</td>
+                                        <td>{{bill.listingCity}}</td>
+                                        <td>{{bill.paymentStatus}}</td>
+                                        <td>{{bill.tripStatus}}</td>
+                                        <td>{{bill.userEmail}}</td>
+                                        <td>{{bill.checkInDate| date:'short'}}</td>
+                                        <td>{{bill.checkOutDate| date:'short'}}</td>
+                                        <td><p data-placement="top" title="Edit"><button class="btn-success btn-xs" ng-click="getBillDetails(bill)" data-toggle="modal" data-target="#BillProfile">View</button></p></td>
+
+                                    </tr>
+
+                                    </tbody>
+
+                                </table>
+
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal fade" id="BillProfile" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                <h4 class="modal-title custom_align" id="Heading">Host Details</h4>
+            </div>
+            <div class="modal-body">
+                <!--<div class="form-group">
+                    <input class="form-control " type="text" placeholder="Mohsin">
+                </div>
+                <div class="form-group">
+
+                    <input class="form-control " type="text" placeholder="Irshad">
+                </div>
+                <div class="form-group">
+                    <textarea rows="2" class="form-control" placeholder="CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan"></textarea>
+                </div>-->
+
+                <div class="row">
+
+
+                    <div class=" col-md-8">
+                        <div class="host-dashboard-header">
+                            <div class=""> <p>Bill Details</p> </div>
+                        </div>
+                        <div class="col-md-6 col-lg-6  col-xs-6" >
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label">First Name: </label>{{Selectedfirstname}}
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label editProfile">Last Name:</label>{{Selectedlastname}}
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label editProfile">Gender: </label>{{Selectedgender}}
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label editProfile">Birth Date: </label>{{Selectedbirthday | date:'yyyy-MM-dd '}}
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label editProfile">Email Address: </label>{{Selectedemail}}
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label editProfile">Phone Number: </label>{{SelectedphoneNumber}}
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label editProfile">Preferred Language: </label>{{SelectedpreferLang}}
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label editProfile">Preferred Currenct: </label>{{SelectedpreferCurr}}
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label editProfile">Street Address: </label>{{SelectedstreetAddress}}
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label editProfile">City: </label>{{Selectedcity}}
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label editProfile">State: </label>{{Selectedstate}}
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label editProfile">Country: </label>{{Selectedcountry}}
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label editProfile">Zip Code: </label>{{Selectedzipcode}}
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label editProfile">Describe Yourself: </label>{{SelectedaboutMe}}
+
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+</div>
+

@@ -1,0 +1,1452 @@
+# this is an example of the Uber API
+# as a demonstration of an API spec in YAML
+swagger: '2.0'
+info:
+  title: Airbnb API
+  description: Move your app forward with the airbnb API
+  version: "1.0.0"
+# the domain of the service
+host: api.airbnb.com
+# array of all schemes that your API supports
+schemes:
+  - https
+# will be prefixed to all paths
+basePath: /v1
+produces:
+  - application/json
+paths:
+  /airbnb:
+    get:
+      summary: All listing by Countries
+      description: |
+        The allListings endpoint returns information about the *Airbnb* listing
+        offered at a given location. The response includes the countries name,and lists the products in the
+        proper display order.
+      tags:
+        - airbnb
+      responses:
+        200:
+          description: An array of Cities
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Cities'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /airbnb/search:
+    get:
+      summary: Searching the list for a particular data and city
+      description: |
+        Searching the list for a particular data and city
+      tags:
+        - search
+      responses:
+        200:
+          description: An array of listing
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/cityListing'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /airbnb/activity:
+    post:
+      summary: Logging the user activity in log files for analytics
+      description: |
+        Logging the user activity in log files for analytics
+      tags:
+        - analytics/logs
+      responses:
+        200:
+          description: An object of user Clicks
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/activity'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /airbnb/trace:
+    post:
+      summary: trace the user activity in log files for analytics
+      description: |
+        trace the user activity in log files for analytics
+      tags:
+        - analytics/trace
+      responses:
+        200:
+          description: An object of user Clicks
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/trace'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /airbnb/uploadAvatar:
+    post:
+      summary: upload the user avatar images or properties images
+      description: |
+        upload the user avatar images or properties images
+      parameters:
+        - name: userId
+          in: query
+          description: userId of the user.
+          required: true
+          type: string
+        - name: imagefile
+          in: query
+          description: avatar of the user.
+          required: true
+          type: string
+      tags:
+        - uploadAvatar
+      responses:
+        200:
+          description: Successfully uploaded the photo
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /airbnb/uploadPropertyImage:
+    post:
+      summary: upload the user avatar images or properties images
+      description: |
+        upload the user avatar images or properties images
+      parameters:
+        - name: userId
+          in: query
+          description: userId of the user.
+          required: true
+          type: string
+        - name: imagefile
+          in: query
+          description: images of the user property.
+          required: true
+          type: string
+        - name: listId
+          in: query
+          description: listId of the property for which images are uplaoded.
+          required: true
+          type: string
+      tags:
+        - uploadPropertyImage
+      responses:
+        200:
+          description: Successfully uploaded the photo
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+            
+  /airbnb/cityname:
+    get:
+      summary: City Listing
+      description: |
+        All the listing for that particular city,
+      tags:
+        - cityWiseListing
+      responses:
+        200:
+          description: An array of listings in that city
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/cityListing'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+            
+  /airbnb/cityname/listid:
+    get:
+      summary: get details of a listing 
+      description: All details of the listing 
+      tags:
+        - roomdetails
+      responses:
+        200:
+          description: An array having room details
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/roomDetails'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+            
+  /user/newListing:
+    get:
+      summary: list a new property
+      description: User will list a new property on airbnb.
+      parameters:
+        - name: list_Id
+          in: query
+          description: list_Id of the location.
+          required: true
+          type: string
+        - name: host_Id
+          in: query
+          description: host_Id of the location.
+          required: true
+          type: string
+        - name: list_space
+          in: query
+          description: category of the location.
+          required: true
+          type: string
+        - name: list_address
+          in: query
+          description: address of the location.
+          required: true
+          type: string
+        - name: list_city
+          in: query
+          description: city of the location.
+          required: true
+          type: string
+        - name: list_state
+          in: query
+          description: state of the location.
+          required: true
+          type: string
+        - name: list_zipCode
+          in: query
+          description: zipCode of the location.
+          required: true
+          type: string
+        - name: list_availability
+          in: query
+          description: availability of the location.
+          required: true
+          type: number
+          format: double
+        - name: list_description
+          in: query
+          description: description of the location.
+          required: true
+          type: string
+      tags:
+        - host
+      responses:
+        200:
+          description: List successfully created
+          schema:
+            $ref: '#/definitions/newListing'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+            
+  /user/deleteListing:
+    get:
+      summary: delete an existing property listing
+      description: User will delete the  property on airbnb.
+      parameters:
+        - name: list_Id
+          in: query
+          description: list_Id of the location.
+          required: true
+          type: string
+      tags:
+        - deleteListing
+      responses:
+        200:
+          description: delete the property listed by a user and send success if removed
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+            
+  /user/confirmProperty:
+    get:
+      summary: user gets the response from host for their booking request
+      description: host will receive the request for new booking and reply back to user with booking status either cancel or .
+      parameters:
+        - name: list_Id
+          in: query
+          description: list_Id of the property.
+          required: true
+          type: string
+        - name: user_Id
+          in: query
+          description: user_Id of the property.
+          required: true
+          type: string
+        - name: pending_rowId
+          in: query
+          description: pending_rowId of the property to match in db which need to be deleted after confirming property
+          required: true
+          type: string
+      tags:
+        - confirmProperty
+      responses:
+        200:
+          description: change status to approved
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /user/pendingRequest:
+    get:
+      summary: list all the pending request for host
+      description: list all the pending request for host
+      parameters:
+        - name: userId
+          in: query
+          description: userId of the location.
+          required: true
+          type: string
+      tags:
+        - pendingRequest
+      responses:
+        200:
+          description: array of all the pending request for host
+          schema:
+            $ref: '#/definitions/pendingRequest'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+           
+  /user/allHostListing:
+    get:
+      summary: City Listing
+      description: |
+        All the listing for that particular city,
+      tags:
+        - allHostListing
+      responses:
+        200:
+          description: An array of listings in that city
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/allHostListing'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /user/placeBid:
+    get:
+      summary: Show listing.
+      description:
+        Show listing Details.
+      parameters:
+        - name: list_id
+          in: query
+          description: Placing bid for a particular list_id.
+          required: true
+          type: string
+        - name: bidAmount
+          in: query
+          description: Amount of bid for listing.
+          required: true
+          type: integer
+        - name: userId
+          in: query
+          description: ID of user who places bid for the item.
+          required: true
+          type: integer
+      tags:
+        - User
+      responses:
+        200:
+          description: Show Acknowledgement after placing bid.
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/bidPlaceAcknowledgement'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'            
+  
+      
+  /user:
+    post:
+      summary: User Profile
+      description: The User endpoint creates user.
+      tags:
+        - User
+      responses:
+        200:
+          description: Profile information for a user
+          schema:
+            $ref: '#/definitions/User'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /user/userId:
+    get:
+      summary: Get User Profile
+      description: The getUserProfile endpoint returns the profile of the user
+      tags:
+        - User
+      responses:
+        200:
+          description: returns Profile information for a user
+          schema:
+            $ref: '#/definitions/User'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /user/myTrips/booktrip:
+    post:
+      summary: Book a Property
+      description: User is trying to book a new property.
+      parameters:
+        - name: userId
+          in: query
+          description: ID of host user to fetch user details.
+          required: true
+          type: string
+        - name: list_id
+          in: query
+          description: ID of property which needs to be booked
+          required: true
+          type: string
+        - name: noofguest
+          in: query
+          description: number of guest will be staying in the property
+          required: true
+          type: integer
+        - name: from_date
+          in: query
+          description: date trip will be starting
+          required: true
+          type: string
+        - name: to_date
+          in: query
+          description: date trip will be ending
+          required: true
+          type: string
+        - name: list_price
+          in: query
+          description: price of the property
+          required: true
+          type: string
+          
+      tags:
+        - mytrips
+      responses:
+        200:
+          description: booking successfull but pending approval
+          schema:
+            $ref: '#/definitions/bookTripsresponse'
+        401:
+          description: Cannot book a trip since dates are not avaiable
+          schema:
+            $ref: '#/definitions/bookTripsfailure401'
+          
+        405:
+          description: Cannot book a trip due to internal issue
+          schema:
+            $ref: '#/definitions/bookTripsfailure405'
+          
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /user/myTrips/edittrip:
+    post:
+      summary:  Edit  a already booked Property
+      description: User is trying to edit a already booked property.
+      parameters:
+        - name: userId
+          in: query
+          description: ID of host user to fetch user details.
+          required: true
+          type: string
+        - name: tripId
+          in: query
+          description: ID of booked trip.
+          required: true
+          type: string
+        - name: list_id
+          in: query
+          description: ID of property which needs to be booked
+          required: true
+          type: string
+        - name: noofguest
+          in: query
+          description: number of guest will be staying in the property
+          required: true
+          type: integer
+        - name: from_date
+          in: query
+          description: date trip will be starting
+          required: true
+          type: string
+        - name: to_date
+          in: query
+          description: date trip will be ending
+          required: true
+          type: string
+        - name: list_price
+          in: query
+          description: price of the property
+          required: true
+          type: string
+      tags:
+        - mytrips
+      responses:
+        200:
+          description: successfull edited the trip but pending approval
+          schema:
+            $ref: '#/definitions/bookTripsresponse'
+        401:
+          description: Cannot edit a trip since dates are not avaiable
+          schema:
+            $ref: '#/definitions/bookTripsfailure401'
+        405:
+          description: Cannot edit a trip due to internal issue
+          schema:
+            $ref: '#/definitions/bookTripsfailure405'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /user/myTrips/canceltrip:
+    post:
+      summary:  Cancel  a already booked Property/trip
+      description: User is trying to cancel a already booked property which is not yet completerd.
+      parameters:
+        - name: tripId
+          in: query
+          description: ID of trip user want to cancel.
+          required: true
+          type: string
+        
+      
+      tags:
+        - mytrips
+      responses:
+        200:
+          description: successfull cancelled the trip
+          schema:
+            $ref: '#/definitions/cancelTripsresponse'
+        401:
+          description: Cannot cancel a trip since trip dates are nearby, depends on the house rules
+          schema:
+            $ref: '#/definitions/cancelTripsresponse401'
+        405:
+          description: Cannot cancel a trip due to internal issue
+          schema:
+            $ref: '#/definitions/cancelTripsresponse405'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /user/myTrips/triphistory/:
+    get:
+      summary:  View Trip History for this user
+      description: User is trying to veiw his/her booking/trip history
+      parameters:
+        - name: userId
+          in: query
+          description: ID of  user to fetch all the  trip details.
+          required: true
+          type: string
+      tags:
+        - mytrips
+      responses:
+        200:
+          description: Array of all the trips  from this user including completed trips,pending approval trips,rejected trips and accepted trips(which are yet to be taken)
+          schema:
+            $ref: '#/definitions/myTrips'
+        405:
+          description: Cannot fetch trip history due to internal issue
+          schema:
+            $ref: '#/definitions/cancelTripsresponse405'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  
+  /user/payment:
+    post:
+      summary: Pay for the trip
+      description: User is trying to mmake a new payment for the trip.
+      parameters:
+        - name: tripid
+          in: query
+          description: trip id for which payment has to be made.
+          required: true
+          type: integer
+        - name: creditcardnumber
+          in: query
+          description: Credit card number of the user.
+          required: true
+          type: integer
+        - name: expiry
+          in: query
+          description: expiry date of the credit card
+          required: true
+          type: integer
+        - name: cvv
+          in: query
+          description: cvv number of the credit cart
+          required: true
+          type: integer
+          
+      tags:
+        - payment
+      responses:
+        200:
+          description: payment successfull
+          schema:
+            $ref: '#/definitions/Error'
+          
+        401:
+          description: payment failed due to invalid card details
+          schema:
+            $ref: '#/definitions/Error'
+          
+          
+        405:
+          description: cannot make the payment due to internal issue
+          schema:
+            $ref: '#/definitions/Error'
+          
+          
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  
+  /airbnb/review:
+    get:
+      summary: user can reveiw the property and host can review the user
+      description: |
+        Review prooperty or guest
+      tags:
+        - review
+      parameters:
+        - name: list_Id
+          in: query
+          description: list_Id of the location.
+          type: number
+          format: double
+        - name: user_Id
+          in: query
+          description: user_Id of the guest
+          type: number
+          format: double
+      responses:
+        200:
+          description: Success 
+          schema:
+            type: string
+            items:
+              $ref: '#/definitions/cityListing'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'          
+  /airbnb/rating:
+    get:
+      summary: user can rate the property
+      description: |
+        Rating for property,
+      tags:
+        - review
+      parameters:
+        - name: list_Id
+          in: query
+          description: list_Id of the location.
+          required: true
+          type: number
+          format: double
+      responses:
+        200:
+          description: Success 
+          schema:
+            type: string
+            items:
+              $ref: '#/definitions/cityListing'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  
+  
+  /user/trip/bill:
+    get:
+      summary: get data for printing bill 
+      description: all the booking details for the bill.
+      tags:
+        - Bill
+      parameters:
+        - name: tripid
+          in: query
+          description: send tripid for selected
+          required: true
+          type: number
+          format: double  
+      responses:
+        200:
+          description: An object having bill details
+          schema:
+            $ref: '#/definitions/Bill'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  
+  /admin/listings:
+    get:
+      summary: Display list of all listings.
+      description:
+        Display list of all listings.
+      parameters:
+        - name: all
+          in: query
+          description: Signifies that we need all the listings.
+          required: true
+          type: string
+      tags:
+        - Admin
+      responses:
+        200:
+          description: All Listings
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/listing'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /admin/hosts:
+    get:
+      summary: List of all hosts
+      description: |
+        Displays list of all users who have listed property for rent.
+      parameters:
+        - name: all
+          in: query
+          description: return list of all users.
+          required: true
+          type: boolean
+      tags:
+        - Admin
+      responses:
+        200:
+          description: An array of all hosts
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Host'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /admin/hosts/cityName:
+    get:
+      summary: List of all hosts in a particular city.
+      description: |
+        Displays list of all users who have listed property for rent in the specified city.
+      parameters:
+        - name: cityName
+          in: query
+          description: cityName to fetch data of hosts in that area.
+          required: true
+          type: string
+      tags:
+        - Admin
+      responses:
+        200:
+          description: An array of all hosts
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Host'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /admin/host/profile:
+    get:
+      summary: Display details of the host.
+      description:
+        Displays details of the host user who has listed the property for rent.
+      parameters:
+        - name: userId
+          in: query
+          description: ID of host user to fetch user details.
+          required: true
+          type: string
+      tags:
+        - Admin
+      responses:
+        200:
+          description: All User Details
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/User'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'          
+  /admin/listings/pendingStatus:
+    get:
+      summary: Display list of all listings that are waiting for Admin's approval.
+      description:
+        Display list of all listings that are waiting for Admin's approval.
+      parameters:
+        - name: list_status
+          in: query
+          description: Show lsitings where list_status = Pending.
+          required: true
+          type: string
+      tags:
+        - Admin
+      responses:
+        200:
+          description: Pending Listings
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/listing'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /admin/listings/approvedStatus:
+    get:
+      summary: Display list of all listings that have been approved by Admin.
+      description:
+        Display list of all listings that have been approved by Admin.
+      parameters:
+        - name: list_status
+          in: query
+          description: Show lsitings where list_status = Approved.
+          required: true
+          type: string
+      tags:
+        - Admin
+      responses:
+        200:
+          description: Approved Listings
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/listing'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /admin/listings/rejectedStatus:
+    get:
+      summary: Display list of all listings that have been rejected by Admin.
+      description:
+        Display list of all listings that have been rejected by Admin.
+      parameters:
+        - name: list_status
+          in: query
+          description: Show lsitings where list_status = Rejected.
+          required: true
+          type: string
+      tags:
+        - Admin
+      responses:
+        200:
+          description: Rejected Listings
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/listing'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /admin/listing/updateStatus:
+    get:
+      summary: Update status of listing.
+      description:
+        Update status of listing.
+      parameters:
+        - name: list_status
+          in: query
+          description: Send list_status = "Admin's Choice".
+          required: true
+          type: string
+      tags:
+        - Admin
+      responses:
+        200:
+          description: Status Update Acknowledgement
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/statusUpdateAcknowledgement'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /admin/listing/showListing:
+    get:
+      summary: Show listing.
+      description:
+        Show listing Details.
+      parameters:
+        - name: list_id
+          in: query
+          description: Fetching Listing Details as per list_id.
+          required: true
+          type: string
+      tags:
+        - Admin
+      responses:
+        200:
+          description: Show Listing Details
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/listing'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'  
+  /admin/user:
+   get:
+      summary: get list of all the users
+      description: for admin pannel where admins can view all the users in single screen
+      tags:
+        - Admin
+      responses:
+        200:
+          description: Array of uses
+          schema:
+            $ref: '#/definitions/User' # object created by Jiam
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /admin/user/allApprovedRequests:
+    get:
+      summary: get list of all the user's approved requests.
+      description: for admin pannel where admins can view all approved requests by the user.
+      tags:
+        - Admin 
+      responses:
+        200:
+          description: Array of uses approved requests
+          schema:
+            $ref: '#/definitions/UserRequest'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+ 
+  /admin/user/allPendingRequests:
+    get:
+      summary: get list of all the user's pending requests.
+      description: for admin pannel where admins can view all pendeing requests by the user.
+      tags:
+        - Admin 
+      responses:
+        200:
+          description: Array of uses pending requests
+          schema:
+            $ref: '#/definitions/UserRequest'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+            
+definitions:
+  Cities:
+    type: object
+    properties:
+      city_id:
+        type: string
+        description: Unique identifier representing a specific city for a given latitude & longitude. 
+      city_name:
+        type: string
+        description: Name of City.
+  bidPlaceAcknowledgement:
+    type: object
+    properties:
+      bidPlacedStatus:
+        type: boolean
+        description: Returns the acknowledgement whether bid has been placed successfully or not. 
+  cityListing:
+    type: object
+    properties:
+      list_id:
+        type: string
+        description: Unique identifier representing a specific listing for a given latitude & longitude. 
+      list_price:
+        type: string
+        description: Price of the listing
+      list_name:
+        type: string
+        description: Display name of list.
+      list_type:
+        type: string
+        description: Type of room that will be listed ex private room, Entire Home/apt.
+      list_reviews:
+        type: number
+        description: Number of reviews for that property.
+      list_ratings:
+        type: number
+        description: Rating given by users for that property.
+      list_images:
+        type: string
+        description: array of images uploaded by host for that property.
+      host_avatar:
+        type: string
+        description: avatar of the host to show along with the listed property.
+      userId:
+        type: string
+        description: userID of the host to fetch his details.
+  pendingRequest:
+    type: object
+    properties:
+      userId:
+        type: string
+        description: Unique identifier representing a specific User.
+      list_id:
+        type: string
+        description: Unique identifier representing a specific property list.
+      list_checkInDate:
+        type: string
+        description: list checkin date.
+      list_checkOutDate:
+        type: string
+        description: list check out date.
+      list_noofguest:
+        type: string
+        description: list number of guest.
+  allHostListing:
+    type: object
+    properties:
+      list_id:
+        type: string
+        description: Unique identifier representing a specific listing for a given latitude & longitude. 
+      list_price:
+        type: string
+        description: Price of the listing
+      list_name:
+        type: string
+        description: Display name of list.
+      list_type:
+        type: string
+        description: Type of room that will be listed ex private room, Entire Home/apt.
+      list_reviews:
+        type: number
+        description: Number of reviews for that property.
+      list_ratings:
+        type: number
+        description: Rating given by users for that property.
+      list_images:
+        type: string
+        description: array of images uploaded by host for that property.
+  roomDetails:
+    type: object
+    properties:
+      list_name:
+        type: string
+        description: name of the listed property
+      list_space:
+        type: string
+        description: array containing the information about available space of the listed property  like Accommodates, Bathrooms, Bed type, Bedrooms,Room type,Property type,Check Out,Check In
+      list_amenties:
+        type: string
+        description: array containing the information about amenties provied in the property like Kitchen, Internet, Heating, Washer, Iron etc.
+      list_price:
+        type: string
+        description: array containing the information about price details of the listed property like Extra People, Weekly Discount, Cleaning Fee, Monthly Discount, Security Deposit, Cancellation 
+      list_description:
+        type: string
+        description: description of the listed property
+      list_rules:
+        type: string
+        description: rules of the listed property like No smoking, Not suitable for pets,No parties or events ,Check-in is after 2PM
+      list_safetyFeatures:
+        type: string
+        description: description of the  safety equipments in the listed property like Smoke detector.
+      list_availability:
+        type: string
+        description: description of the  conditions and dates when it will be available, 3 nights minimum stay. Like "From Dec 01, 2016 - Feb 28, 2017 the minimum stay is 4 nights."
+      list_reviews:
+        type: string
+        description: array of the reviews of the listed property
+      list_address:
+        type: string
+        description: address of the listing.
+      list_images:
+        type: string
+        description: array of images uploaded by host for that property.
+      host_avatar:
+        type: string
+        description: avatar of the host to show along with the listed property.
+      userId:
+        type: string
+        description: userID of the host to fetch his details.
+  newListing:
+    type: object
+    properties:
+      list_space:
+        type: string
+        description: array containing the information about available space of the listed property  like Accommodates, Bathrooms, Bed type, Bedrooms,Room type,Property type,Check Out,Check In
+      list_amenties:
+        type: string
+        description: array containing the information about amenties provied in the property like Kitchen, Internet, Heating, Washer, Iron etc.
+      list_price:
+        type: string
+        description: array containing the information about price details of the listed property like Extra People, Weekly Discount, Cleaning Fee, Monthly Discount, Security Deposit, Cancellation 
+      list_description:
+        type: string
+        description: description of the listed property
+      list_rules:
+        type: string
+        description: rules of the listed property like No smoking, Not suitable for pets,No parties or events ,Check-in is after 2PM
+      list_safetyFeatures:
+        type: string
+        description: description of the  safety equipments in the listed property like Smoke detector.
+      list_address:
+        type: string
+        description: address of the listing.
+      list_availability:
+        type: string
+        description: description of the  conditions and dates when it will be available, 3 nights minimum stay. Like "From Dec 01, 2016 - Feb 28, 2017 the minimum stay is 4 nights."
+      list_images:
+        type: string
+        description: array of images uploaded by host for that property.
+      list_videos:
+        type: string
+        description: video  uploaded by host for that property.
+    
+  User:
+    type: object
+    properties:
+      userId:
+        type: string
+        description: generated user id. 
+      firstName:
+        type: string
+        description: First Name of user
+      lastName:  
+        type: string
+        description: Last Name of user 
+      birthDay:
+        type: Date
+        description: Birth day of the user
+      emailId: 
+        type: string
+        description: email Id of the user
+      avatar:
+        type: string
+        description: avatar image object of the user
+      address:
+        type: string
+        description: address of user 
+      city:
+        type: string
+        description: city of user
+      state:
+        type: string
+        description: state of user
+      zipCode:
+        type: string
+        description: zipCode of user
+      phoneNumber:
+        type: string
+        description: phoneNumber of user
+      rating:
+        type: string
+        description: rating of user
+      reviews:
+        type: string
+        description: reviews of user
+      creditCard:
+        type: string
+        description: credit card detail of user
+  Host:
+    type: object
+    properties:
+      userId:
+        type: string
+        description: Id of user who is also a host.
+      host_avatar:
+        type: string
+        description: Image of Host.
+      host_name:
+        type: string
+        description: Display name of Host.
+        
+  activity:
+    type: object
+    properties:
+      userId:
+        type: string
+        description: Id of user who is also a host.
+      pageId:
+        type: string
+        description:  name of the page where its clicked.
+      propertyId:
+        type: string
+        description: Id of the propertyclicked.
+      timestamp:
+        type: Time
+        description: timstamp of click.
+      city:
+        type: string
+        description: city of user.
+      info:
+        type: string
+        description: to add additional information
+        
+  trace:
+    type: object
+    properties:
+      userId:
+        type: string
+        description: Id of user who is also a host.
+      pageId:
+        type: string
+        description:  name of the page where its clicked.
+      propertyId:
+        type: string
+        description: Id of the propertyclicked.
+      timestamp:
+        type: Time
+        description: timstamp of click.
+      city:
+        type: string
+        description: city of user.
+      info:
+        type: string
+        description: to add additional information
+      trace:
+        type: string
+        description: array of object comming from client after user logout with details of page and time spent on that page.
+          
+        
+  myTrips:
+    type: object
+    properties:
+      userId:
+        type: string
+        description: Email Id of the user who is booking the property.
+      list_id:
+        type: integer
+        description: propertyId/listId  of the property.
+      noofguest:
+        type: integer
+        description: No of people who will be staying.
+      from_date:
+        type: string
+        description: Booking Start Date.
+      to_date:
+        type: string
+        description: Booking End Date.
+      list_price:
+        type: integer
+        description: Price of the property multiplied by number of days.
+  
+  bookTripsresponse:
+   
+    type: object
+    properties:
+      tripId:
+        type: string
+        description: trip Id of the booked trip.
+      list_id:
+        type: integer
+        description: propertyId/listId  of the property which is booked.
+      noofguest:
+        type: integer
+        description: No of people who will be staying.
+      from_date:
+        type: string
+        description: Booking Start Date.
+      to_date:
+        type: string
+        description: Booking End Date.
+      list_price:
+        type: integer
+        description: Price of the property multiplied by number of days.
+  bookTripsfailure401:
+     properties:
+      code:
+        type: integer
+        description: Status Code
+      message:
+        type: string
+        description: "Property is already leased out for the chosen dates"
+  bookTripsfailure405:
+     properties:
+      code:
+        type: integer
+        description: Status Code
+      message:
+        type: string
+        description: "Cannot book property due to internal issue"
+  cancelTripsresponse:
+    properties:
+      code:
+        type: integer
+        description: Status Code
+      message:
+        type: string
+        description: "Successfully cancelled the trip"
+  cancelTripsresponse401:
+    properties:
+      code:
+        type: integer
+        description: Status Code
+      message:
+        type: string
+        description: "Cannot  cancell the trip for dates are nearby"
+  cancelTripsresponse405:
+    properties:
+      code:
+        type: integer
+        description: Status Code
+      message:
+        type: string
+        description: "Cannot  cancell the trip due to internal issue"
+      
+  
+  Bill:
+    type: object
+    properties:
+      user_billConfirmationCode:
+        type: string
+        description: Unique identifier representing a specific Bill.
+      user_billingDate:  
+        type: string
+        description: Bill generation date.
+      user_receiptNumber:  
+        type: string
+        description: Bill generation date.
+      user_name:
+        type: string
+        description: Full user name First name and Last Name.
+      list_address:
+        type: string
+        description: Full address of the room.
+      list_name:
+        type: string
+        description: Name of the room.
+      list_type:
+        type: string
+        description: Type of room that will be listed ex private room, Entire Home/apt.
+      trip_guests:
+        type: number
+        description: Number of guests booked for the trip.
+      trip_checkin:
+        type: string
+        description: checkin date - time for the room
+      trip_checkout:
+        type: string
+        description: checkout date - time for the room
+      trip_securityDeposit:
+        type: number
+        description: Deposite taken at the time of booking.
+      trip_accommodationPerNight:
+        type: number
+        description: per night cost for the room.
+      trip_serviceFee:
+        type: number
+        description: fee charged by Airbnb.
+      trip_airbnbConcierge: 
+        type: number
+        description: per night cost for the room.
+        
+  statusUpdateAcknowledgement:
+    type: object
+    properties:
+      updatedStatus:
+        type: boolean
+        description: Returns the acknowledgement whether status update is successful. 
+  listing:
+    type: object
+    properties:
+      list_id:
+        type: string
+        description: Unique identifier representing a specific listing for a given latitude & longitude. 
+      list_price:
+        type: string
+        description: Price of the listing
+      list_name:
+        type: string
+        description: Display name of list.
+      list_type:
+        type: string
+        description: Type of room that will be listed ex private room, Entire Home/apt.
+      list_reviews:
+        type: number
+        description: Number of reviews for that property.
+      list_ratings:
+        type: number
+        description: Rating given by users for that property.
+      list_images:
+        type: string
+        description: array of images uploaded by host for that property.
+      host_avatar:
+        type: string
+        description: avatar of the host to show along with the listed property.
+      userId:
+        type: string
+        description: userID of the host to fetch his details.
+      list_status:
+        type: string
+        description: Admin Approval Status.
+  Error:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      fields:
+        type: string
+  UserRequest:
+    type: object
+    properties:
+      userid: #  added this to mytrips object 
+        type: integer
+        description: generated user id.
+      userRequestDate:  #  added this to mytrips object 
+        type: string
+        description: date at which user has placed the request.
+      list_name:
+        type: string
+        description: Display name of list.
+      list_type:
+        type: string
+        description: Type of room that will be listed ex private room, Entire Home/apt.
+      list_address:
+        type: string
+        description: Type of room that will be listed ex private room, Entire Home/apt.
+      noofguest:
+        type: string
+        description: Type of room that will be listed ex private room, Entire Home/apt.
+      from_date:
+        type: string
+        description: Type of room that will be listed ex private room, Entire Home/apt.
+      to_date:
+        type: string
+        description: Type of room that will be listed ex private room, Entire Home/apt.
+      list_price:
+        type: string
+        description: Type of room that will be listed ex private room, Entire Home/apt.
+      bookingStatus:  #  added this to mytrips object 
+        type: string 
+        description: This will show the status of the booking is pending or approved.

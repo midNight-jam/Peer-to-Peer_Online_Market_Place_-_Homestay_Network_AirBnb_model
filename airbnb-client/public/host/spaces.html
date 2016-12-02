@@ -1,0 +1,45 @@
+<div class="host-step">
+ 
+ <div class="host-step-content ">
+  
+	<div class="host-step-header">
+			<h2>What spaces can guests use?</h2>
+	</div>
+	<div class="input-type">
+		<input type="checkbox" name="space" ng-model="space1" ng-change="addSpaces('Essentials')" value="Kitchen">
+		<span>Kitchen</span> 
+	</div>
+	<div class="input-type">
+		<input type="checkbox" name="space" ng-model="space2" ng-change="addSpaces('Laundry – washer')" value="Laundry – washer">
+		<span>Laundry – washer</span> 
+	</div>
+	<div class="input-type">
+		<input type="checkbox" name="space" ng-model="space3" ng-change="addSpaces('Laundry – dryer')" value="Laundry – dryer">
+		<span>Laundry – dryer</span> 
+	</div>
+	<div class="input-type">
+		<input type="checkbox" name="space" ng-model="space4" ng-change="addSpaces('Parking ')" value="Parking">
+		<span>Parking</span> 
+	</div>
+	<div class="input-type">
+		<input type="checkbox" name="space" ng-model="space5" ng-change="addSpaces('Elevator ')" value="Elevator ">
+		<span>Elevator </span> 
+	</div>
+	<div class="input-type">
+		<input type="checkbox" name="space" ng-model="space6" ng-change="addSpaces('Pool')" value="Pool">
+		<span>Pool</span> 
+	</div>
+	<div class="input-type">
+		<input type="checkbox" name="space" ng-model="space7" ng-change="addSpaces('Gym')" value="Gym">
+		<span>Gym</span> 
+	</div>
+ </div>
+</div>
+<div class="step-button">
+	<div class="step-back pull-left">
+		<a href="#" ng-click="back()"><-- Back</a>
+	</div>
+	<div class="step-next pull-right">
+		<button class="btn btn-primary airbnb-color" ng-click="next()">Next</button>
+	</div>
+</div>	

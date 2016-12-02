@@ -1,0 +1,72 @@
+<div class="header-include" ng-include="'host/header.html'"></div>
+<div style="padding-top:50px;">
+	<ul class="nav nav-tabs navbar-inverse">
+	  <li role="presentation"><a class="editProfile" ui-sref="userHome">Dashboard</a></li>
+	  <li role="presentation" class="active"><a ui-sref="yourListings">Your Listing</a></li>
+	  <li role="presentation"><a class="editProfile" ui-sref="yourTrips">Your Trips</a></li>
+	  <li role="presentation"><a class="editProfile" ui-sref="editProfile">Profile</a></li>
+	  <li role="presentation"><a class="editProfile" ui-sref="accountSettings">Account</a></li>
+	</ul>
+</div>
+<br>
+<br>
+<!--<h1>{{message}}</h1>-->
+<div class ="container listing-steps-option ">
+
+<div class="col-lg-2 col-md-2">
+	<div class="listing-container">
+
+		<div><a class="editProfile" ui-sref="yourListings"><h4>Your Listings</h4></a></div>
+		<div><a class="editProfile" ui-sref="yourReservations"><h4>Your Reservations</h4></a></div>
+	</div>
+</div>
+<div class="col-lg-10 col-md-10 editProfile">
+	<div class="listed-all">
+		<div class="listed-header">
+			<h3>Listed</h3>
+		</div>
+		<div class="list-card" ng-repeat=" list in allList">
+			<div class=" list-img-hld col-md-2 col-lg-2">
+				<img ng-src="{{list.listingImages[0][0]}}" alt="">
+			</div>
+			<div class=" list-title col-md-6 col-lg-6">
+				<h4>{{list.title}}</h4>
+				<span><a>Manage Listing and Calendar</a></span>
+			</div>
+			<div class=" list-options col-md-3 col-lg-3">
+				<span ng-class="list.opt=='listed'?'listItOpt':(list.opt=='unlisted' ?'unListOpt':'unknown')"></span>
+				<select ng-model="list.opt" id="">
+
+					<option ng-selected value="listed"> Listed</option>
+					<option value="unlisted"> Unlisted</option>
+				</select>
+			</div>
+		</div>
+	</div>
+
+
+
+	<div class="listed-all">
+		<div class="listed-header">
+			<h3>UnListed</h3>
+		</div>
+		<div class="list-card" ng-repeat=" list in allList">
+			<div class=" list-img-hld col-md-2 col-lg-2">
+				<img ng-src="{{list.listingImages[0][0]}}" alt="">
+			</div>
+			<div class=" list-title col-md-6 col-lg-6">
+				<h4>{{list.title}}</h4>
+				<span><a>Manage Listing and Calendar</a></span>
+			</div>
+			<div class=" list-options col-md-3 col-lg-3">
+				<span ng-class="list.opt=='listed'?'listItOpt':(list.opt=='unlisted' ?'unListOpt':list.status)"></span>
+				<select ng-model="list.opt"    >
+
+					<option  value="listed"> Listed</option>
+					<option value="unlisted"> Unlisted</option>
+				</select>
+			</div>
+		</div>
+	</div>
+</div>
+</div>

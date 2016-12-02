@@ -1,0 +1,79 @@
+<div class="header-include" ng-include="'host/header.html'"></div>
+<div style="padding-top:50px;">
+    <ul class="nav nav-tabs navbar-inverse">
+        <li role="presentation"><a class="editProfile" ui-sref="userHome">Dashboard</a></li>
+        <li role="presentation"><a class="editProfile" ui-sref="yourListings">Your Listing</a></li>
+        <li role="presentation"><a class="editProfile" ui-sref="yourTrips">Your Trips</a></li>
+        <li role="presentation" class="editProfile"><a ui-sref="editProfile">Profile</a></li>
+        <li role="presentation" class="active"><a ui-sref="editProfile">Pending Request</a></li>
+        <li role="presentation"><a class="editProfile" ui-sref="accountSettings">Account</a></li>
+    </ul>
+</div>
+
+<div class="pending-request">
+ <div class="table-responsive">
+    <table style="background-color:white" class="table panel-body space-1">
+        <tbody><tr>
+            <th>Status</th>
+            <th>Dates and Location</th>
+            <th>Guest</th>
+            <th>Details</th>
+            <th>Actions</th>
+        </tr>
+        <tr ng-repeat= "request in allRequest "class="reservation">
+            <td style="vertical-align: middle">
+                <span class="label label-success">{{request.tripStatus}}</span>
+            </td>
+
+            <td>
+                {{request.checkInDate| date :  "dd.MM.y" }} --> {{request.checkOutDate |date :  "dd.MM.y"}}
+                <br>
+                <a locale="en" href="#" ng-click="showListing(request.listId)" >{{request.listingTitle}}</a>
+                <br>
+                <!--East 16th Street-->
+                {{request.streetAdress}}
+                <br>
+                {{request.listingCity}}, {{request.pinCode}}
+                <br>
+            </td>
+
+            <td>
+                <div class="media va-container">
+                    <a class="pull-left media-photo media-round" href="#">
+                        <img width="50" height="50"  style="border-radius:50%" ng-src="{{profilePic}}" alt="John">
+                    </a>      <div class="va-top">
+                    <a class="text-normal" >{{request.username}}</a>
+
+                    <br>
+                    <a href="#" class="text-normal">
+                        <i class="icon icon-envelope"></i>
+                        Send Message
+                    </a>
+                    <br>
+
+                    <br>
+                </div>
+                </div>
+            </td>
+
+            <td>
+                {{request.totalPrice}} total
+
+
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="#">Message History</a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="#">Print Confirmation</a>
+                    </li>
+                </ul>
+
+            </td>
+            <td style="vertical-align: middle">
+                <button class="btn airbnb-color" ng-click="hostAction('accept',request.tripId, request.checkInDate, request.checkOutDate)">Accept</button>
+                <button class="btn airbnb-color" ng-click="hostAction('reject',request.tripId)">Cancel</button>
+            </td>
+        </tr>
+</div>
+</div>

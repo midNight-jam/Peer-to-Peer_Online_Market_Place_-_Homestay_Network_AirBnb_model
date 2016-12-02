@@ -1,0 +1,136 @@
+<html ng-app="dashboard">
+<head>
+	<title>Airbnb</title>
+
+	<!---------------Eclipse--->
+
+	<script src="http://code.jquery.com/jquery-3.1.1.js"></script>
+	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script
+			src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script
+			src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<script
+			src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
+	<script
+			src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+	<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>
+	<script
+			src="//angular-ui.github.io/ui-router/release/angular-ui-router.js"></script>
+	<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/angular-messages/1.5.8/angular-messages.js"></script>
+	<script
+			src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js"></script>
+	<script
+			src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+	<script
+			src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+	<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.2.0.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-cookies.js"></script>
+
+
+
+	<!-- image upload  -->
+	<script type="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.2.13/ng-file-upload.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.2.13/ng-file-upload.min.js"></script>
+
+
+	<!--D3 JS-->
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="//d3js.org/d3.v3.min.js"></script>
+
+	<!-- Google Map  -->
+	<script src="scripts/ng-map.min.js"></script>
+	<script src="http://maps.google.com/maps/api/js?key=AIzaSyAqeK_tRl99jrQ0-kjQ8ooep8cvt3oFyr8"></script>
+
+	<!-- ui bootstrap/sliding range bar  -->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angularjs-slider/2.8.0/rzslider.js"></script>
+
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,400italic,300italic,300' rel='stylesheet' type='text/css" media="all">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/angularjs-slider/2.8.0/rzslider.css" />
+
+	<link rel='stylesheet' href='/bill/bill.css'/>
+	<link rel='stylesheet' href='/stylesheets/style.css' />
+	<link rel='stylesheet' href='/stylesheets/tree.css' />
+	<link rel='stylesheet' href='/showlistings/showlistings.css' />
+	<link rel='stylesheet' href='/individualListing/individualListingStyle.css' />
+	<link rel='stylesheet' href='/trips/bookTripStyle.css' />
+	<link rel='stylesheet' href='/trips/yourTrip.css'/>
+
+
+
+
+
+	<!-- Controllers -->
+
+	<script src="main.js"></script>
+	<script type="text/javascript" src="host/landingPage.js"></script>
+	<script type="text/javascript" src="host/login.js"></script>
+	<script type="text/javascript" src="host/presignup.js"></script>
+	<script type="text/javascript" src="host/signup.js"></script>
+	<script type="text/javascript" src="host/afterSignIn.js"></script>
+	<script type="text/javascript" src="host/userHome.js"></script>
+	<script type="text/javascript" src="host/hostController.js"></script>
+	<script type="text/javascript" src="host/hostingStepsController.js"></script>
+	<script type="text/javascript" src="host/hostingStepLocationController.js"></script>
+	<script type="text/javascript" src="host/hostingAmnetiesController.js"></script>
+	<script type="text/javascript" src="host/hostingSpacesController.js"></script>
+	<script type="text/javascript" src="host/hostingDescriptionController.js"></script>
+	<script type="text/javascript" src="host/hostingPriceController.js"></script>
+	<script type="text/javascript" src="host/hostDashboard.js"></script>
+	<script type="text/javascript" src="host/hostingUploadController.js"></script>
+	<script type="text/javascript" src="host/pendingRequest.js"></script>
+	<script type="text/javascript" src="host/yourReservations.js"></script>
+	<script type="text/javascript" src="host/myReviews.js"></script>
+	<script type="text/javascript" src="showlistings/showalllistingsController.js"></script>
+	<script type="text/javascript" src="yourListings/yourListingsController.js"></script>
+	<script type="text/javascript" src="editProfile/editProfileController.js"></script>
+	<script type="text/javascript" src="individualListing/individualListingController.js"></script>
+	<script type="text/javascript" src="editProfile/editProfileController.js"></script>
+	<script type="text/javascript" src="editProfile/viewProfileController.js"></script>
+
+
+	<script type="text/javascript" src="trips/bookTripController.js"></script>
+	<script type="text/javascript" src="trips/yourTripsController.js"></script>
+	<script type="text/javascript" src="trips/previousTripsController.js"></script>
+	<script type="text/javascript" src="trips/auctionTripsController.js"></script>
+	<script type="text/javascript" src="accountSettings/accountSettingsController.js"></script>
+	<script type="text/javascript" src="editProfile/editPhotoAndVideoController.js"></script>
+	<script type="text/javascript" src="accountSettings/transactionHistoryController.js"></script>
+	<script type="text/javascript" src="auctionableListings/landingPageAuctionsController.js"></script>
+	<script type="text/javascript" src="auctionableListings/auctionableListingsController.js"></script>
+	<script type="text/javascript" src="auctionableListings/individualAuctionableListingController.js"></script>
+
+	<!-- Directives -->
+
+	<script type="text/javascript" src="directives/esc.js"></script>
+	<script type="text/javascript" src="directives/loading.js"></script>
+	<script type="text/javascript" src="directives/Scroll.js"></script>
+
+	<!-- services  -->
+	<script type="text/javascript" src="services/authentication.js"></script>
+	<script type="text/javascript" src="services/logger.js"></script>
+	<script type="text/javascript" src="services/userTrack.js"></script>
+
+</head>
+
+<body>
+
+
+<ui-view ></ui-view>
+
+</body>
+
+</html>
+

@@ -1,0 +1,52 @@
+<div class="host-step">
+ 
+ <div class="host-step-content ">
+  
+	<div class="host-step-header">
+			<h2>What amenities do you offer?</h2>
+	</div>
+	<div class="input-type">
+		<input type="checkbox" name="amneties" ng-model="amnetiy1" ng-change="addAmneties('Essentials')" value="Essentials">
+		<span>Essentials</span> 
+		<span>Towels, bed sheets, soap, and toilet paper</span>
+	</div>
+	<div class="input-type">
+		<input type="checkbox" name="amneties" ng-model="amnetiy2" ng-change="addAmneties('Wifi')" value="Wifi"><span>Wifi</span>
+	</div>	
+	<div class="input-type">
+		<input type="checkbox" name="amneties" ng-model="amnetiy3" ng-change="addAmneties('Shampoo')" value="Shampoo"> <span>Shampoo</span>
+	</div>
+	<div class="input-type">
+		<input type="checkbox" name="amneties" ng-model="amnetiy4" ng-change="addAmneties('Closet/drawers')" value="Closet/drawers"><span>Closet/drawers</span>
+	</div>
+	<div class="input-type">
+		<input type="checkbox" name="amneties" ng-model="amnetiy5" ng-change="addAmneties('TV')" value="TV"><span>TV</span>
+	</div>
+	<div class="input-type">
+		<input type="checkbox" name="amneties" ng-model="amnetiy6" ng-change="addAmneties('Heat')" value="Heat"><span>Heat</span>
+	</div>
+	<div class="input-type">
+		<input type="checkbox" name="amneties" ng-model="amnetiy7" ng-change="addAmneties('Air Conditioning')" value="Air Conditioning"><span>Air Conditioning</span>
+	</div>
+	<div class="input-type">
+		<input type="checkbox" name="amneties" ng-model="amnetiy8" ng-change="addAmneties('Iron')" value="Iron"><span>Iron</span>
+	</div>
+	<div class="input-type">
+		<span>Safety Amneties</span>
+	</div>
+	<div class="input-type">
+		<input type="checkbox" name="Safetyamneties" ng-model="amnetiy9"  ng-change="addSafetyAmneties('WifSmoke Detector')" value="Smoke Detector"><span>Smoke Detector</span>
+	</div>
+	<div class="input-type">
+		<input type="checkbox" name="Safetyamneties" ng-model="amnetiy10" ng-change="addSafetyAmneties('First Aid and Kit')" value="First Aid and Kit"><span>First Aid and Kit</span>
+	</div>
+ </div>
+</div>
+<div class="step-button">
+	<div class="step-back pull-left">
+		<a href="#" ng-click="back()"><-- Back</a>
+	</div>
+	<div class="step-next pull-right">
+		<button class="btn btn-primary airbnb-color" ng-click="next()">Next</button>
+	</div>
+</div>	

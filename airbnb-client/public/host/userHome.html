@@ -1,0 +1,109 @@
+<div class="header-include" ng-include="'host/header.html'"></div>
+
+<div style="height: 550px; cursor: default" ng-click="pageClicked()">
+    <div uib-carousel  active="active" interval="myInterval" no-wrap="noWrapSlides">
+        <div uib-slide ng-repeat="slide in slides track by slide.id "  index="slide.id">
+            <img class="landing-carousel" ng-src="{{slide.image}}" style="margin:auto;">
+            <div  class="carousel-caption" ng-class="slide.class">
+                <h3 class="carousel-header">Slide {{slide.header}}</h3>
+                <p>{{slide.text}}</p>
+                <button class="carousel-btn">{{slide.buttontext}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="search-form" ng-click="pageClicked()">
+    <div class="row">
+        <div class="search-box ">
+            <div class="search-lable">
+                <p>Where</p>
+            </div>
+            <div class="search-type-text">
+
+                <input type="text" ng-model="dstcity" placeholder="Destination,city, address">
+
+            </div>
+        </div>
+        <div class="search-box ">
+            <div class="search-lable">
+                <p>When</p>
+            </div>
+            <div class="search-type-text" >
+                <input style="width:40%"type="text" ng-click="showDate('checkin')" ng-value="dt.checkin|date"  placeholder="Check In" readonly> <i class="fa fa-long-arrow-right" aria-hidden="true"></i> <input ng-value="dt.checkout|date" ng-click="showDate('checkout')" value="dt.checkout|date" style="width:40%"type="text" placeholder="Check Out" readonly>
+            </div>
+        </div>
+        <div class="search-box" style="border-right:none">
+            <div class="search-lable">
+                <p>Guest</p>
+            </div>
+            <div class="search-type-text">
+                <select name="guest" ng-model="place.guest" id="" class="  ">
+                    <option  selected="selected" value="1">for 1 guest</option>
+                    <option value="2">for 2 guest</option>
+                    <option value="3">for 3 guest</option>
+                    <option value="4">for 4 guest</option>
+                    <option value="5">for 5 guest</option>
+                    <option value="6">for 6 guest</option>
+                    <option value="7">for 7 guest</option>
+                    <option value="8">for 8 guest</option>
+                    <option value="9">for 9 guest</option>
+                    <option value="10">for 10 guest</option>
+                    <option value="11">for 11 guest</option>
+                    <option value="12">for 12 guest</option>
+                    <option value="13">for 13 guest</option>
+                    <option value="14">for 14 guest</option>
+                </select>
+                <button type="submit" class="btn airbnb-color" ng-click="searchAll(dstcity)">Search</button>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<span style="color:red; padding-left: 160px; font-weight: 500; font-size: 14px;" ng-show="error">{{msg}}</span>
+
+
+<div class="custom-date-picker" ng-hide="dt.checkin" >
+    <div uib-datepicker ng-model="dt.checkin" ng-show="checkin" min-date="minDate" show-weeks="true" class="  well well-sm" custom-class="getDayClass(date, mode)"></div>
+</div>
+<div class="custom-date-picker" ng-hide="dt.checkout" >
+    <div uib-datepicker ng-model="dt.checkout" ng-show="checkout" min-date="minDate" show-weeks="true" class="  well well-sm" custom-class="getDayClass(date, mode)"></div>
+</div>
+<!--</div>-->
+<div class="destinations container">
+
+    <div class="destinations-content  " >
+        <div class="destinations-header">
+            <h3>Featured destinations</h3>
+        </div>
+
+        <div class="col-md-3 col-xs-6 col-sm-4 col-lg-3" ng-repeat ="city in cities" >
+            <div class="cityimage">
+                <a ng-click="searchAll(city)"><img ng-src="../images/{{city | removeSpaces}}.jpg" alt=""></a>
+            </div>
+            <div class="city-name">
+                <span>{{city}}</span>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="destinations conatiner">
+    <div class="destinations-content  " >
+        <div class="destinations-header">
+            <h3>Destinations with Auctions</h3>
+        </div>
+
+        <div class="col-md-3 col-xs-6 col-sm-4 col-lg-3" ng-repeat ="city in auctionCities" >
+            <div class="cityimage">
+                <a ng-click="searchAll(city)" ><img ng-src="../images/{{city |removeSpaces}}.jpg" alt=""></a>
+            </div>
+            <div class="city-name">
+                <span>{{city}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+

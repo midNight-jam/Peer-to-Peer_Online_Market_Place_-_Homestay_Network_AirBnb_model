@@ -1,0 +1,208 @@
+/*==============Styling for BookTrips===============*/
+.booktrip2fontfamily{
+    font-family:Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 23px;
+    color: #484848;
+}
+.about{
+    margin-top:50px;
+    margin-left: 45px;
+}
+.abouttrip{
+    font-family:Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 24px;
+    line-height: 26px;
+    color: #484848;
+}
+.abouttripcontent{
+    margin-top:35px;
+    padding: 12px;
+    width:95%;
+    border:1px solid;
+    border-color: #F9F9F9 ;
+    border-radius: 3px;
+    font-family:Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 23px;
+    color: #484848;
+    height:12%;
+    background-color: #F9F9F9;
+    box-sizing: border-box;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
+
+}
+.yourhostimage {
+    margin: 5px 10px 5px 0;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    zoom: 20%;
+    margin-top:100px;
+    margin-left: 220px;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    background-color: #bbb;
+
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+.yourhostname{
+    float: none;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left:15px;
+    margin-top:-35px;
+    font-family:Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 23px;
+    color: #484848;
+}
+.whoiscoming {
+    margin-top: 25px;
+    margin-left: 45px;
+}
+.nguest{
+    display: block;
+    width: 100%;
+    position: relative;
+    vertical-align: bottom;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-right: 2em;
+    height:50px;
+    width:45%;
+    background-color: white;
+
+}
+.textfromuser{
+    margin-top: 35px;
+    margin-left: 45px;
+}
+.usertextarea{
+    box-sizing: border-box;
+
+
+}
+.textareaguest{
+
+    font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    border: 1px solid #aaa;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    background-color: #fff;
+    color: #484848;
+    overflow: auto;
+    vertical-align: top;
+    width:88%;
+    margin-left:45px;
+}
+.housingrules
+{
+
+    padding-top: 10px;
+    background-color: #EEEEEE;
+    margin-top:35px;
+    margin-left: 45px;
+    width:88%;
+}
+.rulescontent{
+
+    border-bottom: 1px solid;
+    border-bottom-color: #bbbbbb;
+    padding-top: 14px;
+    padding-left:40px;
+    padding-bottom: 14px;
+}
+.tickclass{
+
+    color: green;
+}
+.custombuttontrip{
+    margin-top:45px;
+    margin-left: 45px;
+}
+.button-next{
+    border-color: #ff5a5f;
+    color: white;
+    background-color: #ff5a5f;
+    width: 150px;
+    height: 60px;
+    font-size: 18px;
+    margin-bottom:40px;
+}
+.propertyimagetrip{
+    height: 140px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: block;
+    box-sizing: border-box;
+    width:100%;
+}
+.bookingsummary{
+    margin-top:60px;
+    margin-left: 50px;
+}
+.host2image{
+    margin-top:-40px;
+    margin-left: 250px;
+}
+.arrow{
+    color: #bbb;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    font-size: 1.5em;
+    width: 16.66667%;
+}
+.arrowicon{
+    font-size: 24px;
+}
+.text-muted{
+    color: #767676;
+    font-size:16px;
+    padding-left: 10px;
+}
+.checkinout{
+    padding-left:10px;
+    font-size:18px;
+}
+.text-right{
+    text-align: right;
+    padding-left: 190px;
+    padding-top:05px;
+    color:#484848;
+    font-size: 16px;
+}
+.billingrow{
+    line-height: 3em;
+    padding-left: 10px;
+}
+.totalkeyword{
+    font-size: 24px;
+    padding-left:10px;
+    line-height:3em;
+}
+.totaltext-right{
+    text-align: right;
+    padding-left: 240px;
+    padding-top:05px;
+    color:#484848;
+    font-size: 22px;
+}
+.tripsummary{
+
+    margin-top:-30px;
+    border-left:1px solid #dce0e0;
+    border-right:1px solid #dce0e0;
+    border-bottom:1px solid #dce0e0;
+}
+.housedetails{
+    padding-left: 10px;
+}
+
+
+/*==============End Styling for Book Trips===============*/

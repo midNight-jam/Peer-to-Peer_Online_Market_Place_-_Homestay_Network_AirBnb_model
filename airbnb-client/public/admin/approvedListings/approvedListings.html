@@ -1,0 +1,121 @@
+<div class="header-include" ng-include="'landingPage/header.html'"></div>
+</br>
+</br>
+</br>
+<div class="col-md-2 sidebar">
+    <div class="row">
+        <!-- Menu -->
+        <div class="side-menu">
+            <div class="side-menu-container">
+                <nav class="navbar navbar-default" role="navigation">
+                    <!-- Main Menu -->
+                    <ul class="nav navbar-nav">
+                        <li ><a ui-sref="adminGraphDashboard"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li><!--class="active"-->
+
+                        <!-- Dropdown-->
+                        <li id="dropdown">
+                            <a data-toggle="collapse" href="#dropdown-lvl1">
+                                <span class="glyphicon glyphicon-plane"></span> Listings <span class="caret"></span>
+                            </a>
+
+                            <!-- Dropdown level 1 -->
+                            <div id="dropdown-lvl1" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul class="nav navbar-nav">
+                                        <li><a ui-sref="pendingListings">Pending</a></li>
+                                        <li><a ui-sref="approvedListings">Approved</a></li>
+                                        <li><a ui-sref="rejectedListings">Rejected</a></li>
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- Dropdown-->
+                        <li id="dropdown">
+                            <a data-toggle="collapse" href="#dropdown-lvl2">
+                                <span class="glyphicon glyphicon-user"></span> review <span class="caret"></span>
+                            </a>
+                            <!-- Dropdown level 1 -->
+                            <div id="dropdown-lvl2" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul class="nav navbar-nav">
+                                        <li><a ui-sref="userList">Users</a></li>
+                                        <li><a ui-sref="hostList">Host</a></li>
+                                        <li><a href="#">Bills</a></li>
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+            </div><!-- /.navbar-collapse -->
+            </nav>
+
+        </div>
+    </div>
+</div>
+
+<div class="col-md-10 content">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Approved Listing
+        </div>
+        <div class="panel-body">
+            <div class="container">
+    <div class="row">
+        <div class="row" ng-repeat="Listing in approvedListings">
+            <div class="col-xs-12 col-sm-3 col-md-3">
+                    <img ng-src="{{Listing.listingImages[0][0]}}" class="img-responsive img-box img-thumbnail" >
+            </div>
+            <div class="col-xs-12 col-sm-9 col-md-9">
+                <div class="list-group">
+                    <div class="list-group-item">
+                        <div class="row-picture">
+
+                                <img ng-src="{{Listing.hostProfilePic}}" alt="{{Listing.title}}" style="width:140px;height: 90px">
+
+                        </div>
+                        <div class="row-content">
+                            <div class="list-group-item-heading">
+                                    <small>{{Listing.hostName}}</small>
+                            </div>
+                            <small>
+                                <i class="glyphicon glyphicon-time"></i> on {{Listing.created_at | date:'short'}}
+                                <br>
+                                <span class="explore"><i class="glyphicon glyphicon-th"></i> List Id: {{Listing.listId}}</span>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+              <h4>{{Listing.title}}</h4>
+              <h5>{{Listing.description}} &nbsp;- &nbsp;{{Listing.roomType}}</h5>
+                <b>Address:</b><p ng-repeat="address in Listing.address">{{address.address}},{{address.city}},{{address.state}},{{address.country}}</p>
+                <b>Listing Id: </b>{{Listing.listId}}</br>
+                <b>Facility:</b> <span ng-repeat="facility in Listing.facilities"> {{facility}},</span></br>
+                <!--Facility: {{approvedListing.facilities}}</br>-->
+                <!--Basic Amneties: {{approvedListing.basicAmneties}}</br>-->
+                    <b>Basic Amenities:</b><span ng-repeat="basicAmnety in Listing.basicAmneties"> {{basicAmnety}},</span></br>
+                        <b>Number of Bathrooms : </b>{{Listing.bathCount}}</br>
+                            <b>From Date:</b>{{Listing.fromDate | date:'medium'}} - <b>To Date:</b> {{Listing.toDate | date:'medium'}}</br>
+                                <b>Price: </b>{{Listing.fixedPrice}} USD</br>
+                                   <H4> <b>Status: </b>{{Listing.status}} </H4>
+
+            </div>
+
+            <hr>
+        </div>
+
+
+    </div>
+</div>
+
+</div>
+</div>
+</div>
+
+
+

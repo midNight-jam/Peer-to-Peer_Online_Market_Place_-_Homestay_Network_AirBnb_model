@@ -1,0 +1,136 @@
+<div class="header-include" ng-include="'host/header.html'"></div>
+<div style="padding-top:50px;">
+	<ul class="nav nav-tabs navbar-inverse">
+	  <li role="presentation"><a class="editProfile" ui-sref="hostDashboard">Dashboard</a></li>
+	  <li role="presentation"><a class="editProfile" ui-sref="yourListings">Your Listing</a></li>
+	  <li role="presentation"><a class="editProfile" ui-sref="yourTrips">Your Trips</a></li>
+	  <li role="presentation" class="active"><a ui-sref="viewProfile">Profile</a></li>
+	  <li role="presentation"><a class="editProfile" ui-sref="accountSettings">Account</a></li>
+	</ul>
+</div>
+<br>
+<strong>{{message}}</strong>
+<div class="row">
+	<div class="btn-group-vertical col-sm-3 col-md-3" role="group" aria-label="...">
+		<ul>
+			<strong><a class ="active editProfile" ui-sref="viewProfile">View Profile</a></strong><br><br>
+			<strong><a class ="active" ui-sref="editProfile">Edit Profile</a></strong><br><br>
+			<strong><a class="editProfile" ui-sref="editPhotoAndVideo">Photos and Video</a></strong><br><br>
+			<strong><a class="editProfile" ui-sref="myReviews">Reviews</a></strong><br><br>
+		</ul>
+	</div>
+	<div class="col-sm-8 col-md-8">
+		<div class="panel panel-default">
+  			<div class="panel-heading">
+    			<h3 class="panel-title">Required</h3>
+  			</div>
+  			<div class="panel-body">
+    			<form class="form-horizontal" role="form">
+	    			<div class="form-group">
+	            		<label class="col-lg-3 control-label editProfile">First Name</label>
+		            	<div class="col-lg-8">
+		              		<input class="form-control" type="text" ng-model="fname">
+		            	</div>
+		            </div>
+		            <div class="form-group">
+	            		<label class="col-lg-3 control-label editProfile">Last Name</label>
+		            	<div class="col-lg-8">
+		              		<input class="form-control" type="text" ng-model="lname">
+		              	</div>
+		            </div>
+		            <div class="form-group">
+	            		<label class="col-lg-3 control-label editProfile">I Am <i class="fa fa-lock" aria-hidden="true"></i></label>
+		            	<div class="col-lg-4">
+		              		<select class="form-control" ng-model="gender">
+							    <option value="male">Male</option>
+							    <option value="female">Female</option>
+							    <option value="other">Other</option>
+							</select>
+						</div>
+		            </div>
+		            <div class="form-group">
+	            		<label class="col-lg-3 control-label editProfile">Birth Date <i class="fa fa-lock" aria-hidden="true"></i></label>
+		            	<div class="col-lg-4">
+		              		<input class="form-control" type="date" ng-model="dob">
+		              	</div>
+		            </div>
+		            <div class="form-group">
+	            		<label class="col-lg-3 control-label editProfile">Email Address <i class="fa fa-lock" aria-hidden="true"></i></label>
+		            	<div class="col-lg-8">
+		              		<input class="form-control" type="text" ng-model="email">
+		              	</div>
+		            </div>
+		            <div class="form-group">
+	            		<label class="col-lg-3 control-label editProfile">Phone Number <i class="fa fa-lock" aria-hidden="true"></i></label>
+		            	<div class="col-lg-4">
+		              		<input class="form-control" type="text" ng-model="pNumber">
+		              	</div>
+		            </div>
+		            <div class="form-group">
+	            		<label class="col-lg-3 control-label editProfile">Preferred Language</label>
+		            	<div class="col-lg-4">
+		              		<input class="form-control" type="text" ng-model="language">
+		              	</div>
+		            </div>
+		            <div class="form-group">
+	            		<label class="col-lg-3 control-label editProfile">Preferred Currency</label>
+		            	<div class="col-lg-8">
+		              		<input class="form-control" type="text" ng-model="currency">
+		              	</div>
+		            </div>
+		            <div class="form-group">
+	            		<label class="col-lg-3 control-label editProfile">Street Address</label>
+		            	<div class="col-lg-8">
+		              		<input class="form-control" type="text" ng-model="stAddress">
+		              	</div>
+		            </div>
+		            <div class="form-group">
+	            		<label class="col-lg-3 control-label editProfile">City</label>
+		            	<div class="col-lg-3">
+		              		<input class="form-control" type="text" ng-model="city">
+		              	</div>
+		              	<label class="col-lg-2 control-label editProfile">State</label>
+		            	<div class="col-lg-3">
+		              		<input class="form-control" type="text" ng-model="state">
+		              	</div>
+		            </div>
+		            
+		            <div class="form-group">
+	            		<label class="col-lg-3 control-label editProfile">Country</label>
+		            	<div class="col-lg-3">
+		              		<input class="form-control" type="text" ng-model="country">
+		              	</div>
+		              	<label class="col-lg-2 control-label editProfile">Zip Code</label>
+		            	<div class="col-lg-3">
+		              		<input class="form-control" type="text" ng-model="zipCode">
+		              	</div>
+		            </div>
+		            <div class="form-group">
+	            		<label class="col-lg-3 control-label editProfile">Describe Yourself</label>
+		            	<div class="col-lg-8">
+		              		<textarea class="form-control" ng-model="aboutme" rows="6" columns="50"></textarea>
+		              	</div>
+		            </div>
+	            </form>
+          	</div>
+		</div>
+		<div class="panel panel-default">
+  			<div class="panel-heading">
+    			<h3 class="panel-title">Business Travel</h3>
+  			</div>
+  			<div class="panel-body">
+    			<form class="form-horizontal" role="form">
+    				<div class="form-group">
+	            		<label class="col-lg-3 control-label editProfile">Work Email Address  <i class="fa fa-lock" aria-hidden="true"></i></label>
+		            	<div class="col-lg-8">
+		              		<input class="form-control" type="text" ng-model="workEmail">
+		              	</div>
+		            </div>
+    			</form>
+  			</div>
+		</div>
+		<div>
+			<button class="btn btn-primary airbnb-color col-lg-1" ng-click="save(fname,lname,gender,dob,email,pNumber,language,currency,stAddress,city,state,country,zipCode,aboutme,workEmail)">Save</button>
+		</div>
+	</div>
+</div>

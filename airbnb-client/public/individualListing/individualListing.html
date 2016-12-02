@@ -1,0 +1,448 @@
+<div class="header-include" ng-include="'host/header.html'"></div>
+
+<button data-toggle="modal" data-target="#listingImagesGallery" class="jumbotron text-center jumbo-height jumbo-margin jumboBgImage" ng-style="{'background-image': 'url(' + listingUrl + ')'}">
+	<div class="btn .btn-default headerButtonText" style="">
+		View Photos
+	</div>
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="listingImagesGallery" role="dialog">
+	<div class="modal-dialog" style="width: 90%;">
+
+		<!-- Modal content-->
+		<div class="modal-content" style="height: 710px; width: 100%;background: linear-gradient(rgba(1,0,0,0.75), rgba(1,0,0,0.75))	">
+			<div class="modal-header modalHeader">
+				<button type="button" class="close" style="color:white;" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Gallery</h4>
+			</div>
+			<div class="modal-body">
+				<div style="height: 600px">
+					<div uib-carousel active="active" no-wrap="noWrapSlides">
+						<div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id" >
+							<img class="corouselImageSize" ng-src="{{slide.image}}" style="margin:auto;">
+							<div class="carousel-caption">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<div class="container-fluid bgWhite">
+	<div class="row" style="margin-bottom: 80px">
+		<div class="col-md-2 bgStyle"></div>
+
+		<div class="col-md-5 bgStyle">
+			<div class="row margin-top-25">
+				<div class="col-md-10">
+					<div class="" style="margin-bottom: 10px;">
+						<span class="listingHeader"> {{listingDetails.title}} </span>
+					</div>
+					<div class="listingLocation">
+						<span class=""> {{listingDetails.address[0].city}}, {{listingDetails.address[0].state}}, {{listingDetails.address[0].country}} </span> <span> &#149; </span>
+						<span
+								star-rating class="font-star1" rating-value="ratings.current"
+								max="ratings.max">
+						</span>
+						<span class=""> {{listingReviewsNumber}} reviews </span>
+					</div>
+				</div>
+				<div class="col-md-2">
+					<span class="" style="border-radius: 50%">
+						<img alt="" ng-src="{{profilePic}}" class="profilePicStyle">
+					</span>
+					<span class="profileName text-center">{{hostName}}</span>
+				</div>
+			</div>
+
+			<div class="row">
+				<hr>
+				<div class="col-md-12">
+					<div class="col-md-3 text-center">
+						<span class="thumbStyle"> <img src="individualListing/apt-image.png"
+													   class="" alt="" style="margin-left: 45px;">
+						</span> <span class="spanText"> {{listingDetails.roomType}} </span>
+					</div>
+					<div class="col-md-3 text-center">
+						<span class="thumbStyle"> <img src="individualListing/guests-image.png"
+													   class="" alt="" style="margin-left: 40px;">
+						</span> <span class="spanText"> {{listingDetails.guestAllowed}} Guests </span>
+					</div>
+					<div class="col-md-3 text-center">
+						<span class="thumbStyle"> <img src="individualListing/bdroom-image.png"
+													   class="" alt="" style="margin-left: 40px;">
+						</span> <span class="spanText"> {{noOfBedroom}} Bedroom </span>
+					</div>
+					<div class="col-md-3 text-center">
+						<span class="thumbStyle"> <img src="individualListing/beds-image.png"
+													   class="" alt="" style="margin-left: 40px;">
+						</span> <span class="spanText"> 2 Beds </span>
+					</div>
+				</div>
+			</div>
+
+			<div class="row" style="height: 110px;">
+				<hr>
+				<div class="col-md-12">
+					<div class="col-md-2 text-center">
+						<span class="thumbStyle"> <img src="individualListing/piggy-bank.png"
+													   class="" alt="" style="">
+						</span>
+					</div>
+					<div class="col-md-10">
+						<div class="col-md-12">
+							<span class="spanHeader1"> 100% refundable </span>
+						</div>
+						<div class="col-md-12" style="margin-top: 10px;">
+							<span class="spanText2"> Cancel up to 30 days before your
+								trip and get a full refund, including service fees. </span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<hr>
+				<div class="col-md-12">
+					<span class="spanHeader2"> About this listing </span>
+				</div>
+				<div class="col-md-12" style="margin-top: 30px;">
+					<span class="spanText2">
+						<span class="textLine">{{listingDetails.description}}</span>
+					</span>
+				</div>
+			</div>
+
+			<div class="row">
+				<hr>
+				<div class="col-md-3">
+					<span class="spanHeader1"> The space </span>
+				</div>
+				<div class="col-md-9">
+					<div class="col-md-12">
+						<div class="col-md-6">
+							<span class="spanText2">Accommodates:</span> <span
+								class="spanHeader1">{{listingDetails.guestAllowed}}</span>
+						</div>
+						<div class="col-md-6">
+							<span class="spanText2">Available From:</span> <span
+								class="spanHeader1">{{availableFrom}}</span>
+						</div>
+					</div>
+					<div class="col-md-12" style="margin-top: 10px;">
+						<div class="col-md-6">
+							<span class="spanText2">Bathrooms:</span> <span
+								class="spanHeader1">{{listingDetails.bathCount}}</span>
+						</div>
+						<div class="col-md-6">
+							<span class="spanText2">Available Till:</span><br> <span
+								class="spanHeader1">{{availableTo}}</span>
+						</div>
+					</div>
+					<div class="col-md-12" style="margin-top: 10px;">
+						<div class="col-md-6">
+							<span class="spanText2">Bedrooms:</span> <span
+								class="spanHeader1">{{noOfBedroom}}</span>
+						</div>
+						<div class="col-md-6">
+							<span class="spanText2">Property type:</span> <span
+								class="spanHeader1">Apartment</span>
+						</div>
+					</div>
+					<div class="col-md-12" style="margin-top: 10px;">
+						<div class="col-md-6">
+							<span class="spanText2">Beds:</span> <span class="spanHeader1">{{noOfGuests*2}}</span>
+						</div>
+						<div class="col-md-6">
+							<span class="spanText2">Room type:</span> <span
+								class="spanHeader1">{{listingDetails.roomType}}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<hr>
+				<div class="col-md-3">
+					<span class="spanHeader1"> Amenities </span>
+				</div>
+				<div class="col-md-9">
+					<div class="col-md-12">
+						<div class="col-md-6">
+							<span class=""></span> <span class="spanText2">Essentials</span>
+						</div>
+						<div class="col-md-6">
+							<span class=""></span> <span class="spanText2"> Wifi </span>
+						</div>
+					</div>
+					<div class="col-md-12" style="margin-top: 10px;">
+						<div class="col-md-6">
+							<span class=""></span> <span class="spanText2">Shampoo</span>
+						</div>
+						<div class="col-md-6">
+							<span class=""></span> <span class="spanText2">Closet/drawers</span>
+						</div>
+					</div>
+					<div class="col-md-12" style="margin-top: 10px;">
+						<div class="col-md-6">
+							<span class=""></span> <span class="spanText2">TV</span>
+						</div>
+						<div class="col-md-6">
+							<span class=""></span> <span class="spanText2"> Heat </span>
+						</div>
+					</div>
+					<div class="col-md-12" style="margin-top: 10px;">
+						<div class="col-md-6">
+							<span class=""></span> <span class="spanText2">Air
+								Conditioning</span>
+						</div>
+						<div class="col-md-6">
+							<span class=""></span> <span class="spanText2">Smoke
+								Detector</span>
+						</div>
+					</div>
+					<div class="col-md-12" style="margin-top: 10px;">
+						<div class="col-md-6">
+							<span class=""></span> <span class="spanText2">Air
+								Conditioning</span>
+						</div>
+						<div class="col-md-6">
+							<span class=""></span> <span class="spanText2">First Aid
+								and Kit</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<hr>
+				<div class="col-md-3">
+					<span class="spanHeader1"> Prices </span>
+				</div>
+				<div class="col-md-9">
+					<div class="col-md-12">
+						<div class="col-md-6">
+							<span class="spanText2">Extra people: </span> <span
+								class="spanHeader1">${{listingDetails.fixedPrice}} / night after the first day</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<hr>
+				<div class="col-md-3">
+					<span class="spanHeader1"> House Rules </span>
+				</div>
+				<div class="col-md-9">
+					<div class="col-md-12">
+						<span class="spanText2">No smoking </span>
+					</div>
+					<div class="col-md-12">
+						<span class="spanText2">Not suitable for pets </span>
+					</div>
+					<div class="col-md-12">
+						<span class="spanText2">No parties or events</span>
+					</div>
+					<div class="col-md-12">
+						<span class="spanText2">Check-in is after 1PM</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<hr>
+				<div class="col-md-12">
+					<span class="spanText2">CHECK-IN CHECK-OUT</span>
+				</div>
+				<div class="col-md-12">
+					<span class="spanText2">Check-in starts at 1:30 pm </span>
+				</div>
+				<div class="col-md-12">
+					<span class="spanText2">Check-out is before 11:00 am</span>
+				</div>
+				<div class="col-md-12">
+					<span class="spanText2">Check-in - check-out hours will be
+						flexible, </span>
+				</div>
+				<div class="col-md-12">
+					<span class="spanText2">depending whether or not we host
+						some other</span>
+				</div>
+				<div class="col-md-12">
+					<span class="spanText2">visitors before - after your stay</span>
+				</div>
+			</div>
+
+			<div class="row">
+				<hr>
+				<div class="col-md-3">
+					<span class="spanHeader1"> Availability </span>
+				</div>
+				<div class="col-md-9">
+					<div class="col-md-12">
+						<span class="spanText2"><b>1 night</b> minimum stay</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="row" style="margin-top: 30px;">
+				<div class="col-md-8">
+					<span class="spanHeader2"> {{noOfReviews}} Reviews </span> <span
+						class="font-star2" star-rating rating-value="ratings.current"
+						max="ratings.max"></span>
+				</div>
+				<div class="col-md-4">
+					<input type="search" placeholder="Search Reviews"
+						   class="ratingSearchBox">
+				</div>
+			</div>
+
+			<div class="row">
+				<hr>
+				<div class="row">
+					<div class="col-md-3">
+						<span class="spanText3"> Accuracy </span>
+					</div>
+					<div class="col-md-3">
+						<span class="font-star1" star-rating
+							  rating-value="ratings.current" max="ratings.max"></span>
+					</div>
+					<div class="col-md-3">
+						<span class="spanText3"> Location </span>
+					</div>
+					<div class="col-md-3">
+						<span class="font-star1" star-rating
+							  rating-value="ratings.current" max="ratings.max"></span>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-3">
+						<span class="spanText3"> Communication </span>
+					</div>
+					<div class="col-md-3">
+						<span class="font-star1" star-rating
+							  rating-value="ratings.current" max="ratings.max"></span>
+					</div>
+					<div class="col-md-3">
+						<span class="spanText3"> Check In </span>
+					</div>
+					<div class="col-md-3">
+						<span class="font-star1" star-rating
+							  rating-value="ratings.current" max="ratings.max"></span>
+					</div>
+				</div>
+
+				<div class="row" style="margin-bottom: 30px">
+					<div class="col-md-3">
+						<span class="spanText3"> Cleanliness </span>
+					</div>
+					<div class="col-md-3">
+						<span class="font-star1" star-rating
+							  rating-value="ratings.current" max="ratings.max"></span>
+					</div>
+					<div class="col-md-3">
+						<span class="spanText3"> Value </span>
+					</div>
+					<div class="col-md-3">
+						<span class="font-star1" star-rating
+							  rating-value="ratings.current" max="ratings.max"></span>
+					</div>
+				</div>
+			</div>
+
+			<!--Reviews  -->
+			<div>
+				<div class="row">
+					<hr>
+					<div class="row">
+						<div class="col-md-2">
+							<span class="" style="border-radius: 50%">
+								<img alt=""	ng-src="{{clientProfilePic}}" class="profilePicStyle">
+							</span>
+						</div>
+						<div class="col-md-10" style="margin-left: -20px; top: 30px;">
+							<span class="spanHeader1">{{clientName}}</span>
+						</div>
+					</div>
+
+					<div class="row" style="margin-top: 20px">
+						<span class="spanText2">
+							{{clientComment}}
+						</span>
+					</div>
+
+				</div>
+
+
+			</div>
+		</div>
+
+
+		<div class="col-md-3 bgStyle">
+			<div class="bookTripDiv" >
+				<div class="col-md-12 bookBgGreyWithOpacity">
+					<div class="col-md-4 bookPreviewRate" style="padding-right: 0px">${{listingDetails.fixedPrice}}</div>
+					<div class="col-md-1" style=" margin-left: -55px;margin-top: 5px;"><img alt=""	src="individualListing/instant-book-icon.png" style="height: 16px;width: 19px" class="profilePicStyle"></div>
+					<div class="col-md-7 bookForDay pull-right">Per Night</div>
+				</div>
+
+				<div class="row" style="margin-top: 25px;margin-left: 2px">
+					<div class="col-md-5" style="padding-right: 0px">
+						<span>Check In </span>
+						<span><input style="width: 90%" type="date" name="checkInDate" ng-model="checkInDate" placeholder="CheckIn" class="dateDropdownFix" ng-change="calcBill()"></span>
+					</div>
+
+					<div class="col-md-5" style="padding-left: 1px;padding-right: 1px;margin-left: -5px;">
+						<span>Check Out </span>
+						<span><input type="date" name="checkOutDate" ng-model="checkOutDate" placeholder="CheckOut" class="dateDropdownFix" ng-change="calcBill()"></span>
+					</div>
+					<div class="col-md-2" style="margin-left: -20px;">
+						<span>Guests </span>
+						<span>
+							<select style="font-size: 17px;" ng-model="guestsSelected">
+									<option value="{{guests}}" ng-repeat="guests in noGuests">{{guests}}</option>
+							</select>
+						</span>
+					</div>
+				</div>
+
+				<div class="col-md-12 billPopUpTextStyle" style="margin-top: 25px;" ng-show="showBill">
+					<div class="col-md-10">
+						<span>${{listingDetails.fixedPrice}} X {{diffDays}} nights</span>
+					</div>
+					<div class="col-md-2">
+						<span>${{totalPrice}}</span>
+					</div>
+				</div>
+
+				<div class="col-md-12 billPopUpTextStyle" ng-show="showBill">
+					<hr>
+					<div class="col-md-10">
+						<span>Total</span>
+					</div>
+					<div class="col-md-2">
+						<span>${{totalPrice}}</span>
+					</div>
+				</div>
+
+				<div class="col-md-12" style="margin-top: 25px;">
+					<button class="btn airbnb-color" style="width: 100%;" ng-click="bookListing()">Book</button>
+				</div>
+				<div ng-show="datesNotAvailable">
+					<span style="color:orangered;font-size:14px;padding-left:10px;">{{msgdates}}</span>
+				</div>
+				<div class="col-md-12 noticeText text-center" style="margin-top: 30px;">
+					<span>You would not be charged yet</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-1 bgStyle"></div>
+	</div>
+</div>

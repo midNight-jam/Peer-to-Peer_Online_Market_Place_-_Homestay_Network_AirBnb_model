@@ -1,0 +1,151 @@
+<div class="header-include" ng-include="'host/header.html'"></div>
+<div style="padding-top:50px;">
+	<ul class="nav nav-tabs navbar-inverse">
+	  <li role="presentation"><a class="editProfile" ui-sref="userHome">Dashboard</a></li>
+	  <li role="presentation"><a class="editProfile" ui-sref="yourListings">Your Listing</a></li>
+	  <li role="presentation"><a class="editProfile" ui-sref="yourTrips">Your Trips</a></li>
+	  <li role="presentation"><a class="editProfile" ui-sref="editProfile">Profile</a></li>
+	  <li role="presentation" class="active"><a ui-sref="accountSettings">Account</a></li>
+	</ul>
+</div>
+<br>
+<div class="row">
+	<div class="btn-group-vertical col-sm-3 col-md-3" role="group" aria-label="...">
+		<ul>
+			<strong><a class ="active" ui-sref="accountSettings">Payment Methods</a></strong><br><br>
+			<strong><a class="editProfile" ui-sref="transactionHistory">Transaction History</a></strong><br><br>
+		</ul>
+	</div>
+	<div class="col-sm-8 col-md-8 editProfile">
+		<div class="panel panel-default">
+  			<div class="panel-heading">
+    			<h3 class="panel-title">Payment Methods</h3>
+  			</div>
+  			<div class="panel-body">
+				<div class="col-lg-4" style="padding-top:30px;">
+					<button class="btn btn-default btn-block btn-large" style="height:180px;width:200px;border-style:solid; border-width: 2px;background-color: white;" type="button" data-toggle="modal" data-target="#myModal">
+						<div class="editProfile" align="center">
+							<img class="editProfile" style="height:50px;width:50px;" src="./images/plus.jpeg">
+						</div>
+						<strong>Add Payment Method</strong>
+					</button>
+		        </div>
+		        <div class="col-lg-5 panel panel-default editProfile" style=" margin-top:30px;border-style:solid; border-width: 2px;background-color: white;color:black;" ng-repeat="payment in payments">
+		  			<div class="panel-body">
+						<div class="panel-overlay-top-left">
+							<img src="data:image/png;base64,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" class="img-rounded" />
+							<strong class="center" style="font-size:16px;">XXXXXXXXXXXX{{payment.lastFour}}</strong>
+							<br><br>	
+							<div class="panel-overlay-top-right text-lead ">
+								<strong>Expiry Date: {{payment.expiry}}</strong>
+							</div>
+							<div style="margin-top:30px">
+								<strong>CardHolder: {{payment.cardHolder}}</strong>
+							</div>
+						</div>
+					</div>
+				</div>
+          	</div>
+		</div>
+		
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header" style="background-color:#E6E6E6;">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Add New Payment Method</h4>
+	      </div>
+	      <div class="modal-body">
+			  <div class="alert alert-danger" ng-show="errormsgpayment">
+				  <span >{{message}}</span>
+			  </div>
+	        <div class="editProfile" >
+				<img class="editProfile" style="margin-left:15px;height:30px;width:30px;"src="./images/visa.jpg">
+				<img class="editProfile" style="margin-left:15px;height:30px;width:30px;"src="./images/mastercard.jpg">
+				<img class="editProfile" style="margin-left:15px;height:30px;width:30px;"src="./images/amex.png">
+				<img class="editProfile" style="margin-left:15px;height:30px;width:30px;"src="./images/discover.png">	
+			</div>
+			<br>
+			<div>
+				<form class="form-horizontal" role="form">
+					<div class="form-group">
+	            		<label class="col-lg-3 control-label editProfile">Card Number</label>
+		            	<div class="col-lg-9">
+		              		<input class="form-control" onkeypress='return event.charCode >= 48 && event.charCode <=57' type="text" ng-model="cardNumber" maxlength="16" required>
+		              	</div>
+		            </div>
+		            <div class="form-group">
+	            		<label class="col-lg-3 control-label editProfile">Expiry</label>
+		            	<div class="col-lg-2">
+		              		<select class="form-control" ng-model="expiryMonth" placeholder = 'MM' required>MM
+							    <option value="1">1</option>
+							    <option value="2">2</option>
+							    <option value="3">3</option>
+							    <option value="4">4</option>
+							    <option value="5">5</option>
+							    <option value="6">6</option>
+							    <option value="7">7</option>
+							    <option value="8">8</option>
+							    <option value="9">9</option>
+							    <option value="10">10</option>
+							    <option value="11">11</option>
+							    <option value="12">12</option>
+							</select>
+		              	</div>
+		              	<div class="col-lg-3">
+		              		<select class="form-control" ng-model="expiryYear" placeholder = 'YYYY' required>
+							    <option value="2016">2016</option>
+							    <option value="2017">2017</option>
+							    <option value="2018">2018</option>
+							    <option value="2019">2019</option>
+							    <option value="2020">2020</option>
+							    <option value="2021">2021</option>
+							    <option value="2022">2022</option>
+							    <option value="2023">2023</option>
+							    <option value="2024">2024</option>
+							    <option value="2025">2025</option>
+							    <option value="2026">2026</option>
+							    <option value="2027">2027</option>
+							    <option value="2028">2028</option>
+							    <option value="2029">2029</option>
+							    <option value="2030">2030</option>
+							    <option value="2031">2031</option>
+							    <option value="2032">2032</option>
+							    <option value="2033">2033</option>
+							    <option value="2034">2034</option>
+							    <option value="2035">2035</option>
+							</select>
+		              	</div>
+		            </div>
+		            <div class="form-group">
+	            		<label class="col-lg-3 control-label editProfile">Security Code</label>
+		            	<div class="col-lg-2">
+		              		<input class="form-control" onkeypress='return event.charCode >= 48 && event.charCode <=57' type="password" ng-model="cvv" maxlength="3" required>
+		              	</div>
+		              	<label class="col-lg-3 control-label editProfile">Country</label>
+		            	<div class="col-lg-4">
+		              		<input class="form-control" type="text" ng-model="billingCountry">
+		              	</div>
+		            </div>
+		            <div class="form-group">
+	            		<label class="col-lg-3 control-label editProfile">First Name</label>
+		            	<div class="col-lg-3">
+		              		<input class="form-control" type="text" ng-model="billingFirstName" required>
+		              	</div>
+		              	<label class="col-lg-3 control-label editProfile">Last Name</label>
+		            	<div class="col-lg-3">
+		              		<input class="form-control" type="text" ng-model="billingLastName" required>
+		              	</div>
+		            </div>
+				</form>
+			</div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" style="background-color:white" data-dismiss="modal">Cancel</button>
+	        <button type="button" class="btn btn-dafault airbnb-color" ng-click="addCard(cardNumber,expiryMonth,expiryYear,cvv,billingCountry,billingFirstName,billingLastName)">Add Card</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</div>
+</div>

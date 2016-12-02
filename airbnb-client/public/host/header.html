@@ -1,0 +1,44 @@
+<div class="airbnb-header" scroll ng-class="headerChangeClass">
+
+	<ul class="header-list " ui-sref="landingPage" style="cursor: pointer">
+		<li><a href="" class="header-link"> <img class="airbnb-logo" src="./images/logo.png" alt=""></a></li>
+		<li><span class="search-icon"><i class="fa fa-search" aria-hidden="true"></i></span><input type="text" class="search-text" placeholder="Where to?"></li>
+
+	</ul>
+
+		  <ul class="header-list pull-right">
+              <li ng-hide="auctionsLandingPage" class="host-header"> <span ><a  class="host-btn header-link  " ui-sref="landingPageAuctions">Listings with Auction</a></span></li>
+              <li ng-hide="fixedPriceLandingPage" class="host-header"> <span ><a  class="host-btn header-link  " ui-sref="landingPage">Listings with Fixed Price</a></span></li>
+			  <li ng-hide="host" class="host-header"> <span ><a  class="host-btn header-link  " ui-sref="host">Become a Host</a></span></li>
+              <li ng-show="host" class="dropdown">
+                  <a href="#" class="dropdown-btn "role="button" aria-haspopup="true" aria-expanded="false">
+                      Host
+                  </a>
+                  <ul class="dropdown-content" ng-class="dropdownChange">
+                      <li><a ui-sref="hostDashboard">Dashboard</a></li>
+                      <li><a ui-sref="manageListings">Manage Listing</a></li>
+                      <li><a ui-sref="hostingSteps.step1">List Space</a></li>
+                      <li><a ui-sref="host.review">Reviews</a></li>
+                      <li><a ui-sref="host.transactionHistory">Transcation History</a></li>
+                  </ul>
+              </li>
+			  <li ng-hide="loggedIn"><a href="#" class="auth header-link"  ng-click="openSignUp()">Sign Up</a></li>
+			  <li ng-hide="loggedIn"><a href="#" class="auth header-link" ng-hide="loggedIn" ng-click="login()">Log In</a></li>
+
+              <li ng-show="loggedIn" class="dropdown"><a ui-sref="yourTrips" class="dropdown-btn">Trips</a>
+                  <ul class="dropdown-content" ng-class="dropdownChange">
+                      <li><a ui-sref="yourTrips"> View Trips</a></li>
+                  </ul>
+              </li>
+              <li ng-show="loggedIn"  class="dropdown">
+                  <a href="#" class="dropdown-btn "role="button" aria-haspopup="true" aria-expanded="false">
+                      <img ng-src=" {{profilePic}}" class="profile-pic" alt=""></a>
+                     <ul class="dropdown-content" ng-class="dropdownChange">
+                      <li><a ui-sref="editProfile">Edit Profile</a></li>
+                      <li><a ui-sref="yourListings">Your Listings</a></li>
+                      <li><a ui-sref="accountSettings">Account Settings</a></li>
+                         <li ng-show="loggedIn"><a href="#" class="auth header-link" ng-show="loggedIn" ng-click="logout()">Log Out</a></li>
+                  </ul>
+              </li>
+		  </ul>
+</div>

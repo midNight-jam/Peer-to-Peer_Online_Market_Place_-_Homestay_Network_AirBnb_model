@@ -1,0 +1,105 @@
+<div class="wrapper-loader"  data-loading ><div class="loading-spiner"></div></div>
+<div class="header-include" ng-include="'host/header.html'"></div>
+<div style="padding-top:50px;">
+	<ul class="nav nav-tabs navbar-inverse">
+	  <li role="presentation"><a class="editProfile" ui-sref="hostDashboard">Dashboard</a></li>
+	  <li role="presentation"><a class="editProfile" ui-sref="yourListings">Your Listing</a></li>
+	  <li role="presentation"><a class="editProfile" ui-sref="yourTrips">Your Trips</a></li>
+	  <li role="presentation" class="active"><a ui-sref="viewProfile">Profile</a></li>
+	  <li role="presentation"><a class="editProfile" ui-sref="accountSettings">Account</a></li>
+	</ul>
+</div>
+<br>
+<div class="row">
+	<div class="btn-group-vertical col-sm-3 col-md-3" role="group" aria-label="...">
+		<ul>
+			<strong><a class ="active editProfile" ui-sref="viewProfile">View Profile</a></strong><br><br>
+			<strong><a class="editProfile" ui-sref="editProfile">Edit Profile</a></strong><br><br>
+			<strong><a class ="active" ui-sref="editPhotoAndVideo">Photos and Video</a></strong><br><br>
+			<strong><a class="editProfile" ui-sref="myReviews">Reviews</a></strong><br><br>
+		</ul>
+	</div>
+	<div class="col-sm-8 col-md-8">
+		<div class="panel panel-default">
+  			<div class="panel-heading">
+    			<h3 class="panel-title">Profile Photo</h3>
+  			</div>
+  			<div class="panel-body">
+	    		  <!-- left column -->
+				<form name="editImageForm">
+
+
+			      <div class="col-md-3">
+			        <div class="text-center">
+
+						<img  ngf-src="picFile || profilePic" class="avatar editprofileAvatar img-circle">
+			        </div>
+			      </div>
+		          <div class="col-lg-8 pull-right editProfile" style="color:black;">
+		          	Images tell a lot about oneself, please upload a clear picture which will help people to learn about you!
+		          	<div class="form-group">
+	            		<div class="col-lg-6" style="padding-top:30px;">
+		              		<button class="btn btn-default btn-block btn-large" style="height:60px;border-style:solid; border-width: 2px;background-color: white;" type="button" ng-model="fname"><strong>Take a photo with your <br>Webcam</strong></button>
+		            	</div>
+		            	<div class="col-lg-6" style="padding-top:30px;">
+		              		<button   type="file" ngf-select ng-model="picFile" name="file"
+									  accept="image/*" ngf-max-size="2MB" required
+									  ngf-model-invalid="errorFile"   ngf-pattern="'.jpg,.png,.jpeg'"  class="btn btn-default btn-block btn-large" style="height:60px;border-style:solid; border-width: 2px;background-color: white;"  ><strong style="word-break: break-all;"><strong>Upload a file from your<br> computer</strong></strong></button>
+
+							<i class=" upload-required" ng-show="editImageForm.file.$error.required">*required</i><br>
+							<i class=" upload-error" ng-show="editImageForm.file.$error.pattern">File should be of the format *.jpg *.png *.jpeg</i><br>
+							<i class=" upload-error" ng-show="editImageForm.file.$error.maxSize">File too large
+								{{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+		            	</div>
+						<div>
+							<br>
+							<button class="airbnb-color btn   btn-block btn-large" style="height:60px;border-style:solid; border-width: 2px; margin-top:20px" ng-show="editImageForm.file.$valid" ng-click="uploadImage(picFile)">Save Profile Pic</button>
+						</div>
+		            </div>		
+				  </div>
+				</form>
+			</div>
+		</div>	
+		<div class="panel panel-default">
+  			<div class="panel-heading">
+    			<h3 class="panel-title">Profile Video</h3>
+  			</div>
+  			<div class="panel-body">
+				<form name="uploadVideo">
+    			<div class="col-md-6 editProfile" style="height:300;width:300;">
+    				<div class="editProfile" >
+    					<span ng-hide="myVideo">You haven`t recorded a video yet!</span>
+						<span class="upload-required" ng-show="myVideo">Your recorded videos!</span>
+    					<div align="center">
+							<video ngf-src="videoFile || myVideo"  width="300" height="300" controls>
+							</video>
+    					</div>
+    				</div>
+    			</div>
+    			<div class="col-lg-7 pull-right editProfile" style="color:black">
+    				<p style="padding-left:20px">Video Checklist!</p><br>
+		          	<ul type="disc" style="font-weight:normal">
+		          		<li>We suggest that you sit at arm`s length.</li>
+						<li>You have got 30 seconds, so do your best to be concise.</li>
+						<li>Try to keep the light in front of you.</li>
+						<li>Look into the camera to create that personal connection.</li>
+					</ul>
+					<br>
+					<div align="center">
+						<button   type="file" ngf-select ng-model="videoFile" name="video"
+								  accept="video/*" ngf-max-size="70MB" required
+								  ngf-model-invalid="errorFile"   ngf-pattern="'video/*'"  class="btn btn-default btn-block btn-large " style="height:60px;border-style:solid; border-width: 2px;background-color: white;"  ><strong style="word-break: break-all;"><strong>Upload a file from your<br> computer</strong></strong></button>
+						<i class=" upload-required" ng-show="uploadVideo.video.$valid">Correct Format</i><br>
+						<i class=" upload-required" ng-show="uploadVideo.video.$error.required">*required</i><br>
+						<i class=" upload-error" ng-show="uploadVideo.video.$error.pattern">Its not a correct video format expected *.mp4</i><br>
+						<i class=" upload-error" ng-show="uploadVideo.video.$error.maxSize">File too large{{errorFile.size / 1000000|number:1}}MB: max 70Mb</i>
+
+						<button class="airbnb-color btn   btn-block btn-large" style="height:60px;border-style:solid; border-width: 2px; margin-top:20px" ng-show="uploadVideo.video.$valid" ng-click="uploadTheVideo(videoFile)">Upload Video</button>
+					</div>	
+		        </div>
+				</form>
+  			</div>
+		</div>
+		
+	
+</div>

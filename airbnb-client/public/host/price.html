@@ -1,0 +1,65 @@
+<div class="host-step">
+ 
+ <div class="host-step-content ">
+  
+	<div class="showListOpt text-center">
+		<button  ng-click="toggleView('auction')"  ng-class="selectedA" class="btn btn-size airbnb-color step-select">Auction</button>
+		<button ng-click="toggleView('fixed')"  ng-class="selectedF" class="btn btn-size airbnb-color step-select">Fixed Price</button>
+	</div>
+
+  <div ng-show="showFixedPrice">
+	<div class="host-step-header">
+			<h3>Fixed Price for your place</h3>
+	</div>
+	<div class="input sub">
+		<input type="number"  name="title" ng-model="place.fixedPrice" class=" step-select form-control " placeholder="Fixed Price ">	
+	</div>
+	<div class="host-step-header">
+			<h3>Set your  Calendar</h3>
+	</div>
+		<div class="sub">
+				<div class="input-type "> Available From Date </div>
+			<div class="input ">
+				<input type="date"  name="fromDate" ng-model="place.availableFromDate" class=" step-select form-control " placeholder="City">	
+		    </div>
+		</div>
+		<div class="sub">
+				<div class="input-type"> Available Till Date </div>
+			<div class="input ">
+				<input type="date"  name="tillDate" ng-model="place.availableTillDate" class=" step-select form-control " placeholder="State">	
+			</div>
+		</div>
+	  </div>
+	  <div ng-show="showAuctionPrice">
+	<div class="host-step-header">
+			<h3>Auction Starting Price for your place</h3>
+	</div>
+	<div class="input sub">
+		<input type="text"  name="title" ng-model="place.auctionPrice" class=" step-select form-control " placeholder="Auction Starting Price">	
+	</div>
+	<div class="host-step-header">
+			<h3>Set your Auction Calendar</h3>
+	</div>
+		<div class="sub">
+				<div class="input-type "> Auction Available From Date </div>
+			<div class="input ">
+				<input type="date"  name="fromDate" ng-model="place.availableFromDate" class=" step-select form-control " placeholder="City">	
+		    </div>
+		</div>
+		<div class="sub">
+				<div class="input-type"> Auction Available Till Date </div>
+			<div class="input ">
+				<input type="date"  name="tillDate" ng-model="place.availableTillDate" class=" step-select form-control " placeholder="State">	
+			</div>
+		</div>
+	  </div>		
+ </div>
+</div>
+<div class="step-button">
+	<div class="step-back pull-left">
+		<a href="#" ng-click="back()"><-- Back</a>
+	</div>
+	<div class="step-next pull-right">
+		<button class="btn btn-primary airbnb-color btn-size" ng-click="finish()">Finish</button>
+	</div>
+</div>	

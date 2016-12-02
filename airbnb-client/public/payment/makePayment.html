@@ -1,0 +1,98 @@
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:#E6E6E6;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Add New Payment Method</h4>
+            </div>
+            <div class="modal-body">
+                <strong>{{message}}</strong>
+                <div class="editProfile" >
+                    <img class="editProfile" style="margin-left:15px;height:30px;width:30px;"src="./images/visa.jpg">
+                    <img class="editProfile" style="margin-left:15px;height:30px;width:30px;"src="./images/mastercard.jpg">
+                    <img class="editProfile" style="margin-left:15px;height:30px;width:30px;"src="./images/amex.png">
+                    <img class="editProfile" style="margin-left:15px;height:30px;width:30px;"src="./images/discover.png">
+                </div>
+                <br>
+                <div>
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label editProfile">Card Number</label>
+                            <div class="col-lg-9">
+                                <input class="form-control" type="text" ng-model="cardNumber" maxlength="16" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label editProfile">Expiry</label>
+                            <div class="col-lg-2">
+                                <select class="form-control" ng-model="expiryMonth" required>MM
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-3">
+                                <select class="form-control" ng-model="expiryYear" required>
+                                    <option value="2016">2016</option>
+                                    <option value="2016">2017</option>
+                                    <option value="2016">2018</option>
+                                    <option value="2016">2019</option>
+                                    <option value="2016">2020</option>
+                                    <option value="2016">2021</option>
+                                    <option value="2016">2022</option>
+                                    <option value="2016">2023</option>
+                                    <option value="2016">2024</option>
+                                    <option value="2016">2025</option>
+                                    <option value="2016">2026</option>
+                                    <option value="2016">2027</option>
+                                    <option value="2016">2028</option>
+                                    <option value="2016">2029</option>
+                                    <option value="2016">2030</option>
+                                    <option value="2016">2031</option>
+                                    <option value="2016">2032</option>
+                                    <option value="2016">2033</option>
+                                    <option value="2016">2034</option>
+                                    <option value="2016">2035</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label editProfile">Security Code</label>
+                            <div class="col-lg-2">
+                                <input class="form-control" type="password" ng-model="cvv" maxlength="3" required>
+                            </div>
+                            <label class="col-lg-3 control-label editProfile">Country</label>
+                            <div class="col-lg-4">
+                                <input class="form-control" type="text" ng-model="billingCountry">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label editProfile">First Name</label>
+                            <div class="col-lg-3">
+                                <input class="form-control" type="text" ng-model="billingFirstName" required>
+                            </div>
+                            <label class="col-lg-3 control-label editProfile">Last Name</label>
+                            <div class="col-lg-3">
+                                <input class="form-control" type="text" ng-model="billingLastName" required>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" style="background-color:white" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-dafault airbnb-color" ng-click="addCard(cardNumber,expiryMonth,expiryYear,cvv,billingCountry,billingFirstName,billingLastName)">Add Card</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

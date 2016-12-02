@@ -1,0 +1,935 @@
+<div class="header-include" ng-include="'host/header.html'"></div>
+<div style="padding-top:50px;">
+    <ul class="nav nav-tabs navbar-inverse">
+        <li role="presentation"><a class="editProfile" ui-sref="userHome">Dashboard</a></li>
+        <li role="presentation"><a class="editProfile" ui-sref="yourListings">Your Listing</a></li>
+        <li role="presentation"><a class="editProfile" ui-sref="yourTrips">Your Trips</a></li>
+        <li role="presentation"  class="active"><a class="editProfile" ui-sref="editProfile">Profile</a></li>
+        <li role="presentation"><a class="editProfile" ui-sref="accountSettings">Account</a></li>
+    </ul>
+</div>
+<br>
+<br>
+<div class="row">
+    <div class="btn-group-vertical col-sm-3 col-md-3" role="group" aria-label="...">
+        <ul>
+            <strong><a class ="active editProfile" ui-sref="viewProfile">View Profile</a></strong><br><br>
+            <strong><a class ="active editProfile" ui-sref="editProfile">Edit Profile</a></strong><br><br>
+            <strong><a class="editProfile" ui-sref="editPhotoAndVideo">Photos and Video</a></strong><br><br>
+            <strong><a class="active" ui-sref="myReviews">Reviews</a></strong><br><br>
+        </ul>
+    </div>
+    <div class="col-sm-8 col-md-8">
+        <ul role="tablist" class="tabs">
+            <li>
+                <a  ng-class="reviewAboutMeClass" ng-click="review('reviewAboutMe') " aria-selected="false" aria-controls="received" role="tab" href="" class="tab-item">
+                    Reviews About You
+                </a>
+            </li>
+            <li>
+                <a aria-selected="true" ng-class="reviewByMeClass" ng-click="review('reviewByMe')"aria-controls="sent" role="tab" class="tab-item" href="">
+                    Reviews By You
+                </a>
+            </li>
+        </ul>
+
+        <div ng-show="reviewAboutMe" class="panel">
+            <div class="panel-header">
+                Reviews For Me
+            </div>
+            <div class="panel-body">
+                <ul class="list-layout reviews-list list-unstyled">
+
+                    <li ng-repeat="review in reviewForMe" class="media reviews-list-item row-space-top-2">
+                        <div class="col-md-3 col-lg-3">
+                            <a class="pull-left media-photo media-round" href="#">
+                                <img width="68" height="68"  ng-src="review.hostPic" >
+                            </a>
+                        </div>
+
+                        <div class="col-lg-7 col-md-7" style="padding-top:15px">
+                            <div class="media-body response">
+                                Review for you from <a href="#">{{review.userEmail}}</a>
+                                <div>
+                                    <a href="#">View Itinerary</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-lg-2" style="padding-top:15px">
+                            <button class="btn airbnb-color " data-toggle="modal" data-target="#showReview{{$index}}">Show Review </button>
+                        </div>
+                        <div class="clearfix"></div>
+                        <hr class="col-12">
+                        <div class="modal fade" id="showReview{{$index}}" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <div class="col-md-3 col-lg-3">
+                                            <a class="pull-left media-photo media-round" href="#">
+                                                <img width="68" height="68"  src="{{review.hostPic}}" >
+                                            </a>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6">
+                                            <h4 class="modal-title">Review for you from {{review.userEmail}} </h4>
+                                        </div>
+                                        <div class="col-md-3 col-lg-3">
+                                            <span uib-rating class="airbnb-color-blue" ng-model="review.ratings.overall" max="5" read-only="true" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class=" ">
+
+                                            <div ng-show="review.ratings.overall" class="row">
+                                                <div class="review-ques col-md-6 col-lg-6">
+                                                    <h4> Loved about your Listing</h4>
+                                                </div>
+                                                <div class="review-ques-rating col-md-6 col-lg-6">
+                                                    <span uib-rating class="airbnb-color-blue" ng-model="review.ratings.overall" max="5" read-only="true" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+                                                </div>
+                                            </div>
+
+                                            <div ng-show="review.ratings.overall" class="review-answers col-md-12 col-lg-12">
+                                                {{review.feedback.overall}}
+                                            </div>
+
+                                            <div ng-show="review.ratings.clean" class="row">
+                                                <div class="review-ques col-md-6 col-lg-6">
+                                                    <h4> Cleanliness Feedback</h4>
+                                                </div>
+                                                <div class="review-ques-rating col-md-6 col-lg-6">
+                                                    <span uib-rating class="airbnb-color-blue" ng-model="review.ratings.clean" max="5" read-only="true" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+                                                </div>
+                                            </div>
+
+                                            <div ng-show="review.ratings.clean" class="review-answers col-md-12 col-lg-12">
+                                                {{review.feedback.clean}}
+                                            </div>
+                                            <div ng-show="review.ratings.accuracy" class="row">
+                                                <div class="review-ques col-md-6 col-lg-6">
+                                                    <h4> Accuracy Feedback</h4>
+                                                </div>
+                                                <div class="review-ques-rating col-md-6 col-lg-6">
+                                                    <span uib-rating class="airbnb-color-blue" ng-model="review.ratings.accuracy" max="5" read-only="true" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+                                                </div>
+                                            </div>
+
+                                            <div ng-show="review.ratings.accuracy" class="review-answers col-md-12 col-lg-12">
+                                                {{review.feedback.accuracy}}
+                                            </div>
+                                            <div ng-show="review.ratings.location" class="row">
+                                                <div class="review-ques col-md-6 col-lg-6">
+                                                    <h4> Location Feedback</h4>
+                                                </div>
+                                                <div class="review-ques-rating col-md-6 col-lg-6">
+                                                    <span uib-rating class="airbnb-color-blue" ng-model="rate.location" max="5" read-only="true" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+                                                </div>
+                                            </div>
+
+                                            <div ng-show="review.ratings.location" class="review-answers col-md-12 col-lg-12">
+                                                Location
+                                            </div>
+                                            <div ng-show="review.ratings.communication" class="row">
+                                                <div class="review-ques col-md-6 col-lg-6">
+                                                    <h4> Communication Feedback</h4>
+                                                </div>
+                                                <div class="review-ques-rating col-md-6 col-lg-6">
+                                                    <span uib-rating class="airbnb-color-blue" ng-model="review.ratings.communication" max="5" read-only="true" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+                                                </div>
+                                            </div>
+
+                                            <div ng-show="review.ratings.communication" class="review-answers col-md-12 col-lg-12">
+                                                {{review.feedback.communication}}
+                                            </div>
+                                            <div ng-show="review.ratings.checkIn" class="row">
+                                                <div class="review-ques col-md-6 col-lg-6">
+                                                    <h4> CheckIn Feedback</h4>
+                                                </div>
+                                                <div class="review-ques-rating col-md-6 col-lg-6">
+                                                    <span uib-rating class="airbnb-color-blue" ng-model="review.ratings.checkIn" max="5" read-only="true" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+                                                </div>
+                                            </div>
+
+                                            <div ng-show="review.ratings.ceckIn" class="review-answers col-md-12 col-lg-12">
+                                                {{review.feedback.ceckIn}}
+                                            </div>
+                                            <div ng-show="review.ratings.value" class="row">
+                                                <div class="review-ques col-md-6 col-lg-6">
+                                                    <h4> Value</h4>
+                                                </div>
+                                                <div class="review-ques-rating col-md-6 col-lg-6">
+                                                    <span uib-rating class="airbnb-color-blue" ng-model="rate.value" max="5" read-only="true" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+                                                </div>
+                                            </div>
+
+                                            <div ng-show="review.ratings.value" class="review-answers col-md-12 col-lg-12">
+                                                {{review.feedback.value}}
+                                            </div>
+                                            <!--<div class="row">-->
+                                                <!--<div class="review-ques col-md-6 col-lg-6">-->
+                                                    <!--<h4> Images, Jack posted about your Listing</h4>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+
+                                            <!--<div class="review-answers col-md-12 col-lg-12">-->
+
+                                                <!--<div class="review-image col-md-4  col-lg-4">-->
+
+                                                    <!--<img height="100"  width="100" src="../images/london.jpg" alt="">-->
+                                                <!--</div>-->
+                                                <!--<div class="review-image col-md-4 col-lg-4">-->
+
+                                                    <!--<img height ="100" width="100" src="../images/london.jpg" alt="">-->
+                                                <!--</div>-->
+                                                <!--<div class="review-image col-md-4 col-lg-4">-->
+
+                                                    <!--<img height ="100" width="100" src="../images/london.jpg" alt="">-->
+                                                <!--</div>-->
+                                                <!--<div class="review-image col-md-4 col-lg-4">-->
+
+                                                    <!--<img height ="100" width="100" src="../images/london.jpg" alt="">-->
+                                                <!--</div>-->
+                                                <!--<div class="review-image col-md-4 col-lg-4">-->
+
+                                                    <!--<img height ="100" width="100" src="../images/london.jpg" alt="">-->
+                                                <!--</div>-->
+
+                                            <!--</div>-->
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="panel-header">
+                Reviews By Me
+            </div>
+            <div class="panel-body">
+                <ul class="list-layout reviews-list list-unstyled">
+
+                    <li ng-repeat="review in reviewsByMe" class="media reviews-list-item row-space-top-2">
+                        <div class="col-md-3 col-lg-3">
+                            <a class="pull-left media-photo media-round" href="#">
+                                <img width="68" height="68"  ng-src="review.hostPic" >
+                            </a>
+                        </div>
+
+                        <div class="col-lg-7 col-md-7" style="padding-top:15px">
+                            <div class="media-body response">
+                                Review for you from <a href="#">{{review.userEmail}}</a>
+                                <div>
+                                    <a href="#">View Itinerary</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-lg-2" style="padding-top:15px">
+                            <button class="btn airbnb-color " data-toggle="modal" data-target="#showReview{{$index}}">Show Review </button>
+                        </div>
+                        <div class="clearfix"></div>
+                        <hr class="col-12">
+                        <div class="modal fade" id="showReview{{$index}}" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <div class="col-md-3 col-lg-3">
+                                            <a class="pull-left media-photo media-round" href="#">
+                                                <img width="68" height="68"  src="{{review.hostPic}}" >
+                                            </a>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6">
+                                            <h4 class="modal-title">Review for you from {{review.userEmail}} </h4>
+                                        </div>
+                                        <div class="col-md-3 col-lg-3">
+                                            <span uib-rating class="airbnb-color-blue" ng-model="review.ratings.overall" max="5" read-only="true" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class=" ">
+
+                                            <div ng-show="review.ratings.overall" class="row">
+                                                <div class="review-ques col-md-6 col-lg-6">
+                                                    <h4> Loved about your Listing</h4>
+                                                </div>
+                                                <div class="review-ques-rating col-md-6 col-lg-6">
+                                                    <span uib-rating class="airbnb-color-blue" ng-model="review.ratings.overall" max="5" read-only="true" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+                                                </div>
+                                            </div>
+
+                                            <div ng-show="review.ratings.overall" class="review-answers col-md-12 col-lg-12">
+                                                {{review.feedback.overall}}
+                                            </div>
+
+                                            <div ng-show="review.ratings.clean" class="row">
+                                                <div class="review-ques col-md-6 col-lg-6">
+                                                    <h4> Cleanliness Feedback</h4>
+                                                </div>
+                                                <div class="review-ques-rating col-md-6 col-lg-6">
+                                                    <span uib-rating class="airbnb-color-blue" ng-model="review.ratings.clean" max="5" read-only="true" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+                                                </div>
+                                            </div>
+
+                                            <div ng-show="review.ratings.clean" class="review-answers col-md-12 col-lg-12">
+                                                {{review.feedback.clean}}
+                                            </div>
+                                            <div ng-show="review.ratings.accuracy" class="row">
+                                                <div class="review-ques col-md-6 col-lg-6">
+                                                    <h4> Accuracy Feedback</h4>
+                                                </div>
+                                                <div class="review-ques-rating col-md-6 col-lg-6">
+                                                    <span uib-rating class="airbnb-color-blue" ng-model="review.ratings.accuracy" max="5" read-only="true" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+                                                </div>
+                                            </div>
+
+                                            <div ng-show="review.ratings.accuracy" class="review-answers col-md-12 col-lg-12">
+                                                {{review.feedback.accuracy}}
+                                            </div>
+                                            <div ng-show="review.ratings.location" class="row">
+                                                <div class="review-ques col-md-6 col-lg-6">
+                                                    <h4> Location Feedback</h4>
+                                                </div>
+                                                <div class="review-ques-rating col-md-6 col-lg-6">
+                                                    <span uib-rating class="airbnb-color-blue" ng-model="rate.location" max="5" read-only="true" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+                                                </div>
+                                            </div>
+
+                                            <div ng-show="review.ratings.location" class="review-answers col-md-12 col-lg-12">
+                                                Location
+                                            </div>
+                                            <div ng-show="review.ratings.communication" class="row">
+                                                <div class="review-ques col-md-6 col-lg-6">
+                                                    <h4> Communication Feedback</h4>
+                                                </div>
+                                                <div class="review-ques-rating col-md-6 col-lg-6">
+                                                    <span uib-rating class="airbnb-color-blue" ng-model="review.ratings.communication" max="5" read-only="true" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+                                                </div>
+                                            </div>
+
+                                            <div ng-show="review.ratings.communication" class="review-answers col-md-12 col-lg-12">
+                                                {{review.feedback.communication}}
+                                            </div>
+                                            <div ng-show="review.ratings.checkIn" class="row">
+                                                <div class="review-ques col-md-6 col-lg-6">
+                                                    <h4> CheckIn Feedback</h4>
+                                                </div>
+                                                <div class="review-ques-rating col-md-6 col-lg-6">
+                                                    <span uib-rating class="airbnb-color-blue" ng-model="review.ratings.checkIn" max="5" read-only="true" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+                                                </div>
+                                            </div>
+
+                                            <div ng-show="review.ratings.ceckIn" class="review-answers col-md-12 col-lg-12">
+                                                {{review.feedback.ceckIn}}
+                                            </div>
+                                            <div ng-show="review.ratings.value" class="row">
+                                                <div class="review-ques col-md-6 col-lg-6">
+                                                    <h4> Value</h4>
+                                                </div>
+                                                <div class="review-ques-rating col-md-6 col-lg-6">
+                                                    <span uib-rating class="airbnb-color-blue" ng-model="rate.value" max="5" read-only="true" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+                                                </div>
+                                            </div>
+
+                                            <div ng-show="review.ratings.value" class="review-answers col-md-12 col-lg-12">
+                                                {{review.feedback.value}}
+                                            </div>
+                                            <!--<div class="row">-->
+                                            <!--<div class="review-ques col-md-6 col-lg-6">-->
+                                            <!--<h4> Images, Jack posted about your Listing</h4>-->
+                                            <!--</div>-->
+                                            <!--</div>-->
+
+                                            <!--<div class="review-answers col-md-12 col-lg-12">-->
+
+                                            <!--<div class="review-image col-md-4  col-lg-4">-->
+
+                                            <!--<img height="100"  width="100" src="../images/london.jpg" alt="">-->
+                                            <!--</div>-->
+                                            <!--<div class="review-image col-md-4 col-lg-4">-->
+
+                                            <!--<img height ="100" width="100" src="../images/london.jpg" alt="">-->
+                                            <!--</div>-->
+                                            <!--<div class="review-image col-md-4 col-lg-4">-->
+
+                                            <!--<img height ="100" width="100" src="../images/london.jpg" alt="">-->
+                                            <!--</div>-->
+                                            <!--<div class="review-image col-md-4 col-lg-4">-->
+
+                                            <!--<img height ="100" width="100" src="../images/london.jpg" alt="">-->
+                                            <!--</div>-->
+                                            <!--<div class="review-image col-md-4 col-lg-4">-->
+
+                                            <!--<img height ="100" width="100" src="../images/london.jpg" alt="">-->
+                                            <!--</div>-->
+
+                                            <!--</div>-->
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div ng-show="reviewByMe" class="panel">
+            <div class="panel-header">
+                Reviews host and his property
+            </div>
+            <div class="panel-body">
+                <ul class="list-layout reviews-list list-unstyled">
+                    <li ng-hide="recentBookings" class="reviews-list-item">
+                        Nobody to review right now. Looks like it’s time for another trip!
+                    </li>
+                    <li ng-repeat="booking in recentBookings" class="media reviews-list-item row-space-top-2">
+                        <div class="col-md-3 col-lg-3">
+                            <a class="pull-left media-photo media-round" href="#">
+                                <img width="68" height="68"  src="../images/london.jpg" >
+                            </a>
+                        </div>
+
+                        <div class="col-lg-7 col-md-7" style="padding-top:15px">
+                            <div class="media-body response">
+                                Write a review for <a href="#">{{booking.userEmail}}</a> for his trip
+                                <div>
+                                    <a href="#">View Itinerary</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-lg-2" style="padding-top:15px">
+                            <button class="btn airbnb-color " data-toggle="modal" data-target="#myReview{{$index}}">Review </button>
+                        </div>
+                        <div class="clearfix"></div>
+                        <hr class="col-12">
+                        <div class="modal fade" id="myReview{{$index}}" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <div class="col-md-3 col-lg-3">
+                                            <a class="pull-left media-photo media-round" href="#">
+                                                <img width="68" height="68"  src="../images/london.jpg" >
+                                            </a>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6">
+                                            <h4 class="modal-title">Review for you from Jack for your property xyz</h4>
+                                        </div>
+                                        <div class="col-md-3 col-lg-3">
+                                            <span style="font-size: 15px" uib-rating class="airbnb-color-blue"  ng-model="booking.rate.overall" max="5" read-only="true" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class=" ">
+
+                                            <div class="row">
+                                                <div class="review-ques col-md-6 col-lg-6">
+                                                    <h4> What Jack loved about your Listing</h4>
+                                                </div>
+                                                <div class="review-ques-rating col-md-6 col-lg-6">
+                                                    <!--<span uib-rating class="airbnb-color-blue" ng-model="rate.overall" max="5"  on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>-->
+                                                </div>
+                                            </div>
+
+                                            <div class="review-answers col-md-12 col-lg-12">
+                                                <input type="text"  ng-model="booking.feedback.overall" class="form-control"  placeholder=" what you loved about the place">
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="review-ques col-md-6 col-lg-6">
+                                                    <h4> Cleanliness Feedback</h4>
+                                                </div>
+                                                <div class="review-ques-rating col-md-6 col-lg-6">
+                                                    <span uib-rating  ng-change="dynamicRating(booking)" class="airbnb-color-blue" ng-model="booking.rate.clean" max="5" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="review-answers col-md-12 col-lg-12">
+                                                <input type="text" ng-model="booking.feedback.clean" class="form-control"  placeholder="Cleanliness of the place">
+                                            </div>
+                                            <div class="row">
+                                                <div class="review-ques col-md-6 col-lg-6">
+                                                    <h4> Accuracy Feedback</h4>
+                                                </div>
+                                                <div class="review-ques-rating col-md-6 col-lg-6">
+                                                    <span uib-rating ng-change="dynamicRating(booking)" class="airbnb-color-blue" ng-model="booking.rate.accuracy" max="5"  on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="review-answers col-md-12 col-lg-12">
+                                                <input type="text" ng-model="booking.feedback.accuracy" class="form-control"  placeholder=" Accuracy of the place">
+                                            </div>
+                                            <div class="row">
+                                                <div class="review-ques col-md-6 col-lg-6">
+                                                    <h4> Location Feedback</h4>
+                                                </div>
+                                                <div class="review-ques-rating col-md-6 col-lg-6">
+                                                    <span uib-rating ng-change="dynamicRating(booking)" class="airbnb-color-blue" ng-model="booking.rate.location" max="5"  on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="review-answers col-md-12 col-lg-12">
+                                                <input type="text" ng-model="booking.feedback.location" class="form-control"  placeholder=" Location of the place">
+                                            </div>
+                                            <div class="row">
+                                                <div class="review-ques col-md-6 col-lg-6">
+                                                    <h4> Communication Feedback</h4>
+                                                </div>
+                                                <div class="review-ques-rating col-md-6 col-lg-6">
+                                                    <span uib-rating ng-change="dynamicRating(booking)" class="airbnb-color-blue" ng-model="booking.rate.communication" max="5"  on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="review-answers col-md-12 col-lg-12">
+                                                <input type="text" ng-model="booking.feedback.communication" class="form-control"  placeholder=" Communication of the host">
+                                            </div>
+                                            <div class="row">
+                                                <div class="review-ques col-md-6 col-lg-6">
+                                                    <h4> CheckIn Feedback</h4>
+                                                </div>
+                                                <div class="review-ques-rating col-md-6 col-lg-6">
+                                                    <span uib-rating ng-change="dynamicRating(booking)" class="airbnb-color-blue" ng-model="booking.rate.checkIn" max="5"  on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="review-answers col-md-12 col-lg-12">
+                                                <input type="text" ng-model="booking.feedback.checkIn" class="form-control"  placeholder=" CheckIn time of the place">
+                                            </div>
+                                            <div class="row">
+                                                <div class="review-ques col-md-6 col-lg-6">
+                                                    <h4> Value Feedback</h4>
+                                                </div>
+                                                <div class="review-ques-rating col-md-6 col-lg-6">
+                                                    <span uib-rating ng-change="dynamicRating(booking)" class="airbnb-color-blue" ng-model="booking.rate.value" max="5"  on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="review-answers col-md-12 col-lg-12">
+                                                <input type="text" ng-model="booking.feedback.value" class="form-control"  placeholder=" what you loved about the place">
+                                            </div>
+                                            <div class="row">
+                                                <div class="review-ques col-md-6 col-lg-6">
+                                                    <h4> Images, Jack posted about your Listing</h4>
+                                                </div>
+                                            </div>
+
+                                            <div class="review-answers text-center col-md-12 col-lg-12">
+
+                                                <!--<button ng-hide="up.file" type="file"  class=" btn choosefile select-step airbnb-color btn-size " ngf-select ng-model="up.file" name="file" ngf-pattern="'image/*'" accept="image/*" ngf-multiple="true"  ngf-max-size="20MB" > bu-->
+                                                <div class="show-img-preview" ng-repeat="files in up.file">
+                                                    <img class="img-preview" ng-show="up.file"  src="" ngf-src="files|| './images/thumbnail.jpg' "/>
+                                                </div>
+                                                <div ng-hide="up.file" name="file" class="button imgbtn btn choosefile select-step airbnb-color btn-size"  ngf-select ngf-pattern="'image/*'" accept="image/*" ngf-max-size="20MB" ng-model="up.file" ngf-multiple="true"><i class="fa fa-cloud-upload" aria-hidden="true"></i>Upload Images</div>
+                                                <i ng-show="upload_form.file.$error.required">*required</i><br>
+                                                <i ng-show="upload_form.file.$error.maxSize">File too large
+                                                    {{up.file.size / 1000000|number:1}}MB: max 20M</i>
+
+                                                <p>{{progress}}</p>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <div class="input-type">
+                                                <button type="submit"   class="btn btn-size airbnb-color" ng-click="submitReview(up.file,booking.rate,booking.feedback,booking.listId,booking.hostEmail,booking)">Submit Review </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="panel-header">
+                Reviews your Users
+            </div>
+            <div class="panel-body">
+                <ul class="list-layout reviews-list list-unstyled">
+                    <li ng-hide="recentBookings" class="reviews-list-item">
+                        Nobody rented your property recently right now. Looks like it’s time for increase your property visibility!
+                    </li>
+                    <li ng-repeat="booking in recentBookings" class="media reviews-list-item row-space-top-2">
+                        <div class="col-md-3 col-lg-3">
+                            <a class="pull-left media-photo media-round" href="#">
+                                <img width="68" height="68"  src="../images/london.jpg" >
+                            </a>
+                        </div>
+
+                        <div class="col-lg-7 col-md-7" style="padding-top:15px">
+                            <div class="media-body response">
+                                Write a review for <a href="#">{{booking.userEmail}}</a> for his trip
+                                <div>
+                                    <a href="#">View Itinerary</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-lg-2" style="padding-top:15px">
+                            <button class="btn airbnb-color " data-toggle="modal" data-target="#userReview{{$index}}">Review </button>
+                        </div>
+                        <div class="clearfix"></div>
+                        <hr class="col-12">
+                        <div class="modal fade" id="userReview{{$index}}" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <div class="col-md-3 col-lg-3">
+                                            <a class="pull-left media-photo media-round" href="#">
+                                                <img width="68" height="68"  src="../images/london.jpg" >
+                                            </a>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6">
+                                            <h4 class="modal-title">Review Jack for his stay on {{bookinglistingTitle}}</h4>
+                                        </div>
+                                        <div class="col-md-3 col-lg-3">
+                                            <span style="font-size: 15px" uib-rating class="airbnb-color-blue"  ng-model="booking.rate.overall" max="5" read-only="true" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class=" ">
+
+                                            <div class="row">
+                                                <div class="review-ques col-md-6 col-lg-6">
+                                                    <h5>Coment something about user Stay and rate him</h5>
+                                                </div>
+                                                <div class="review-ques-rating col-md-6 col-lg-6">
+                                                    <span uib-rating class="airbnb-color-blue" ng-model="booking.rate.overall" max="5"  on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="review-answers col-md-12 col-lg-12">
+                                                <input type="text"  ng-model="booking.feedback.overall" class="form-control"  placeholder=" what you felt about his stay">
+                                            </div>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <div class="input-type">
+                                                <button type="submit"   class="btn btn-size airbnb-color" ng-click="submitUserReview(booking)">Submit Review </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<!--<div class="modal fade" id="myReview" role="dialog">-->
+    <!--<div class="modal-dialog">-->
+
+        <!--&lt;!&ndash; Modal content&ndash;&gt;-->
+        <!--<div class="modal-content">-->
+            <!--<div class="modal-header">-->
+                <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+                <!--<div class="col-md-3 col-lg-3">-->
+                    <!--<a class="pull-left media-photo media-round" href="#">-->
+                        <!--<img width="68" height="68"  src="../images/london.jpg" >-->
+                    <!--</a>-->
+                <!--</div>-->
+                <!--<div class="col-md-6 col-lg-6">-->
+                    <!--<h4 class="modal-title">Review for you from Jack for your property xyz</h4>-->
+                <!--</div>-->
+                <!--<div class="col-md-3 col-lg-3">-->
+                    <!--<span style="font-size: 15px" uib-rating class="airbnb-color-blue"  ng-model="rate.overall" max="5" read-only="true" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>-->
+                <!--</div>-->
+
+            <!--</div>-->
+            <!--<div class="modal-body">-->
+                <!--<div class=" ">-->
+
+                    <!--<div class="row">-->
+                    <!--<div class="review-ques col-md-6 col-lg-6">-->
+                        <!--<h4> What Jack loved about your Listing</h4>-->
+                    <!--</div>-->
+                    <!--<div class="review-ques-rating col-md-6 col-lg-6">-->
+                        <!--&lt;!&ndash;<span uib-rating class="airbnb-color-blue" ng-model="rate.overall" max="5"  on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>&ndash;&gt;-->
+                     <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<div class="review-answers col-md-12 col-lg-12">-->
+                        <!--<input type="text"  ng-model="feedback.overall" class="form-control"  placeholder=" what you loved about the place">-->
+                    <!--</div>-->
+
+                    <!--<div class="row">-->
+                        <!--<div class="review-ques col-md-6 col-lg-6">-->
+                            <!--<h4> Cleanliness Feedback</h4>-->
+                        <!--</div>-->
+                        <!--<div class="review-ques-rating col-md-6 col-lg-6">-->
+                            <!--<span uib-rating ng-change="dynamicRating()" class="airbnb-color-blue" ng-model="rate.clean" max="5" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<div class="review-answers col-md-12 col-lg-12">-->
+                        <!--<input type="text" ng-model="feedback.clean" class="form-control"  placeholder="Cleanliness of the place">-->
+                    <!--</div>-->
+                    <!--<div class="row">-->
+                        <!--<div class="review-ques col-md-6 col-lg-6">-->
+                            <!--<h4> Accuracy Feedback</h4>-->
+                        <!--</div>-->
+                        <!--<div class="review-ques-rating col-md-6 col-lg-6">-->
+                            <!--<span uib-rating ng-change="dynamicRating()" class="airbnb-color-blue" ng-model="rate.accuracy" max="5"  on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<div class="review-answers col-md-12 col-lg-12">-->
+                        <!--<input type="text" ng-model="feedback.accuracy" class="form-control"  placeholder=" Accuracy of the place">-->
+                    <!--</div>-->
+                    <!--<div class="row">-->
+                        <!--<div class="review-ques col-md-6 col-lg-6">-->
+                            <!--<h4> Location Feedback</h4>-->
+                        <!--</div>-->
+                        <!--<div class="review-ques-rating col-md-6 col-lg-6">-->
+                            <!--<span uib-rating ng-change="dynamicRating()" class="airbnb-color-blue" ng-model="rate.location" max="5"  on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<div class="review-answers col-md-12 col-lg-12">-->
+                        <!--<input type="text" ng-model="feedback.location" class="form-control"  placeholder=" Location of the place">-->
+                    <!--</div>-->
+                    <!--<div class="row">-->
+                        <!--<div class="review-ques col-md-6 col-lg-6">-->
+                            <!--<h4> Communication Feedback</h4>-->
+                        <!--</div>-->
+                        <!--<div class="review-ques-rating col-md-6 col-lg-6">-->
+                            <!--<span uib-rating ng-change="dynamicRating()" class="airbnb-color-blue" ng-model="rate.communication" max="5"  on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<div class="review-answers col-md-12 col-lg-12">-->
+                        <!--<input type="text" ng-model="feedback.communication" class="form-control"  placeholder=" Communication of the host">-->
+                    <!--</div>-->
+                    <!--<div class="row">-->
+                        <!--<div class="review-ques col-md-6 col-lg-6">-->
+                            <!--<h4> CheckIn Feedback</h4>-->
+                        <!--</div>-->
+                        <!--<div class="review-ques-rating col-md-6 col-lg-6">-->
+                            <!--<span uib-rating ng-change="dynamicRating()" class="airbnb-color-blue" ng-model="rate.checkIn" max="5"  on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<div class="review-answers col-md-12 col-lg-12">-->
+                        <!--<input type="text" ng-model="feedback.checkIn" class="form-control"  placeholder=" CheckIn time of the place">-->
+                    <!--</div>-->
+                    <!--<div class="row">-->
+                        <!--<div class="review-ques col-md-6 col-lg-6">-->
+                            <!--<h4> Value Feedback</h4>-->
+                        <!--</div>-->
+                        <!--<div class="review-ques-rating col-md-6 col-lg-6">-->
+                            <!--<span uib-rating ng-change="dynamicRating()" class="airbnb-color-blue" ng-model="rate.value" max="5"  on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<div class="review-answers col-md-12 col-lg-12">-->
+                        <!--<input type="text" ng-model="feedback.value" class="form-control"  placeholder=" what you loved about the place">-->
+                    <!--</div>-->
+                    <!--<div class="row">-->
+                        <!--<div class="review-ques col-md-6 col-lg-6">-->
+                            <!--<h4> Images, Jack posted about your Listing</h4>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <!--<div class="review-answers text-center col-md-12 col-lg-12">-->
+
+                        <!--&lt;!&ndash;<button ng-hide="up.file" type="file"  class=" btn choosefile select-step airbnb-color btn-size " ngf-select ng-model="up.file" name="file" ngf-pattern="'image/*'" accept="image/*" ngf-multiple="true"  ngf-max-size="20MB" > bu&ndash;&gt;-->
+                        <!--<div class="show-img-preview" ng-repeat="files in up.file">-->
+                            <!--<img class="img-preview" ng-show="up.file"  src="" ngf-src="files|| './images/thumbnail.jpg' "/>-->
+                        <!--</div>-->
+                         <!--<div ng-hide="up.file" name="file" class="button imgbtn btn choosefile select-step airbnb-color btn-size"  ngf-select ngf-pattern="'image/*'" accept="image/*" ngf-max-size="20MB" ng-model="up.file" ngf-multiple="true"><i class="fa fa-cloud-upload" aria-hidden="true"></i>Upload Images</div>-->
+                        <!--<i ng-show="upload_form.file.$error.required">*required</i><br>-->
+                        <!--<i ng-show="upload_form.file.$error.maxSize">File too large-->
+                            <!--{{up.file.size / 1000000|number:1}}MB: max 20M</i>-->
+
+                        <!--<p>{{progress}}</p>-->
+                        <!---->
+                    <!--</div>-->
+
+            <!--</div>-->
+            <!--<div class="modal-footer">-->
+                <!--<div class="input-type">-->
+                    <!--<button type="submit"   class="btn btn-size airbnb-color" ng-click="submitReview(up.file,rate,feedback)">Submit Review </button>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+
+    <!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<div class="modal fade" id="showReview" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <div class="col-md-3 col-lg-3">
+                        <a class="pull-left media-photo media-round" href="#">
+                            <img width="68" height="68"  src="../images/london.jpg" >
+                        </a>
+                    </div>
+                    <div class="col-md-6 col-lg-6">
+                        <h4 class="modal-title">Review for you from Jack for your property xyz</h4>
+                    </div>
+                    <div class="col-md-3 col-lg-3">
+                        <span uib-rating class="airbnb-color-blue" ng-model="rate.overall" max="5" read-only="true" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+                    </div>
+
+                </div>
+                <div class="modal-body">
+                    <div class=" ">
+
+                        <div class="row">
+                            <div class="review-ques col-md-6 col-lg-6">
+                                <h4> What Jack loved about your Listing</h4>
+                            </div>
+                            <div class="review-ques-rating col-md-6 col-lg-6">
+                                <span uib-rating class="airbnb-color-blue" ng-model="rate.overall" max="5" read-only="true" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+                            </div>
+                        </div>
+
+                        <div class="review-answers col-md-12 col-lg-12">
+                            Loved
+                        </div>
+
+                        <div class="row">
+                            <div class="review-ques col-md-6 col-lg-6">
+                                <h4> Cleanliness Feedback</h4>
+                            </div>
+                            <div class="review-ques-rating col-md-6 col-lg-6">
+                                <span uib-rating class="airbnb-color-blue" ng-model="rate.clean" max="5" read-only="true" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+                            </div>
+                        </div>
+
+                        <div class="review-answers col-md-12 col-lg-12">
+                            Cleanliness
+                        </div>
+                        <div class="row">
+                            <div class="review-ques col-md-6 col-lg-6">
+                                <h4> Accuracy Feedback</h4>
+                            </div>
+                            <div class="review-ques-rating col-md-6 col-lg-6">
+                                <span uib-rating class="airbnb-color-blue" ng-model="rate.accuracy" max="5" read-only="true" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+                            </div>
+                        </div>
+
+                        <div class="review-answers col-md-12 col-lg-12">
+                            Accuracy
+                        </div>
+                        <div class="row">
+                            <div class="review-ques col-md-6 col-lg-6">
+                                <h4> Location Feedback</h4>
+                            </div>
+                            <div class="review-ques-rating col-md-6 col-lg-6">
+                                <span uib-rating class="airbnb-color-blue" ng-model="rate.location" max="5" read-only="true" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+                            </div>
+                        </div>
+
+                        <div class="review-answers col-md-12 col-lg-12">
+                            Location
+                        </div>
+                        <div class="row">
+                            <div class="review-ques col-md-6 col-lg-6">
+                                <h4> Communication Feedback</h4>
+                            </div>
+                            <div class="review-ques-rating col-md-6 col-lg-6">
+                                <span uib-rating class="airbnb-color-blue" ng-model="rate.communication" max="5" read-only="true" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+                            </div>
+                        </div>
+
+                        <div class="review-answers col-md-12 col-lg-12">
+                            Communication
+                        </div>
+                        <div class="row">
+                            <div class="review-ques col-md-6 col-lg-6">
+                                <h4> CheckIn Feedback</h4>
+                            </div>
+                            <div class="review-ques-rating col-md-6 col-lg-6">
+                                <span uib-rating class="airbnb-color-blue" ng-model="rate.checkIn" max="5" read-only="true" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+                            </div>
+                        </div>
+
+                        <div class="review-answers col-md-12 col-lg-12">
+                            CheckIn
+                        </div>
+                        <div class="row">
+                            <div class="review-ques col-md-6 col-lg-6">
+                                <h4> Value Feedback</h4>
+                            </div>
+                            <div class="review-ques-rating col-md-6 col-lg-6">
+                                <span uib-rating class="airbnb-color-blue" ng-model="rate.value" max="5" read-only="true" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+                            </div>
+                        </div>
+
+                        <div class="review-answers col-md-12 col-lg-12">
+                            Value
+                        </div>
+                        <div class="row">
+                            <div class="review-ques col-md-6 col-lg-6">
+                                <h4> Images, Jack posted about your Listing</h4>
+                            </div>
+                        </div>
+
+                        <div class="review-answers col-md-12 col-lg-12">
+
+                            <div class="review-image col-md-4  col-lg-4">
+
+                                <img height="100"  width="100" src="../images/london.jpg" alt="">
+                            </div>
+                            <div class="review-image col-md-4 col-lg-4">
+
+                                <img height ="100" width="100" src="../images/london.jpg" alt="">
+                            </div>
+                            <div class="review-image col-md-4 col-lg-4">
+
+                                <img height ="100" width="100" src="../images/london.jpg" alt="">
+                            </div>
+                            <div class="review-image col-md-4 col-lg-4">
+
+                                <img height ="100" width="100" src="../images/london.jpg" alt="">
+                            </div>
+                            <div class="review-image col-md-4 col-lg-4">
+
+                                <img height ="100" width="100" src="../images/london.jpg" alt="">
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>

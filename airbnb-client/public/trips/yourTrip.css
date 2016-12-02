@@ -1,0 +1,54 @@
+
+.triphistoryrow
+{
+    padding-top:50px;
+}
+
+
+.yourtrips
+{
+    text-decoration: none;
+    color: #565a5c;
+    display: block;
+    padding: 6px 0;
+    font-size: 16px;
+    line-height: 50px;
+
+}
+.prevtripshead{
+    font-size: 16px;
+    padding-top: 12px;
+    padding: 12px;
+    background-color: #edefed;
+    box-sizing: border-box;
+}
+.tripsdiv{
+
+    padding-right:90px;
+}
+.custompanel{
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid #EDEFED;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+.headcolor{
+    color:#565a5c;
+    font-family: "Circular", "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+}
+.location{
+    font-family: "Helvetica Neue";
+    line-height: 20px;
+    font-size:14px;
+    color: #565a5c;
+}
+.accpeted{
+    color: darkgreen;
+    font-size: 14px;
+    font-family: "Helvetica Neue";
+    font-weight: 500;
+}

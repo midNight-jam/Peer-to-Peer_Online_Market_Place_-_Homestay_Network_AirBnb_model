@@ -1,0 +1,359 @@
+<div class="header-include" ng-include="'landingPage/header.html'"></div>
+</br>
+</br>
+</br>
+<div class="col-md-2 sidebar">
+    <div class="row">
+        <!-- Menu -->
+        <div class="side-menu">
+            <div class="side-menu-container">
+                <nav class="navbar navbar-default" role="navigation">
+                    <!-- Main Menu -->
+                    <ul class="nav navbar-nav">
+                        <li ><a ui-sref="adminGraphDashboard"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li><!--class="active"-->
+
+                        <!-- Dropdown-->
+                        <li id="dropdown">
+                            <a data-toggle="collapse" href="#dropdown-lvl1">
+                                <span class="glyphicon glyphicon-plane"></span> Listings <span class="caret"></span>
+                            </a>
+
+                            <!-- Dropdown level 1 -->
+                            <div id="dropdown-lvl1" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul class="nav navbar-nav">
+                                        <li><a ui-sref="pendingListings">Pending</a></li>
+                                        <li><a ui-sref="approvedListings">Approved</a></li>
+                                        <li><a ui-sref="rejectedListings">Rejected</a></li>
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- Dropdown-->
+                        <li id="dropdown">
+                            <a data-toggle="collapse" href="#dropdown-lvl2">
+                                <span class="glyphicon glyphicon-user"></span> review <span class="caret"></span>
+                            </a>
+                            <!-- Dropdown level 1 -->
+                            <div id="dropdown-lvl2" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul class="nav navbar-nav">
+                                        <li><a ui-sref="userList">Users</a></li>
+                                        <li><a ui-sref="hostList">Host</a></li>
+                                        <li><a ui-sref="billList">Bills</a></li>
+
+                                        <!-- Dropdown level 2 -->
+                                        <!-- <li class="panel panel-default" id="dropdown">
+                                             <a data-toggle="collapse" href="#dropdown-lvl2">
+                                                 <span class="glyphicon glyphicon-off"></span> Sub Level <span class="caret"></span>
+                                             </a>
+                                             <div id="dropdown-lvl2" class="panel-collapse collapse">
+                                                 <div class="panel-body">
+                                                     <ul class="nav navbar-nav">
+                                                         <li><a href="#">Link</a></li>
+                                                         <li><a href="#">Link</a></li>
+                                                         <li><a href="#">Link</a></li>
+                                                     </ul>
+                                                 </div>
+                                             </div>
+                                         </li>-->
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+            </div><!-- /.navbar-collapse -->
+            </nav>
+
+        </div>
+    </div>
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+
+<!--<div class="container">
+    <div class="row">
+
+
+        <div class="col-md-12">
+            <h4>Bootstrap Snipp for Datatable</h4>
+            <div class="table-responsive">
+
+
+                <table id="mytable" class="table table-bordred table-striped">
+
+                    <thead>
+
+                    <th><input type="checkbox" id="checkall" /></th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Address</th>
+                    <th>Email</th>
+                    <th>Contact</th>
+                    <th>Edit</th>
+
+                    <th>Delete</th>
+                    </thead>
+                    <tbody>
+
+                    <tr>
+                        <td><input type="checkbox" class="checkthis" /></td>
+                        <td>Mohsin</td>
+                        <td>Irshad</td>
+                        <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
+                        <td>isometric.mohsin@gmail.com</td>
+                        <td>+923335586757</td>
+                        <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                        <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" class="checkthis" /></td>
+                        <td>Mohsin</td>
+                        <td>Irshad</td>
+                        <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
+                        <td>isometric.mohsin@gmail.com</td>
+                        <td>+923335586757</td>
+                        <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                        <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+                    </tr>
+
+
+                    <tr>
+                        <td><input type="checkbox" class="checkthis" /></td>
+                        <td>Mohsin</td>
+                        <td>Irshad</td>
+                        <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
+                        <td>isometric.mohsin@gmail.com</td>
+                        <td>+923335586757</td>
+                        <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                        <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td><input type="checkbox" class="checkthis" /></td>
+                        <td>Mohsin</td>
+                        <td>Irshad</td>
+                        <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
+                        <td>isometric.mohsin@gmail.com</td>
+                        <td>+923335586757</td>
+                        <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                        <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+                    </tr>
+
+
+                    <tr>
+                        <td><input type="checkbox" class="checkthis" /></td>
+                        <td>Mohsin</td>
+                        <td>Irshad</td>
+                        <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
+                        <td>isometric.mohsin@gmail.com</td>
+                        <td>+923335586757</td>
+                        <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                        <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+                    </tr>
+
+
+
+
+
+                    </tbody>
+
+                </table>
+
+                &lt;!&ndash;<div class="clearfix"></div>
+                <ul class="pagination pull-right">
+                    <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+                </ul>&ndash;&gt;
+
+            </div>
+
+        </div>
+    </div>
+</div>-->
+<div class="col-md-10 content">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Review Users
+        </div>
+        <div class="panel-body">
+            <div class="container">
+                <div class="container">
+                    <div class="row">
+
+
+                        <div class="col-md-12">
+
+
+                            <div class="row ">
+                                <h4 >User Details</h4>
+                                <input class="text btn-lg" name="SearchByCity" id="email" ng-model="SearchByCity" placeholder="Enter City Name">
+                                <button class="btn btn-success btn-lg" ng-click="search()" >Search</button>
+                                </br>
+                                <button class="btn btn-danger input-lg" ng-click="reset()" >Reset grid</button>
+                            </div>
+
+                            </br>
+
+
+                            <div class="table-responsive">
+
+
+                                <table id="mytable" class="table table-bordred table-striped">
+
+                                    <thead>
+
+                                    <th><input type="checkbox" id="checkall" /></th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <!-- <th>Address</th>-->
+                                    <th>UserId</th>
+                                    <th>Email</th>
+                                    <th>Contact</th>
+                                    <th>Host</th>
+                                    <th>City</th>
+                                    <th>Created on</th>
+                                    <th>Profile</th>
+
+                                    </thead>
+                                    <tbody>
+
+                                    <tr ng-repeat="user in AllUserList">
+                                        <td><input type="checkbox" class="checkthis" /></td>
+                                        <td>{{user.firstname}}</td>
+                                        <td>{{user.lastname}}</td>
+                                        <td>{{user.userId}}</td>
+                                        <td>{{user.email}}</td>
+                                        <td>{{user.phoneNumber}}</td>
+                                        <td>{{user.host}}</td>
+                                        <td>{{user.city}}</td>
+                                        <td>{{user.created_at| date:'short'}}</td>
+                                        <td><p data-placement="top" title="Edit"><button class="btn-success btn-xs" ng-click="getUserDetails(user)" data-toggle="modal" data-target="#userProfile"> View</button></p></td>
+
+                                    </tr>
+
+                                    </tbody>
+
+                                </table>
+
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="userProfile" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                <h4 class="modal-title custom_align" id="Heading">User Details</h4>
+            </div>
+            <div class="modal-body">
+                <!--<div class="form-group">
+                    <input class="form-control " type="text" placeholder="Mohsin">
+                </div>
+                <div class="form-group">
+
+                    <input class="form-control " type="text" placeholder="Irshad">
+                </div>
+                <div class="form-group">
+                    <textarea rows="2" class="form-control" placeholder="CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan"></textarea>
+                </div>-->
+
+                <div class="row">
+
+                    <div class="user-dashboard-pic text-center col-md-2 col-lg-2">
+
+                        <div class="img-user-dashboard "><a ui-sref=""><img ng-src="{{SelectedprofileImages}}" alt=""></a></div>
+                        <h3>{{Selectedfirstname}}</h3>
+
+
+                    </div>
+
+
+                    <div class=" col-md-8">
+                        <div class="host-dashboard-header">
+                            <div class=""> <p>User Details</p> </div>
+                        </div>
+                        <div class="col-md-6 col-lg-6  col-xs-6" >
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label">First Name: </label>{{Selectedfirstname}}
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label editProfile">Last Name:</label>{{Selectedlastname}}
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label editProfile">Gender: </label>{{Selectedgender}}
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label editProfile">Birth Date: </label>{{Selectedbirthday | date:'yyyy-MM-dd '}}
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label editProfile">Email Address: </label>{{Selectedemail}}
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label editProfile">Phone Number: </label>{{SelectedphoneNumber}}
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label editProfile">Preferred Language: </label>{{SelectedpreferLang}}
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label editProfile">Preferred Currenct: </label>{{SelectedpreferCurr}}
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label editProfile">Street Address: </label>{{SelectedstreetAddress}}
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label editProfile">City: </label>{{Selectedcity}}
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label editProfile">State: </label>{{Selectedstate}}
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label editProfile">Country: </label>{{Selectedcountry}}
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label editProfile">Zip Code: </label>{{Selectedzipcode}}
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label editProfile">Describe Yourself: </label>{{SelectedaboutMe}}
+
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+</div>
+

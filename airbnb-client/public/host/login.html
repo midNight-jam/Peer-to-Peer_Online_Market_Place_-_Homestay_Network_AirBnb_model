@@ -1,0 +1,32 @@
+<section ng-esc="closePopUp()" class="wrapper" >
+    <div class="auth-card">
+        <i ng-click="closePopUp()" style="padding:5px" class=" airbnb-color pull-right fa fa-times" aria-hidden="true"></i>
+
+        <div ng-show="authError" class="auth-error">
+            <span class="auth-error-logo pull-left" ><i class="fa fa-exclamation-circle" aria-hidden="true"></i></span> <span class="error-msg">{{authErrorMessage}}</span>
+        </div>
+        <div class="auth-card-content">
+            <a href="#" class="auth-login auth-fb form-control btn btn-primary text-center"> <span class="auth-logo pull-left"><i class="fa fa-facebook" aria-hidden="true"></i></span><span class="auth-text  ">Log in with Facebook</span> </a>
+            <a href="#" class="auth-login form-control text-center "> <span class="auth-logo pull-left"><i class="fa fa-google" aria-hidden="true"></i></span><span class="auth-text ">Log in with Google</span> </a>
+            <div class="seprator">	</div>
+            <form name="loginform" novalidate>
+                <div class="auth-input  ">
+                    <input type="email" ng-required class=" auth-login form-control" name="email" ng-model="user.email" placeholder="Email">
+                    <div class="auth-inp-err" ng-show="loginform.email.$touched && loginform.email.$invalid">Please enter a valid email include @ </div>
+                </div>
+                <div class="auth-input  ">
+                    <input type="password" class=" auth-login form-control" ng-minLength="8" name="password" ng-model="user.password" placeholder="Password">
+                    <div class="auth-inp-err" ng-show="loginform.password.$touched && loginform.password.$invalid">Your password must be at least 8 characters. Please try again.</div>
+                </div>
+                <div class="reset-pwd  ">
+                    <label for="remember-me"><input type="checkbox"  name = "remember-me">  Remember me</label>
+                </div>
+                <div class="auth-button">
+                    <button type ="submit" ng-click="signin()" ng-disabled="loginform.$invalid" class="btn auth-btn form-control auth-login btn-alert">Log in</button>
+                </div>
+            </form>
+            <div class="seprator"></div>
+        </div><!-- auth-card-content -->
+    </div><!-- auth-card-->
+
+</section>

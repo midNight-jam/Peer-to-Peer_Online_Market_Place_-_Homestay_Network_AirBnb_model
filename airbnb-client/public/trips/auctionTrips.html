@@ -1,0 +1,83 @@
+
+<div class="header-include" ng-include="'host/header.html'"></div>
+<div style="padding-top:50px;">
+    <ul class="nav nav-tabs navbar-inverse">
+        <li role="presentation"><a class="editProfile" ui-sref="userHome">Dashboard</a></li>
+        <li role="presentation"><a class="editProfile" ui-sref="yourListings">Your Listing</a></li>
+        <li role="presentation" class="active"><a ui-sref="yourTrips">Your Trips</a></li>
+        <li role="presentation"><a class="editProfile" ui-sref="editProfile">Profile</a></li>
+        <li role="presentation"><a class="editProfile" ui-sref="accountSettings">Account</a></li>
+    </ul>
+</div>
+
+
+
+<div class="page-container-responsive space-top-4 space-4">
+    <div class="row triphistoryrow">
+        <div class="col-md-3" style="padding-left: 80px;">
+
+            <ul class="sidenav-list">
+                <li style="list-style-type: none;">
+                    <a class="yourtrips"  style="text-decoration: none;color: #565a5c;line-height: 30px;" ui-sref="yourTrips">Pending Trips</a>
+                </li>
+                <li style="list-style-type: none;">
+                    <a class="yourtrips" style="text-decoration: none;color: #565a5c;line-height: 30px;"  ui-sref="previousTrips">Previous Trips</a>
+                </li>
+                <li style="list-style-type: none;">
+                    <a class="yourtrips" style="text-decoration: none;color: #565a5c;line-height: 30px;font-weight: bold;" ui-sref="auctionTrips">Auction Trips</a>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="col-md-9 tripsdiv">
+            <div class="panel row-space-4 custompanel">
+                <div class="prevtripshead">
+                    Previous Trips
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table panel-body panel-light" style="border-collapse: separate;">
+                        <tbody><tr>
+                            <th class="headcolor">Status</th>
+                            <th class="headcolor">Location</th>
+                            <th class="headcolor">Host</th>
+                            <th class="headcolor">Dates</th>
+                            <th class="headcolor">Payment Status</th>
+                            <th class="headcolor">Options</th>
+                        </tr>
+                        <tr ng-repeat="trip in auctionTrips">
+                            <td class="status"><span class="accpeted">{{trip.tripStatus | uppercase}}</span>
+                                <br>
+                            </td>
+                            <td class="location">
+                                <a href="">{{trip.streetAddress}}</a>
+                                <br>{{trip.listingCity}}-{{trip.zipCode}}
+                            </td>
+                            <td class="location" ><a style="color:red" href="">{{trip.hostName}}</a></td>
+                            <td class="location">Check In: {{trip.checkInDate | date:'mediumDate'}}<br>Checkout: {{trip.checkOutDate | date:'mediumDate'}}</td>
+                            <td class="location">{{trip.paymentStatus | uppercase}}</td>
+
+                            <td>
+                                <ul class="unstyled button-list list-unstyled">
+                                    <li class="row-space-1">
+                                        <button class="btn btn-primary" style="width:90px;">View Bill</button>
+                                        <!--
+                                                                            <a class="button-steel location" style="color:red" href="">View receipt</a>
+                                        -->
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <div class="alert alert-info" style="font-size: 20px; text-align: center;" ng-show="noTripsfound">
+                <strong >{{noTrips}}</strong>
+            </div>
+        </div>
+
+    </div>
+</div>

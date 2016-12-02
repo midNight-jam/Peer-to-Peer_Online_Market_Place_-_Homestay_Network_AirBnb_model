@@ -1,0 +1,220 @@
+
+
+<div class="header-include" ng-include="'host/header.html'"></div>
+
+
+<div class="container-fluid bgWhite tripcontainerall" >
+    <div class="col-md-8" style="margin-bottom: 80px; ">
+        <div class="class-12">
+            <div class="col-md-3">
+                <div class="allpropdates">
+                    <span >Dates</span>
+                </div>
+
+            </div>
+            <div class="col-md-3">
+                <div >
+                    <input type="date" class="checkindateallprop">
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+                <div >
+                    <input type="date" class="checkindateallprop" >
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+                <div >
+                    <select class="customselectguest">
+                        <option value="volvo">1 guest</option>
+                        <option value="saab">2 guest</option>
+                        <option value="mercedes">3 guest</option>
+                        <option value="audi">4 guest</option>
+                        <option value="audi">5 guest</option>
+                        <option value="audi">6 guest</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+        <hr>
+
+
+
+        <div class="class-12-2">
+            <div class="col-md-3">
+                <div class="allpropdates">
+                    <span >Room type</span>
+                </div>
+
+            </div>
+            <div class="col-md-3">
+                <div >
+
+                    <label class="customcheckbox">
+                        <div>
+                            <img src="images/homeicon24.png" class="homeicon">
+                            <span class="hometext">Entire Home</span>
+                            <div class="divcheckbox">
+                                <input type="checkbox" class="ccheckbox"  value="Entire Home">
+                            </div>
+
+                        </div>
+                    </label>
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+                <div >
+                    <label class="customcheckbox">
+                        <div>
+                            <img src="images/privateroom.png" class="homeicon">
+                            <span class="hometext">Private Room</span>
+                            <div class="divcheckbox">
+                                <input type="checkbox" class="ccheckbox"  value="Private Room">
+                            </div>
+
+                        </div>
+                    </label>
+                </div>
+
+            </div>
+
+            <div class="col-md-3">
+                <div >
+                    <label class="customcheckbox">
+                        <div>
+                            <img src="images/sharedroom16.png" class="homeicon">
+                            <span class="hometext">Shared Room</span>
+                            <div class="divcheckbox">
+                                <input type="checkbox" class="ccheckbox"  value="Shared Room">
+                            </div>
+
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <hr>
+
+        <div class="class-12-3">
+            <div class="col-md-3">
+                <div class="allpropdates">
+                    <span >Price range</span>
+                </div>
+
+            </div>
+            <div class="col-md-9">
+                <rzslider rz-slider-model="minRangeSlider.minValue" rz-slider-high="minRangeSlider.maxValue" rz-slider-options="minRangeSlider.options"></rzslider>
+                </article>
+
+            </div>
+
+        </div>
+        <!--LISTINGS DISPLAY
+            By Prateek
+        -->
+        <div class="nolistingstyle" ng-show="nolistings">
+            {{msg}}
+        </div>
+        <div class-="row" style="margin-top: 20px;border-top: 1px solid #dce0e0;margin-left:-25px;">
+            <div class="col-md-12" style="margin-top: 20px;">
+                <div class="col-md-6 pull-left">
+                    <button class="btn btnFilterStyle">Filter</button>
+                </div>
+                <div class="col-md-6 pull-right">
+                    <span class="pull-right">{{noOfListings}} Rentals &#149; {{city}}</span>
+                </div>
+            </div>
+
+            <div class="col-md-6" style="margin-top: 20px;" ng-repeat="property in properties">
+                <div class="col-md-6 pull-left" style="width: 420px; height: 360px;">
+                    <div style="width: 390px; height: 280px;">
+                        <div style="height: inherit">
+                            <div uib-carousel active="active" no-wrap="noWrapSlides" >
+                                <div uib-slide ng-repeat="slide in slides[$index] track by slide.id" index="slide.id">
+                                    <img class="corouselImageSize1" ng-src="{{slide.image}}"
+                                         style="margin: auto;">
+                                    <div class="pricestyleForListings" style="margin-right: 325px">
+                                        <div>
+                                            <span class="dollarSignStyle">&#36;</span><span>{{property.auctionPrice}}</span> <span> <img
+                                                src="images/instantbook16.png"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="width: 390px; height: 65px; margin-top: 20px;cursor: pointer" ng-click="displayListing(property)">
+                        <div class="col-md-10" style="padding-left: 0px">
+                            <div class="col-md-12">
+								<span class="listingHeading">
+									{{property.title}}
+								</span>
+                            </div>
+                            <div class="col-md-12">
+								<span class="listingDetail	">
+									{{property.roomType}} &#149; {{property.guestAllowed}} guests &#149; <span class="listingStar" star-rating rating-value="ratingApt.current" max="ratingApt.max"></span>
+								</span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2" style="padding-left: 0px;margin-top: -55px;">
+							<span class="" style="border-radius: 50%">
+								<img alt=""	ng-src="{{property.hostProfilePic}}" class="listingOwnerPic">
+							</span>
+                        </div>
+
+                        <div class="col-md-4">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mapclass">
+        <div map-lazy-load="https://maps.google.com/maps/api/js">
+            <!-- <ng-map center="37.339425,-121.892532" zoom="14">-->
+            <ng-map center="{{mapLatitude}},{{mapLongitude}}" zoom="14">
+                <div ng-repeat="p in properties">
+                    <span>
+                   <!-- <marker  label={{p.price}} position="{{p.latitude}}, {{p.longitude}}"></marker>-->
+                        <custom-marker id="{{p._id}}" position="{{p.latitude}}, {{p.longitude}}"
+                                       on-click="showproperty(p)">
+
+                            <div class="customtooltip">
+                                   <span data-toggle="tooltip">${{p.auctionPrice}}</span>
+                                 <span ><img src="images/instantbook16.png"></span>
+                            </div>
+                        </custom-marker>
+                    </span>
+                </div>
+
+
+
+
+                <info-window   id="bar">
+                    <div >
+                        <img src={{limage}} class="custominforwindow">
+                        <div ng-non-bindable >
+                            <div class="pricestyle">
+                                <span >{{p.auctionPrice | currency}}</span>
+                                <span ><img src="images/instantbookicon.png">
+                                </span>
+                            </div>
+                            <p class="propertynameinfowindow">{{p.title}}</p>
+                            <span class="infowindowtypeproperty">{{p.roomType}}</span>
+
+                        </div>
+                    </div>
+                </info-window>
+            </ng-map>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,64 @@
+<div class="host-step" ng-click="hostStep1Clicked()" style="cursor: default">
+	
+	<div class="host-step-content ">
+		<div class="host-step-header ">
+			<h2>Hi, {{username}}! Let’s get you ready to become a host.</h2>
+		</div>
+		<div class="host-step-count ">
+			<span>STEP 1</span>
+		</div>
+		<div class="host-step-ques ">
+			
+			<div class="host-ques ">
+				<h3>What kind of place do you have?</h3>
+			</div>
+		<div class="host-step-input">
+			<div class="ques-place">
+				<div class="place-room ">
+					<select  name="room" id="" class="step-select form-control " ng-model="place.room">
+						<option selected="selected" value="Entire Place">Entire Place</option>
+						<option value="Private room">Private room</option>	
+						<option value="Shared room">Shared room</option>		
+					</select>	
+				</div>
+				<div class="place-guest">
+					<select name="guest" ng-model="place.guest" id="" class=" step-select form-control ">
+						<option  selected="selected" value="1">for 1 guest</option>	
+						<option value="2">for 2 guest</option>	
+						<option value="3">for 3 guest</option>	
+						<option value="4">for 4 guest</option>	
+						<option value="5">for 5 guest</option>	
+						<option value="6">for 6 guest</option>	
+						<option value="7">for 7 guest</option>	
+						<option value="8">for 8 guest</option>	
+						<option value="9">for 9 guest</option>	
+						<option value="10">for 10 guest</option>	
+						<option value="11">for 11 guest</option>	
+						<option value="12">for 12 guest</option>	
+						<option value="13">for 13 guest</option>	
+						<option value="14">for 14 guest</option>	
+					</select>
+				</div>
+			</div>
+			<!-- <div class="ques-place  "> -->
+				<div class="place-address">
+					<input type="text" ng-model="place.address" class="form-control step-select " placeholder="eg. San Francisco">
+				</div>
+				<h3>How many bathrooms ?</h3>
+				<div class="place-bathrooms ">
+				 <div class="bath-opr row ">
+				 <span ng-init="count=0" class="col-md-8 col-lg-8 bathCount" >{{count}} bathrooms</span>	
+				 
+				 <span ng-hide="count>=8" class=" pull-right operation col-md-2 col-lg-2" ng-click="count=count+1">+</span>	
+				 <span ng-show="count>0" class=" pull-right operation col-md-2 col-lg-2" ng-click="count=count-1">-</span>
+				</div>
+				</div>
+			<!-- </div> -->
+			<div class="step-button1">
+				<button class="btn stepBtn" ng-click="continueStep()" >Conitnue</button>
+			</div>
+		</div>
+
+		</div>
+	</div>
+</div>

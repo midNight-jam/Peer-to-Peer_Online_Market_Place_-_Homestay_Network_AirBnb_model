@@ -1,0 +1,165 @@
+
+<div class="modal fade" id="billModal" tabindex="-1" role="dialog" aria-labelledby="billModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:#E6E6E6;">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="editTripLabel">	<span style="font-size: 20px;">Invoice</span></h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="panel">
+                        <div class="panel-body">
+                            <h2>Customer Receipt</h2>
+                            <div class="h6 row-space-1">
+                                Confirmation Code:
+                                <span>8R9696</span>
+                            </div>
+                            <div>
+                                Wed March 7, 2012 <br>
+                                Receipt # 4024402681
+                            </div>
+                        </div>
+                        <hr>
+
+                        <div class="panel-body">
+
+                            <div class="row row-space-condensed row-space-3">
+                                <div class="col-6">
+                                    <h6 class="text-lead">
+                                        Kunal Ahuja <br>
+                                        <span>NAME</span>
+                                    </h6>
+                                    <p >
+
+                                    </p>
+                                </div>
+                                <div class="col-3">
+                                    <h6>
+                                        Travel Destination
+                                    </h6>
+                                    <p class="text-lead">
+                                        Sant Cugat del Vall&egrave;s
+                                    </p>
+                                </div>
+                                <div class="col-3">
+                                    <h6>
+                                        Duration
+                                    </h6>
+                                    <p class="text-lead">
+                                        3 Nights
+                                    </p>
+                                </div>
+                                <div class="col-3">
+                                    <h6>
+                                        Accommodation Type
+                                    </h6>
+                                    <p class="text-lead">
+                                        Entire home/apt
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="row row-space-condensed">
+                                <div class="col-3">
+                                    <h6>
+                                        Accommodation Address
+                                    </h6>
+                                    <p class="text-lead">
+                                        <strong>I &quot;loooft&quot; Barcelona!</strong>
+                                    </p>
+                                    <p class="text-lead">Cam&iacute; de Can Borrell<br>Sant Cugat del Vall&egrave;s, Catalunya 08173<br>Spain<br></p>
+                                </div>
+                                <div class="col-3">
+                                    <h6>
+                                        Accommodation Host
+                                    </h6>
+                                    <p class="text-lead">
+                                        Mick Hans
+                                    </p>
+                                </div>
+                                <div class="col-3">
+                                    <h6>
+                                        Check In
+                                    </h6>
+                                    <p class="text-lead">
+                                        Tue, May 17, 2016<br>Flexible check in time
+                                    </p>
+                                </div>
+                                <div class="col-3">
+                                    <h6>
+                                        Check Out
+                                    </h6>
+                                    <p class="text-lead">
+                                        Fri, May 20, 2016<br>Flexible check out time
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row row-space-condensed row-space-top-4">
+                                <div class="col-12">
+                                    <h2>
+                                        Reservation Charges
+                                    </h2>
+
+                                    <table class="table table-bordered payment-table">
+                                        <tbody>
+                                        <tr>
+                                            <th class="receipt-label">&#36;150 x 3 nights</th>
+                                            <td class="receipt-amount">
+                                                &#36;450
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="receipt-label">
+                                                Makent Service Fee
+                                            </th>
+                                            <td class="receipt-amount">&#36;23</td>
+                                        </tr>
+                                        </tbody>
+                                        <tfoot>
+                                        <tr>
+                                            <th class="receipt-label">Total</th>
+                                            <td class="receipt-amount">&#36;473</td>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+
+                                    <table class="table table-bordered payment-table">
+                                        <tbody>
+                                        <tr>
+                                            <th class="receipt-label">
+                                                Payment Received:
+                                                Sun, May 01, 2016
+
+                                            </th>
+                                            <td class="receipt-amount">
+                                                &#36;473
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-space-top-4" id="legal-disclaimer">
+                    <p>
+                        Makent is authorized to accept Accommodation Fees on behalf of the Host as its limited agent. This means that your payment obligation to the Host is satisfied by your payment to Makent. Any disagreements by the Host regarding that payment must be settled between the Host and Makent.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" style="background-color:white" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-dafault airbnb-color"  data-toggle="modal" ng-disabled="sendrequest" ng-click="updateTrip(checkInDate,checkOutDate)">Send Request</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

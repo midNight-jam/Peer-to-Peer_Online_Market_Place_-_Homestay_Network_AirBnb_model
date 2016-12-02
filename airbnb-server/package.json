@@ -1,0 +1,20 @@
+{
+  "name": "airbnb-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "amqp": "^0.2.6",
+    "bcrypt-nodejs": "0.0.3",
+    "mongoose": "^4.6.8",
+    "mysql": "^2.12.0",
+    "ssn": "^0.5.3",
+    "winston": "^2.3.0"
+  }
+}

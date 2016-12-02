@@ -1,0 +1,124 @@
+<div class="header-include" ng-include="'host/header.html'"></div>
+<div style="padding-top:50px;">
+    <ul class="nav nav-tabs navbar-inverse">
+        <li role="presentation"><a class="editProfile" ui-sref="hostDashboard">Dashboard</a></li>
+        <li role="presentation"><a class="editProfile" ui-sref="yourListings">Your Listing</a></li>
+        <li role="presentation"><a class="editProfile" ui-sref="yourTrips">Your Trips</a></li>
+        <li role="presentation" class="active"><a ui-sref="viewProfile">Profile</a></li>
+        <li role="presentation"><a class="editProfile" ui-sref="accountSettings">Account</a></li>
+    </ul>
+</div>
+<br>
+<strong>{{message}}</strong>
+<div class="row">
+    <div class="btn-group-vertical col-sm-3 col-md-3" role="group" aria-label="...">
+        <ul>
+            <strong><a class ="active" ui-sref="viewProfile">View Profile</a></strong><br><br>
+            <strong><a class ="active editProfile" ui-sref="editProfile">Edit Profile</a></strong><br><br>
+            <strong><a class="editProfile" ui-sref="editPhotoAndVideo">Photos and Video</a></strong><br><br>
+            <strong><a class="editProfile" ui-sref="myReviews">Reviews</a></strong><br><br>
+        </ul>
+    </div>
+    <div class="col-sm-8 col-md-8">
+
+
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">User Profile</h3>
+            </div>
+            <div class="panel-body">
+
+                <div class="row">
+
+                    <div class="user-dashboard-pic text-center col-md-2 col-lg-2">
+
+                        <div class="img-user-dashboard "><a><img ng-src="{{profilePic}}" alt=""></a></div>
+                        <h3>{{username}}</h3>
+                        <div><a >View Profile</a></div>
+                        <div><a >Edit Profile</a></div>
+
+                    </div>
+
+
+                    <div class=" col-md-8">
+                        <div class="host-dashboard-header">
+                            <div class=""> <p>User Details</p> </div>
+                        </div>
+                        <div class="col-md-6 col-lg-6  col-xs-6" >
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label">First Name: </label>{{fname}}
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label editProfile">Last Name:</label>{{lname}}
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label editProfile">Gender: </label>{{gender}}
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label editProfile">Birth Date: </label>{{dob | date:'yyyy-MM-dd '}}
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label editProfile">Email Address: </label>{{email}}
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label editProfile">Phone Number: </label>{{pNumber}}
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label editProfile">Preferred Language: </label>{{language}}
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label editProfile">Preferred Currenct: </label>{{currency}}
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label editProfile">Street Address: </label>{{stAddress}}
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label editProfile">City: </label>{{city}}
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label editProfile">State: </label>{{state}}
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label editProfile">Country: </label>{{country}}
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label editProfile">Zip Code: </label>{{zipCode}}
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-lg-6 control-label editProfile">Describe Yourself: </label>{{aboutme}}
+
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Business Travel</h3>
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label editProfile">Work Email Address: </label>{{workEmail}}
+
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--<div>
+            <button class="btn btn-primary airbnb-color col-lg-1" ng-click="save(fname,lname,gender,dob,email,pNumber,language,currency,stAddress,city,state,country,zipCode,aboutme,workEmail)">Save</button>
+        </div>-->
+    </div>
+</div>

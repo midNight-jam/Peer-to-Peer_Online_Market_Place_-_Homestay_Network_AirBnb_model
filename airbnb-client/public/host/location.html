@@ -1,0 +1,92 @@
+<div class="host-step" ng-click="pageClicked()" style="cursor: default">
+<br>
+<br>
+<h1>{{error}}</h1>
+<h2>{{suggestion}}</h2>
+<div class="form-control" ng-repeat = "address in addresses">
+   	<strong>{{address.name}}</strong>
+</div>
+ <div class="host-step-content ">
+  
+	<div class="host-step-header">
+			<h2>Where’s your place located?</h2>
+	</div>
+	<div class="host-location-input">
+		
+
+	<div class="input-type" > Country </div> 
+	
+	 	<div class="input">
+					<select name="country" ng-model="place.country" id="" class=" step-select form-control ">
+						<option  selected="selected" value="United States">United States</option>	
+						<option value="India">India</option>	
+						<option value="England">England</option>	
+					</select>
+		</div>
+		
+	
+		<div class="input-type"> Street Address </div>
+			<div class="input">
+				<input type="text"  name="address" ng-model="place.address" class=" step-select form-control " placeholder="e.g. 11108 108th Avenue">	
+			</div>
+		
+		<div class="input-type"> Apt, Suite, Bldg. (optional)</div>
+			<div class="input">
+				<input type="text"  name="Suite" ng-model="place.suiteNum" class=" step-select form-control " placeholder="e.g. Suite #7">	
+			</div>
+	    
+			<div class="sub">
+				<div class="input-type "> City </div>
+			<div class="input ">
+				<input type="text"  name="City" ng-model="place.city" class=" step-select form-control " placeholder="City">	
+			</div>
+			</div>
+			<div class="sub">
+				<div class="input-type"> State </div>
+			<div class="input ">
+				<input type="text"  name="State" ng-model="place.state" class=" step-select form-control " placeholder="State">	
+			</div>
+			</div>
+	   
+	   <div class="input-type">ZIP Code </div>
+			<div class="input">
+				<input type="text"  name="ZipCode" ng-model="place.ZipCode" class=" step-select form-control " placeholder="ZipCode">	
+			</div>
+	    
+	</div>
+
+ </div>	
+</div>
+<div class="step-button">
+	<div class="step-back pull-left">
+		<a href="#" ng-click="back()"><-- Back</a>
+	</div>
+	<div class="step-next pull-right">
+		<button class="btn btn-primary airbnb-color" ng-click="next(place.country,place.address,place.city,place.suiteNum,place.state)">Next</button>
+	</div>
+</div>
+
+
+
+<!-- Modal -->
+<!--<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Message</h4>
+      </div>
+      <div class="modal-body">
+        <strong>{{error}}</strong>
+        <strong>{{suggestion}}</strong>
+        <div class="row" ng-repeat = "address in addresses">
+        	<strong>{{address.name}}</strong>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" ng-click="confirm()">OK</button>
+      </div>
+    </div>
+  </div>
+</div>-->

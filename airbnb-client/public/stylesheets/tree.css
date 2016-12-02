@@ -1,0 +1,22 @@
+html{
+    font: 10px sans-serif;
+}
+
+svg{
+    border: 1px solid silver;
+}
+
+.node{
+    cursor: pointer;
+}
+
+.node circle{
+    stroke: steelblue;
+    stroke-width: 1.5px;
+}
+
+.link{
+    fill: none;
+    stroke: lightgray;
+    stroke-width: 1.5px;
+}
