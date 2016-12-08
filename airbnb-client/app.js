@@ -110,8 +110,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 AWS.config = new AWS.Config();
-AWS.config.accessKeyId = "AKIAJBXTIDNQB6AWAE5A";
-AWS.config.secretAccessKey = "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";
+AWS.config.accessKeyId = "";
+AWS.config.secretAccessKey = "";
 AWS.config.region = "us-west-2";
 AWS.config.apiVersions = {
    "s3": "2006-03-01"
