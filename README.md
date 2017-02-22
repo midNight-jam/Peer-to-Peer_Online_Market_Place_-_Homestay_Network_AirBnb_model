@@ -89,12 +89,16 @@ Angular JavaScript
 
     Object Management Policy
  
- • Requirement Analysis:
+     • Requirement Analysis:
 Planning and requirement analysis phase is the first phase of our application, as
 per the requirements the application is divided into three layers:
+
+
 1. Presentation Layer: The presentation layer consists of the graphical user
 interface of our application. The user interacts with the user interface to send
 requests to the server.
+
+
 2. Business Layer: The business layer consists of the implementation of business
 logic. In this layer we translate the functional requirements into working code,
 that is, this layer is responsible for processing of the requests received from
@@ -102,40 +106,57 @@ the user and to return valid response. The modules have been implemented
 using the message broker Rabbit MQ which implements the Advance
 Messaging and Queuing Protocol. The various modules are also integrated in
 this layer.
-3. Data Layer: The data layer comprises of the database to store the data for
+
+
+    Data Layer: 
+
+The data layer comprises of the database to store the data for
 various modules. In this layer we define the relationship between different
 tables. We have used both MongoDB and MySQL to store the data.
-• Modules:
+
+      
+      • Modules:
 We have implemented various modules as per the requirements namely, Host,
 Trips, Billing and Admin. The host model stores the data about the host and the
 property he has listed. The trips module stores the data about the trip of the user.
 The billing module stores the bills for various trips and admin model has the data
 for all the users, their trips, lists and bills. Each of these module has its own
 characteristics and schema.
-• Implementation:
+
+
+    • Implementation:
+
 We have implemented the user interface and various functionalities for each of
 the modules mentioned above. We have implemented key features like address
 validator to validate the address of the property entered by the user, maps using
 google map API which the properties in a particular area on google map. We have
 used Rabbit MQ as message broker between the client and server which makes
 the application reliable and scalable. We have also used Redis for caching sql data.
-• Testing:
+
+
+    • Testing:
+
 We have tested our application using mocha and jmeter. The various graphs
 shown below discusses the result of jmeter testing. We also tested application
 using Mocha to check if the functionalities are as expected.
 v How we handled “Heavy Weight” resources.
+
+
 The heavy weight resources in our application are the profiles images and profile videos
 of the user, the images of the property that the user saved while listing his property for
 rent and the images uploaded by the user while reviewing a property. We have followed
 industry best practices and used Amazon S3 to store these images, retrieving the images
 from cloud is less expensive than fetching the images from database.
-v The policy you used to decide when to write data into the database
+ 
+ The policy you used to decide when to write data into the database
 We are storing the data into the database optimally. For Example, while posting a
 property on rent the user has to enter the information about the property in multiple
 pages, we are not storing the data into the database at each page rather we store the
 data in the database only at the last step, this way if the user wishes to cancel the booking
 in between we don’t have to rollback all the data and also we don’t have to store the data
-into the database at each step. Similarly, in trips we are fetching the listings of a particular
+into the database at each step. 
+
+Similarly, in trips we are fetching the listings of a particular
 city only once from the database and then we store this data in local storage, we use this
 locally saved data in the next booking screens and save the data about the booking at the
 last step.
